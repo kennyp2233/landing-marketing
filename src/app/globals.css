@@ -53,6 +53,7 @@ body {
 @layer utilities {
   .gradient-text {
     background-image: linear-gradient(to right, var(--color-secondary), var(--color-primary), #3b82f6);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -60,4 +61,58 @@ body {
   .gradient-bg {
     background-image: linear-gradient(to right, var(--color-secondary), var(--color-primary), #3b82f6);
   }
+}
+
+/* =============================
+   ✨ Liquid Glass Effect
+   ============================= */
+.liquid-glass-wrapper {
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquid-glass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  backdrop-filter: blur(3px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquid-glass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+}
+
+.liquid-glass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.liquid-glass-text {
+  z-index: 3;
+  position: relative;
+}
+
+/* Hover animations for liquid glass */
+.liquid-glass-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.liquid-glass-wrapper:hover .liquid-glass-effect {
+  backdrop-filter: blur(4px);
+}
+
+.liquid-glass-wrapper:active {
+  transform: scale(0.98);
 }
