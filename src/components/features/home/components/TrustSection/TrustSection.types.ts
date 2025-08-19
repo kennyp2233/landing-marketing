@@ -6,5 +6,6 @@ export interface TrustSectionProps {
 export interface TrustItemProps {
     icon: React.ReactNode;
     text: string;
+    description?: string;
     isDark: boolean;
 }

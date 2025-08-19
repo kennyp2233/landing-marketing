@@ -62,7 +62,7 @@ const RatingBadge: React.FC<RatingBadgeProps> = ({
 
             <div className={cn(
                 'liquid-glass-wrapper relative inline-flex items-center space-x-3 px-5 py-3 rounded-full',
-                'font-semibold cursor-pointer overflow-hidden select-none',
+                'font-semibold overflow-hidden select-none',
                 'transition-all duration-500 ease-out',
                 'hover:scale-105 hover:shadow-2xl active:scale-95',
                 isDark ? 'text-white' : 'text-gray-900'

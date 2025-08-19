@@ -7,14 +7,14 @@ import { FloatingElement, FloatingLogo, FloatingText } from './FloatingElements'
 
 const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => {
     // Paths optimizados para offset-path CSS - más suaves y naturales
-    // Path principal: curva orgánica que cruza la pantalla
-    const primaryPath = "M-50,300 C200,200 400,250 600,200 C800,150 1000,300 1200,250 C1400,200 1600,300 1750,250";
+    // Path principal: curva orgánica centrada (desplazada más arriba)
+    const primaryPath = "M-50,200 C180,120 420,160 620,130 C820,100 980,220 1220,180 C1440,140 1620,220 1750,180";
 
-    // Path secundario: curva complementaria más baja
-    const secondaryPath = "M-50,450 C150,400 350,500 550,450 C750,400 950,500 1150,450 C1350,400 1550,500 1750,450";
+    // Path secundario: curva complementaria más baja (baja más abajo)
+    const secondaryPath = "M-50,520 C170,470 370,560 570,520 C770,480 970,560 1170,520 C1370,480 1570,560 1750,520";
 
-    // Path terciario: curva superior sutil
-    const tertiaryPath = "M-50,150 C200,100 400,200 600,150 C800,100 1000,200 1200,150 C1400,100 1600,200 1750,150";
+    // Path terciario: curva superior sutil (más arriba)
+    const tertiaryPath = "M-50,120 C210,60 390,140 610,100 C810,60 1010,140 1230,100 C1430,60 1630,140 1750,100";
 
     return (
         <div className="relative min-h-screen overflow-hidden">
@@ -28,7 +28,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                     isDark={isDark}
                     zIndexBase={10}
                     className="opacity-70"
-                    offsetY={-150} // Mover 150px hacia arriba
+                    offsetY={-10} // offset 0 (posicionado por la path)
                 >
                     <FloatingLogo isDark={isDark} size="md" />
                     <FloatingElement isDark={isDark} variant="circle" size="lg" />
@@ -48,7 +48,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                     isDark={isDark}
                     zIndexBase={20}
                     className="opacity-50"
-                    offsetY={-150} // Mover 150px hacia arriba
+                    offsetY={0} // offset 0 (posicionado por la path)
                 >
                     <FloatingElement isDark={isDark} variant="circle" size="sm" />
                     <FloatingElement isDark={isDark} variant="square" size="md" />
@@ -66,7 +66,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                     isDark={isDark}
                     zIndexBase={5}
                     className="opacity-30"
-                    offsetY={-150} // Mover 150px hacia arriba
+                    offsetY={0} // offset 0 (posicionado por la path)
                 >
                     <FloatingElement isDark={isDark} variant="circle" size="sm" />
                     <FloatingElement isDark={isDark} variant="diamond" size="sm" />

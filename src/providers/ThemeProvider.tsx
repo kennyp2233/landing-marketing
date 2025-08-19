@@ -37,10 +37,22 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
         if (savedTheme) {
             setTheme(savedTheme);
         }
+        // Apply initial dark class
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
     }, []);
 
     useEffect(() => {
         localStorage.setItem('glowup-theme', theme);
+        // Apply dark class to document
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
     }, [theme]);
 
     return (

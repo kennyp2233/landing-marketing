@@ -13,29 +13,29 @@ const HeroContent: React.FC<HeroContentProps> = ({ isDark }) => {
                 <RatingBadge isDark={isDark} />
             </div>
 
-            {/* Main Heading - Opción 1: Solo "Ventas" con gradiente */}
-            <div className="max-w-4xl mx-auto mb-6">
+            {/* Main Heading - GlowUp Media */}
+            <div className="max-w-5xl mx-auto mb-6">
                 <h1 className={cn(
                     'text-5xl md:text-6xl lg:text-7xl font-bold leading-tight',
                     isDark ? 'text-white' : 'text-gray-900'
                 )}>
-                    Aumenta tus Ventas
+                    Impulsa tu marca.
                 </h1>
                 <h2 className={cn(
-                    'text-4xl md:text-5xl lg:text-6xl font-bold mt-2',
-                    isDark ? 'text-white' : 'text-gray-900'
+                    'text-4xl md:text-5xl lg:text-6xl font-bold mt-2 bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent'
                 )}>
-                    300% en X Días.
+                    Eleva tu impacto.
                 </h2>
             </div>
 
             {/* Subtitle */}
             <p className={cn(
-                'text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed',
+                'text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed',
                 isDark ? 'text-gray-300' : 'text-gray-600'
             )}>
-                Creamos estrategias digitales que multiplican tus clientes
-                garantizando resultados medibles y rentables.
+                GlowUp Media es una agencia de marketing digital innovadora y estratégica, 
+                especializada en crear experiencias de alto impacto a través de redes sociales, 
+                contenido creativo y marketing digital.
             </p>
 
             {/* CTA Button */}
@@ -44,7 +44,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ isDark }) => {
                 size="lg"
                 className="text-lg px-8 py-4"
             >
-                Agenda tu Auditoría GRATIS
+                Descubre tu GlowUp
             </Button>
         </div>
     );

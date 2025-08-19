@@ -1,9 +1,18 @@
 // components/shared/layout/Navbar/index.tsx
-import React from 'react';
-import { cn } from '../../../../lib/utils';
-import { NAVIGATION_ITEMS } from '../../../../lib/constants';
-import { Logo, Button, ThemeToggle } from '../../ui';
-import NavbarItem from './NavbarItem';
+"use client";
+import React, { useState } from 'react';
+import {
+  Navbar as ResizableNavbar,
+  NavBody,
+  NavItems,
+  MobileNav,
+  NavbarButton,
+  MobileNavHeader,
+  MobileNavToggle,
+  MobileNavMenu,
+} from "../../../ui/resizable-navbar";
+import { NAVIGATION_ITEMS, BRAND_INFO } from '../../../../lib/constants';
+import { ThemeToggle, Button } from '../../ui';
 import { NavbarProps } from './Navbar.types';
 
 const Navbar: React.FC<NavbarProps> = ({
@@ -11,41 +20,104 @@ const Navbar: React.FC<NavbarProps> = ({
     onThemeToggle,
     navigationItems = NAVIGATION_ITEMS
 }) => {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    // Transform navigation items to match the new navbar format
+    const navItems = navigationItems.map(item => ({
+        name: item.label,
+        link: item.href,
+    }));
+
+    const CustomNavbarLogo = () => {
+        return (
+            <a
+                href="#"
+                className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal"
+            >
+                <span className={`font-bold text-xl tracking-tight ${
+                    isDark ? "text-white" : "text-gray-900"
+                }`}>
+                    {BRAND_INFO.name}
+                </span>
+            </a>
+        );
+    };
+
     return (
-        <nav className={cn(
-            'relative z-50 px-6 py-4 transition-colors duration-300',
-            isDark ? 'text-white' : 'text-gray-900'
-        )}>
-            <div className="max-w-7xl mx-auto flex items-center justify-between">
-                {/* Logo */}
-                <Logo size="md" showText={true} />
+        <div className="relative w-full">
+            <ResizableNavbar isDark={isDark}>
+                {/* Desktop Navigation */}
+                <NavBody isDark={isDark}>
+                    <CustomNavbarLogo />
+                    <NavItems items={navItems} isDark={isDark} />
+                    <div className="flex items-center gap-4">
+                        <div className="relative z-50">
+                            <ThemeToggle
+                                isDark={isDark}
+                                onToggle={onThemeToggle}
+                            />
+                        </div>
+                        <Button
+                            variant="primary"
+                            size="md"
+                        >
+                            Contáctanos
+                        </Button>
+                    </div>
+                </NavBody>
 
-                {/* Navigation Items */}
-                <div className="hidden md:flex items-center space-x-2">
-                    {navigationItems.map((item) => (
-                        <NavbarItem
-                            key={item.id}
-                            item={item}
-                            isDark={isDark}
-                        />
-                    ))}
-                </div>
+                {/* Mobile Navigation */}
+                <MobileNav isDark={isDark}>
+                    <MobileNavHeader>
+                        <CustomNavbarLogo />
+                        <div className="flex items-center gap-2">
+                            <div className="relative z-50">
+                                <ThemeToggle
+                                    isDark={isDark}
+                                    onToggle={onThemeToggle}
+                                />
+                            </div>
+                            <MobileNavToggle
+                                isOpen={isMobileMenuOpen}
+                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                                isDark={isDark}
+                            />
+                        </div>
+                    </MobileNavHeader>
 
-                {/* Right Section */}
-                <div className="flex items-center space-x-4">
-                    <ThemeToggle
+                    <MobileNavMenu
+                        isOpen={isMobileMenuOpen}
+                        onClose={() => setIsMobileMenuOpen(false)}
                         isDark={isDark}
-                        onToggle={onThemeToggle}
-                    />
-                    <Button
-                        variant="primary"
-                        size="md"
                     >
-                        Contáctanos
-                    </Button>
-                </div>
-            </div>
-        </nav>
+                        {navItems.map((item, idx) => (
+                            <a
+                                key={`mobile-link-${idx}`}
+                                href={item.link}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className={`relative text-lg font-medium py-3 transition-colors duration-200 ${
+                                    isDark 
+                                        ? "text-gray-200 hover:text-white" 
+                                        : "text-gray-700 hover:text-gray-900"
+                                }`}
+                            >
+                                <span className="block">{item.name}</span>
+                            </a>
+                        ))}
+                        <div className="flex w-full flex-col gap-4 mt-6">
+                            <Button
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                variant="primary"
+                                size="lg"
+                                className="w-full"
+                            >
+                                Contáctanos
+                            </Button>
+                        </div>
+                    </MobileNavMenu>
+                </MobileNav>
+            </ResizableNavbar>
+        </div>
     );
 };
 
