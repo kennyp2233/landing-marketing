@@ -3,7 +3,7 @@
 import React from 'react';
 import { Calendar, Puzzle, Smile } from 'lucide-react';
 import { cn } from '../../../../../lib/utils';
-import { BackgroundGradient } from '../../../../ui/background-gradient';
+import { BackgroundGradient } from '@/components/shared/ui/BackgroundGradient';
 import TrustItem from './TrustItem';
 import { TrustSectionProps } from './TrustSection.types';
 
@@ -31,7 +31,7 @@ const TrustSection: React.FC<TrustSectionProps> = ({ isDark }) => {
             'py-24 px-6 relative overflow-hidden',
         )}>
             {/* Gradiente de fondo sutil */}
-            
+
             <div className="max-w-6xl mx-auto relative">
                 {/* Título de sección */}
                 <div className="text-center mb-16">
@@ -54,10 +54,10 @@ const TrustSection: React.FC<TrustSectionProps> = ({ isDark }) => {
                         <BackgroundGradient
                             key={index}
                             className={cn(
-                                'rounded-[22px] p-8 h-full',
-                                isDark 
-                                    ? 'bg-gray-900/80 backdrop-blur-xl border border-gray-800/50' 
-                                    : 'bg-white/80 backdrop-blur-xl border border-gray-200/50'
+                                'rounded-[22px] p-10 h-full group',
+                                isDark
+                                    ? 'bg-gray-900/90 backdrop-blur-xl border border-gray-700/30 shadow-2xl'
+                                    : 'bg-white/90 backdrop-blur-xl border border-gray-200/50 shadow-xl'
                             )}
                             containerClassName="h-full"
                         >

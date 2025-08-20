@@ -145,34 +145,39 @@ const MarqueeAlongPath: React.FC<MarqueeAlongPathProps> = ({
         baseOffset.set(baseOffset.get() + moveBy);
     });
 
+    // Define static box dimensions matching path range
+    const pathWidth = 1800; // from x: -50 to 1750
+    const pathHeight = 600;
     return (
-        <div className={`absolute inset-0 ${className}`}>
-            {/* Hidden SVG for path calculations */}
-            <svg 
-                className="absolute inset-0 w-full h-full pointer-events-none opacity-0"
-                width="100%"
-                height="100%"
-                viewBox="0 0 1200 600"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-            >
-                <path d={transformedPath} stroke="none" fill="none" />
-            </svg>
-            
-            {/* Animated marquee items */}
-            {items.map(({ child, repeatIndex, itemIndex, key }) => (
-                <MarqueeItem
-                    key={key}
-                    baseOffset={baseOffset}
-                    path={transformedPath}
-                    itemIndex={itemIndex}
-                    totalItems={items.length}
-                    repeatIndex={repeatIndex}
-                    zIndexBase={zIndexBase}
+        // Container fills parent and centers the fixed-size marquee box horizontally and vertically
+        <div className={`absolute inset-0 flex items-center justify-center ${className}`}> 
+            <div className="relative" style={{ width: pathWidth, height: pathHeight }}>
+                {/* Hidden SVG for path calculations within fixed box */}
+                <svg
+                    className="absolute inset-0 w-full h-full pointer-events-none opacity-0"
+                    width="100%"
+                    height="100%"
+                    viewBox={`0 0 ${pathWidth} ${pathHeight}`}
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                 >
-                    {child}
-                </MarqueeItem>
-            ))}
+                    <path d={transformedPath} stroke="none" fill="none" />
+                </svg>
+                {/* Animated marquee items positioned along path within box */}
+                {items.map(({ child, repeatIndex, itemIndex, key }) => (
+                    <MarqueeItem
+                        key={key}
+                        baseOffset={baseOffset}
+                        path={transformedPath}
+                        itemIndex={itemIndex}
+                        totalItems={items.length}
+                        repeatIndex={repeatIndex}
+                        zIndexBase={zIndexBase}
+                    >
+                        {child}
+                    </MarqueeItem>
+                ))}
+            </div>
         </div>
     );
 };

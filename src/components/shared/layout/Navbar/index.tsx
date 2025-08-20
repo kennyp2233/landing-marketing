@@ -2,15 +2,15 @@
 "use client";
 import React, { useState } from 'react';
 import {
-  Navbar as ResizableNavbar,
-  NavBody,
-  NavItems,
-  MobileNav,
-  NavbarButton,
-  MobileNavHeader,
-  MobileNavToggle,
-  MobileNavMenu,
-} from "../../../ui/resizable-navbar";
+    Navbar as ResizableNavbar,
+    NavBody,
+    NavItems,
+    MobileNav,
+    NavbarButton,
+    MobileNavHeader,
+    MobileNavToggle,
+    MobileNavMenu,
+} from "@/components/shared/ui/ResizableNavbar";
 import { NAVIGATION_ITEMS, BRAND_INFO } from '../../../../lib/constants';
 import { ThemeToggle, Button } from '../../ui';
 import { NavbarProps } from './Navbar.types';
@@ -34,9 +34,8 @@ const Navbar: React.FC<NavbarProps> = ({
                 href="#"
                 className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal"
             >
-                <span className={`font-bold text-xl tracking-tight ${
-                    isDark ? "text-white" : "text-gray-900"
-                }`}>
+                <span className={`font-bold text-xl tracking-tight ${isDark ? "text-white" : "text-gray-900"
+                    }`}>
                     {BRAND_INFO.name}
                 </span>
             </a>
@@ -95,11 +94,10 @@ const Navbar: React.FC<NavbarProps> = ({
                                 key={`mobile-link-${idx}`}
                                 href={item.link}
                                 onClick={() => setIsMobileMenuOpen(false)}
-                                className={`relative text-lg font-medium py-3 transition-colors duration-200 ${
-                                    isDark 
-                                        ? "text-gray-200 hover:text-white" 
+                                className={`relative text-lg font-medium py-3 transition-colors duration-200 ${isDark
+                                        ? "text-gray-200 hover:text-white"
                                         : "text-gray-700 hover:text-gray-900"
-                                }`}
+                                    }`}
                             >
                                 <span className="block">{item.name}</span>
                             </a>

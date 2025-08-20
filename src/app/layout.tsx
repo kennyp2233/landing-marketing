@@ -1,10 +1,7 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '../providers';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'GlowUp Media - Impulsa tu marca. Eleva tu impacto',
@@ -19,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={inter.className}>
+  <body>
         <ThemeProvider defaultTheme="dark">
           {children}
         </ThemeProvider>
