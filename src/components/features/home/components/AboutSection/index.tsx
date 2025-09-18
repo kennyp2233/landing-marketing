@@ -18,7 +18,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                         'text-4xl md:text-5xl lg:text-6xl font-bold mb-6',
                         isDark ? 'text-white' : 'text-gray-900'
                     )}>
-                        ¿Quiénes <span className="bg-gradient-to-r from-[#8b5fbf] via-[#b76bb8] to-[#6b9fff] bg-clip-text text-transparent">somos?</span>
+                        ¿Quiénes <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent">somos?</span>
                     </h2>
                 </div>
 
@@ -27,19 +27,18 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                     <WobbleCard
                         containerClassName="col-span-1 lg:col-span-2 h-full bg-transparent min-h-[500px] lg:min-h-[300px]"
                         className=""
+                        variant="gradient"
                     >
                         <div className="h-full flex flex-col justify-center max-w-lg">
                             <div className="space-y-8">
-                                <h2 className="text-left text-balance text-xl md:text-2xl lg:text-4xl font-bold tracking-[-0.015em] text-white leading-tight">
-                                    <span className="bg-gradient-to-r from-[#8b5fbf] via-[#b76bb8] to-[#6b9fff] bg-clip-text text-transparent font-bold">
-                                        GlowUp Media
-                                    </span>{" "}
-                                    <span className="text-white">
-                                        impulsa el universo digital
-                                    </span>
-                                </h2>
-                                
-                                <div className="space-y-6">
+                            <h2 className="text-left text-balance text-xl md:text-2xl lg:text-4xl font-bold tracking-[-0.015em] text-white leading-tight">
+                                <span className="text-white font-bold">
+                                    GlowUp Media
+                                </span>{" "}
+                                <span className="text-gray-300">
+                                    impulsa el universo digital
+                                </span>
+                            </h2>                                <div className="space-y-6">
                                     <p className="text-left text-lg md:text-xl leading-relaxed text-neutral-200">
                                         Somos una agencia de marketing digital 
                                         <span className="text-white font-semibold"> innovadora</span>, especializada en crear 
@@ -49,16 +48,16 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                     
                                     <div className="flex flex-col space-y-3">
                                         <div className="flex items-center space-x-3">
-                                            <div className="w-2 h-2 bg-gradient-to-r from-[#8b5fbf] to-[#b76bb8] rounded-full"></div>
-                                            <span className="text-white font-medium">Marketing Digital Innovador</span>
+                                            <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
+                                            <span className="text-gray-300 font-medium">Marketing Digital Innovador</span>
                                         </div>
                                         <div className="flex items-center space-x-3">
-                                            <div className="w-2 h-2 bg-gradient-to-r from-[#b76bb8] to-[#6b9fff] rounded-full"></div>
-                                            <span className="text-white font-medium">Experiencias de Alto Impacto</span>
+                                            <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
+                                            <span className="text-gray-300 font-medium">Experiencias de Alto Impacto</span>
                                         </div>
                                         <div className="flex items-center space-x-3">
-                                            <div className="w-2 h-2 bg-gradient-to-r from-[#6b9fff] to-[#8b5fbf] rounded-full"></div>
-                                            <span className="text-white font-medium">Resultados Competitivos</span>
+                                            <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
+                                            <span className="text-gray-300 font-medium">Resultados Competitivos</span>
                                         </div>
                                     </div>
                                 </div>
@@ -66,13 +65,15 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                         </div>
                     </WobbleCard>
 
-                    <WobbleCard containerClassName="col-span-1 min-h-[300px] bg-transparent">
+                    <WobbleCard 
+                        containerClassName="col-span-1 min-h-[300px] bg-transparent"
+                        variant="purple"
+                    >
                         <div className="h-full flex flex-col justify-between space-y-8">
                             <div className="flex-1 flex flex-col justify-center space-y-8">
                                 <div className="relative group">
-                                    <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8b5fbf] via-[#b76bb8] to-[#6b9fff] rounded-full opacity-30 group-hover:opacity-50 blur transition duration-300"></div>
-                                    <div className="relative bg-white/5 backdrop-blur-xl rounded-full px-6 py-4 shadow-lg">
-                                        <span className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#8b5fbf] via-[#b76bb8] to-[#6b9fff] bg-clip-text text-transparent drop-shadow-lg">
+                                    <div className="relative bg-white/10 backdrop-blur-xl rounded-full px-6 py-4 shadow-lg border border-white/20">
+                                        <span className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
                                             2025
                                         </span>
                                     </div>
@@ -80,7 +81,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
 
                                 <div className="space-y-6">
                                     <h2 className="text-left text-xl md:text-2xl lg:text-4xl font-bold tracking-[-0.015em] uppercase leading-tight">
-                                        <span className="bg-gradient-to-r from-[#8b5fbf] via-[#b76bb8] to-[#6b9fff] bg-clip-text text-transparent drop-shadow-lg">
+                                        <span className="text-white drop-shadow-lg">
                                             Visión
                                         </span>
                                     </h2>
@@ -97,15 +98,18 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                         </div>
                     </WobbleCard>
 
-                    <WobbleCard containerClassName="col-span-1 lg:col-span-3 bg-transparent min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]">
+                    <WobbleCard 
+                        containerClassName="col-span-1 lg:col-span-3 bg-transparent min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]"
+                        variant="blue"
+                    >
                         <div className="h-full flex flex-col justify-center max-w-5xl">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                                 <div className="space-y-8">
                                     <h2 className="text-left text-xl md:text-2xl lg:text-4xl font-bold tracking-[-0.015em] uppercase leading-tight">
-                                        <span className="bg-gradient-to-r from-[#8b5fbf] via-[#b76bb8] to-[#6b9fff] bg-clip-text text-transparent">
+                                        <span className="text-white">
                                             Misión:
                                         </span>{" "}
-                                        <span className="text-white block lg:inline mt-2 lg:mt-0">
+                                        <span className="text-gray-300 block lg:inline mt-2 lg:mt-0">
                                             Soluciones Personalizadas
                                         </span>
                                     </h2>
@@ -127,12 +131,12 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                 <div className="space-y-8">
                                     <div className="grid grid-cols-1 gap-6">
                                         <div className="group relative">
-                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#8b5fbf] to-[#b76bb8] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
+                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6c26f9] to-[#6c26f9] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
                                             <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
                                                 <div className="flex items-center space-x-4">
                                                     <div className="relative">
-                                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#8b5fbf] to-[#b76bb8] rounded-xl opacity-75 blur"></div>
-                                                        <div className="relative w-12 h-12 bg-gradient-to-r from-[#8b5fbf] to-[#b76bb8] rounded-xl flex items-center justify-center shadow-lg">
+                                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#6c26f9] to-[#6c26f9] rounded-xl opacity-75 blur"></div>
+                                                        <div className="relative w-12 h-12 bg-gradient-to-r from-[#6c26f9] to-[#6c26f9] rounded-xl flex items-center justify-center shadow-lg">
                                                             <span className="text-white font-bold text-xl drop-shadow-lg">C</span>
                                                         </div>
                                                     </div>
@@ -145,12 +149,12 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                         </div>
                                         
                                         <div className="group relative">
-                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#b76bb8] to-[#6b9fff] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
+                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#d507fa] to-[#d507fa] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
                                             <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
                                                 <div className="flex items-center space-x-4">
                                                     <div className="relative">
-                                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#b76bb8] to-[#6b9fff] rounded-xl opacity-75 blur"></div>
-                                                        <div className="relative w-12 h-12 bg-gradient-to-r from-[#b76bb8] to-[#6b9fff] rounded-xl flex items-center justify-center shadow-lg">
+                                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#d507fa] to-[#d507fa] rounded-xl opacity-75 blur"></div>
+                                                        <div className="relative w-12 h-12 bg-gradient-to-r from-[#d507fa] to-[#d507fa] rounded-xl flex items-center justify-center shadow-lg">
                                                             <span className="text-white font-bold text-xl drop-shadow-lg">I</span>
                                                         </div>
                                                     </div>
@@ -163,12 +167,12 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                         </div>
                                         
                                         <div className="group relative">
-                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6b9fff] to-[#8b5fbf] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
+                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0586fd] to-[#0586fd] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
                                             <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
                                                 <div className="flex items-center space-x-4">
                                                     <div className="relative">
-                                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#6b9fff] to-[#8b5fbf] rounded-xl opacity-75 blur"></div>
-                                                        <div className="relative w-12 h-12 bg-gradient-to-r from-[#6b9fff] to-[#8b5fbf] rounded-xl flex items-center justify-center shadow-lg">
+                                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#0586fd] to-[#0586fd] rounded-xl opacity-75 blur"></div>
+                                                        <div className="relative w-12 h-12 bg-gradient-to-r from-[#0586fd] to-[#0586fd] rounded-xl flex items-center justify-center shadow-lg">
                                                             <span className="text-white font-bold text-xl drop-shadow-lg">G</span>
                                                         </div>
                                                     </div>

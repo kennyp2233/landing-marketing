@@ -34,7 +34,7 @@ export default function HomePage() {
         <AboutSection isDark={isDark} />
 
         {/* Services Section */}
-        <ServicesSection isDark={isDark} />
+        <ServicesSection />
 
         {/* Press Section */}
         <PressSection isDark={isDark} />
