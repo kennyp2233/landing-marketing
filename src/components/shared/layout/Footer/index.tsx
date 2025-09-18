@@ -27,7 +27,7 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
                     {/* Tagline */}
                     <div className="text-center">
                         <p className={cn(
-                            'text-lg font-medium',
+                            'text-base md:text-lg font-medium',
                             'bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent'
                         )}>
                             Impulsa tu marca. Eleva tu impacto.
@@ -37,7 +37,7 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
                     {/* Copyright */}
                     <div className="text-center md:text-right">
                         <p className={cn(
-                            'text-sm',
+                            'text-sm md:text-base',
                             isDark ? 'text-gray-400' : 'text-gray-600'
                         )}>
                             © {currentYear} GlowUp Media. Todos los derechos reservados.

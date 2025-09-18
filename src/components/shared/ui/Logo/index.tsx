@@ -9,9 +9,9 @@ const Logo: React.FC<LogoProps> = ({
     className
 }) => {
     const sizes = {
-        sm: { container: 'w-8 h-8', text: 'text-lg' },
-        md: { container: 'w-10 h-10', text: 'text-xl' },
-        lg: { container: 'w-12 h-12', text: 'text-2xl' },
+        sm: { container: 'w-8 h-8', text: 'text-base' },
+        md: { container: 'w-10 h-10', text: 'text-lg' },
+        lg: { container: 'w-12 h-12', text: 'text-xl' },
     };
 
     return (
@@ -32,8 +32,8 @@ const Logo: React.FC<LogoProps> = ({
             {/* Logo Text */}
             {showText && (
                 <div className="flex flex-col">
-                    <span className="font-bold text-lg leading-tight">GlowUp</span>
-                    <span className="text-sm text-gray-500 leading-tight">Media</span>
+                    <span className="font-bold text-lg md:text-xl leading-tight">GlowUp</span>
+                    <span className="text-sm md:text-base text-gray-500 leading-tight">Media</span>
                 </div>
             )}
         </div>

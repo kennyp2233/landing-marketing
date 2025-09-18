@@ -28,7 +28,7 @@ const TrustItem: React.FC<TrustItemProps> = ({ icon, text, description, isDark }
             {/* Contenido - flex-1 para que crezca y ocupe espacio disponible */}
             <div className="flex-1 flex flex-col justify-center space-y-4">
                 <h3 className={cn(
-                    'text-xl md:text-2xl font-bold leading-tight',
+                    'text-xl md:text-2xl lg:text-3xl font-bold leading-tight',
                     isDark ? 'text-white' : 'text-gray-900'
                 )}>
                     {text}

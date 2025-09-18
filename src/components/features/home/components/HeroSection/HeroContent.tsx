@@ -22,7 +22,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ isDark }) => {
                     Impulsa tu marca.
                 </h1>
                 <h2 className={cn(
-                    'text-4xl md:text-5xl lg:text-6xl font-bold mt-2 bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent'
+                    'text-3xl md:text-4xl lg:text-5xl font-bold mt-2 bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent'
                 )}>
                     Eleva tu impacto.
                 </h2>
@@ -30,7 +30,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ isDark }) => {
 
             {/* Subtitle */}
             <p className={cn(
-                'text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed',
+                'text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed',
                 isDark ? 'text-gray-300' : 'text-gray-600'
             )}>
                 GlowUp Media es una agencia de marketing digital innovadora y estratégica, 

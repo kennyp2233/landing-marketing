@@ -15,7 +15,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h2 className={cn(
-                        'text-4xl md:text-5xl lg:text-6xl font-bold mb-6',
+                        'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
                         isDark ? 'text-white' : 'text-gray-900'
                     )}>
                         ¿Quiénes <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent">somos?</span>
@@ -31,7 +31,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                     >
                         <div className="h-full flex flex-col justify-center max-w-lg">
                             <div className="space-y-8">
-                            <h2 className="text-left text-balance text-xl md:text-2xl lg:text-4xl font-bold tracking-[-0.015em] text-white leading-tight">
+                            <h2 className="text-left text-balance text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.015em] text-white leading-tight">
                                 <span className="text-white font-bold">
                                     GlowUp Media
                                 </span>{" "}
@@ -39,7 +39,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                     impulsa el universo digital
                                 </span>
                             </h2>                                <div className="space-y-6">
-                                    <p className="text-left text-lg md:text-xl leading-relaxed text-neutral-200">
+                                    <p className="text-left text-base md:text-lg leading-relaxed text-neutral-200">
                                         Somos una agencia de marketing digital 
                                         <span className="text-white font-semibold"> innovadora</span>, especializada en crear 
                                         <span className="text-white font-semibold"> experiencias de alto impacto</span> que elevan tu 
@@ -80,13 +80,13 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                 </div>
 
                                 <div className="space-y-6">
-                                    <h2 className="text-left text-xl md:text-2xl lg:text-4xl font-bold tracking-[-0.015em] uppercase leading-tight">
+                                    <h2 className="text-left text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.015em] uppercase leading-tight">
                                         <span className="text-white drop-shadow-lg">
                                             Visión
                                         </span>
                                     </h2>
                                     
-                                    <p className="text-left text-lg md:text-xl leading-relaxed text-neutral-200">
+                                    <p className="text-left text-base md:text-lg leading-relaxed text-neutral-200">
                                         Convertirnos en <span className="text-white font-semibold">líderes en el mercado</span> del marketing digital, 
                                         siendo la agencia que eleva las marcas a través de 
                                         <span className="text-white font-semibold"> soluciones efectivas, innovadoras y vanguardistas.</span>
@@ -105,7 +105,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                         <div className="h-full flex flex-col justify-center max-w-5xl">
                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                                 <div className="space-y-8">
-                                    <h2 className="text-left text-xl md:text-2xl lg:text-4xl font-bold tracking-[-0.015em] uppercase leading-tight">
+                                    <h2 className="text-left text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.015em] uppercase leading-tight">
                                         <span className="text-white">
                                             Misión:
                                         </span>{" "}
@@ -115,11 +115,11 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                     </h2>
                                     
                                     <div className="space-y-6">
-                                        <p className="text-left text-xl md:text-2xl leading-relaxed text-white font-semibold">
+                                        <p className="text-left text-lg md:text-xl leading-relaxed text-white font-semibold">
                                             Elevamos tu presencia digital
                                         </p>
                                         
-                                        <p className="text-left text-lg md:text-xl leading-relaxed text-neutral-200">
+                                        <p className="text-left text-base md:text-lg leading-relaxed text-neutral-200">
                                             Brindamos <span className="text-white font-semibold">estrategias orientadas a la creatividad</span>, 
                                             el impacto y el crecimiento. Nuestra misión es 
                                             <span className="text-white font-semibold"> impulsar marcas</span> y elevar su impacto en un 
@@ -142,7 +142,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                                     </div>
                                                     <div>
                                                         <h3 className="text-white font-semibold text-lg drop-shadow-sm">Creatividad</h3>
-                                                        <p className="text-neutral-300 text-sm">Innovación en cada proyecto</p>
+                                                        <p className="text-neutral-300 text-sm md:text-base">Innovación en cada proyecto</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -160,7 +160,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                                     </div>
                                                     <div>
                                                         <h3 className="text-white font-semibold text-lg drop-shadow-sm">Impacto</h3>
-                                                        <p className="text-neutral-300 text-sm">Resultados que transforman</p>
+                                                        <p className="text-neutral-300 text-sm md:text-base">Resultados que transforman</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,7 +178,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                                     </div>
                                                     <div>
                                                         <h3 className="text-white font-semibold text-lg drop-shadow-sm">Crecimiento</h3>
-                                                        <p className="text-neutral-300 text-sm">Escalamos tu presencia</p>
+                                                        <p className="text-neutral-300 text-sm md:text-base">Escalamos tu presencia</p>
                                                     </div>
                                                 </div>
                                             </div>

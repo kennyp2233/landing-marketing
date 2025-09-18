@@ -129,7 +129,7 @@ const RatingBadge: React.FC<RatingBadgeProps> = ({
                     </div>
                     
                     <span className={cn(
-                        'text-sm font-semibold transition-all duration-300',
+                        'text-sm md:text-base font-semibold transition-all duration-300',
                         isDark ? 'text-white/90' : 'text-gray-900/90'
                     )}
                     style={{

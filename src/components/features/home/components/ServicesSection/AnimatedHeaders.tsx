@@ -122,7 +122,7 @@ export const SkeletonBranding = ({ isDark }: { isDark: boolean }) => {
                         }`}
                 >
                     <IconPalette className={`h-10 w-10 ${isDark ? 'text-gray-300' : 'text-neutral-500'}`} />
-                    <p className={`sm:text-sm text-xs text-center font-semibold mt-4 ${isDark ? 'text-gray-300' : 'text-neutral-500'
+                    <p className={`sm:text-sm md:text-base text-xs text-center font-semibold mt-4 ${isDark ? 'text-gray-300' : 'text-neutral-500'
                         }`}>
                         Logo
                     </p>
@@ -132,7 +132,7 @@ export const SkeletonBranding = ({ isDark }: { isDark: boolean }) => {
                     className={`h-full w-1/2 rounded-2xl p-4 border flex flex-col items-center justify-center ${isDark ? 'bg-gray-900/30 border-white/[0.08]' : 'bg-white border-neutral-200'
                         }`}
                 >
-                    <p className={`sm:text-sm text-xs text-center font-semibold ${isDark ? 'text-gray-300' : 'text-neutral-500'
+                    <p className={`sm:text-sm md:text-base text-xs text-center font-semibold ${isDark ? 'text-gray-300' : 'text-neutral-500'
                         }`}>
                         Manual de Marca
                     </p>

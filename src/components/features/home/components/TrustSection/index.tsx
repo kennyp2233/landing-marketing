@@ -36,13 +36,13 @@ const TrustSection: React.FC<TrustSectionProps> = ({ isDark }) => {
                 {/* Título de sección */}
                 <div className="text-center mb-16">
                     <h2 className={cn(
-                        'text-3xl md:text-4xl font-bold mb-4',
+                        'text-3xl md:text-4xl lg:text-5xl font-bold mb-4',
                         isDark ? 'text-white' : 'text-gray-900'
                     )}>
                         Tu Éxito, Nuestra Pasión
                     </h2>
                     <p className={cn(
-                        'text-lg max-w-2xl mx-auto',
+                        'text-base md:text-lg max-w-2xl mx-auto',
                         isDark ? 'text-gray-300' : 'text-gray-600'
                     )}>
                         Impulsamos tu marca con estrategias que transforman visiones en realidades extraordinarias

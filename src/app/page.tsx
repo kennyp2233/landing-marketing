@@ -4,7 +4,8 @@
 import React from 'react';
 import { useTheme } from '../providers/ThemeProvider';
 import { Navbar, Footer } from '../components/shared/layout';
-import { HeroSection, TrustSection, PressSection, AboutSection, ServicesSection, ManifestoSection, CTASection } from '../components/features/home';
+import { HeroSection, TrustSection, PressSection, AboutSection, ServicesSection, TeamSection, PricingSection } from '../components/features/home';
+import { WhatsAppFAB } from '../components/shared/ui';
 import { cn } from '../lib/utils';
 
 export default function HomePage() {
@@ -27,6 +28,9 @@ export default function HomePage() {
         {/* Hero Section */}
         <HeroSection isDark={isDark} />
 
+        {/* Press Section */}
+        <PressSection />
+
         {/* Trust Section */}
         <TrustSection isDark={isDark} />
 
@@ -36,18 +40,21 @@ export default function HomePage() {
         {/* Services Section */}
         <ServicesSection />
 
-        {/* Press Section */}
-        <PressSection isDark={isDark} />
+        {/* Pricing Section */}
+        <PricingSection />
 
-        {/* Manifesto Section */}
-        <ManifestoSection isDark={isDark} />
-
-        {/* CTA Section */}
-        <CTASection isDark={isDark} />
+        {/* Team Section */}
+        <TeamSection isDark={isDark} />
 
         {/* Footer */}
         <Footer isDark={isDark} />
       </div>
+
+      {/* WhatsApp FAB */}
+      <WhatsAppFAB
+        phoneNumber="1234567890"
+        message="¡Hola! Me interesa conocer más sobre sus servicios de marketing digital."
+      />
     </div>
   );
 }

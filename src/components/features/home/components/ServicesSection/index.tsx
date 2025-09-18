@@ -119,7 +119,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                 {/* Header */}
                 <div className="text-center mb-16">
                     <h2 className={cn(
-                        'text-4xl md:text-5xl lg:text-6xl font-bold mb-6',
+                        'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
                         isDark ? 'text-white' : 'text-gray-900'
                     )}>
                         Nuestros{' '}
@@ -128,7 +128,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                         </span>
                     </h2>
                     <p className={cn(
-                        'text-lg md:text-xl max-w-3xl mx-auto mb-8 leading-relaxed',
+                        'text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed',
                         isDark ? 'text-gray-300' : 'text-gray-600'
                     )}>
                         Soluciones completas de marketing digital que garantizan resultados medibles para tu marca
@@ -136,7 +136,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                 </div>
 
                 {/* Services BentoGrid */}
-                <BentoGrid className=" mx-auto md:auto-rows-[20rem] mb-16">
+                <BentoGrid className=" mx-auto md:auto-rows-[20rem] mb-4">
                     {services.map((service, index) => (
                         <BentoGridItem
                             key={index}
@@ -151,11 +151,11 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                 </BentoGrid>
 
                 {/* Garantías */}
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-3 gap-4">
                     <div className={`text-center p-6 rounded-xl border ${isDark ? 'border-white/[0.08] bg-gray-900/20' : 'border-neutral-200 bg-white'}`}>
-                        <div className="text-3xl font-bold text-[#6c26f9] mb-2">25%</div>
+                        <div className="text-2xl md:text-3xl font-bold text-[#6c26f9] mb-2">25%</div>
                         <p className={cn(
-                            'text-sm',
+                            'text-sm md:text-base',
                             isDark ? 'text-gray-300' : 'text-gray-600'
                         )}>
                             Más engagement promedio en 30 días
@@ -163,9 +163,9 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                     </div>
 
                     <div className={`text-center p-6 rounded-xl border ${isDark ? 'border-white/[0.08] bg-gray-900/20' : 'border-neutral-200 bg-white'}`}>
-                        <div className="text-3xl font-bold text-[#d507fa] mb-2">48h</div>
+                        <div className="text-2xl md:text-3xl font-bold text-[#d507fa] mb-2">48h</div>
                         <p className={cn(
-                            'text-sm',
+                            'text-sm md:text-base',
                             isDark ? 'text-gray-300' : 'text-gray-600'
                         )}>
                             Tiempo máximo de entrega de videos
@@ -173,9 +173,9 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                     </div>
 
                     <div className={`text-center p-6 rounded-xl border ${isDark ? 'border-white/[0.08] bg-gray-900/20' : 'border-neutral-200 bg-white'}`}>
-                        <div className="text-3xl font-bold text-[#0586fd] mb-2">$150</div>
+                        <div className="text-2xl md:text-3xl font-bold text-[#0586fd] mb-2">$150</div>
                         <p className={cn(
-                            'text-sm',
+                            'text-sm md:text-base',
                             isDark ? 'text-gray-300' : 'text-gray-600'
                         )}>
                             Desde solo $150/mes todo incluido
