@@ -4,7 +4,7 @@
 import React from 'react';
 import { useTheme } from '../providers/ThemeProvider';
 import { Navbar, Footer } from '../components/shared/layout';
-import { HeroSection, TrustSection, PressSection, AboutSection, ServicesSection, TeamSection, PricingSection } from '../components/features/home';
+import { HeroSection, TrustSection, PressSection, AboutSection, ServicesSection, TeamSection, PricingSection, StickyScrollShowcase } from '../components/features/home';
 import { WhatsAppFAB } from '../components/shared/ui';
 import { cn } from '../lib/utils';
 
@@ -39,6 +39,9 @@ export default function HomePage() {
 
         {/* Services Section */}
         <ServicesSection />
+
+        {/* Scrollytelling Showcase */}
+        <StickyScrollShowcase />
 
         {/* Pricing Section */}
         <PricingSection />

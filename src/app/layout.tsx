@@ -2,6 +2,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '../providers';
+import { LenisProvider } from '../providers/LenisProvider';
 
 export const metadata: Metadata = {
   title: 'Khannda - Tu Software, hecho a medida',
@@ -16,9 +17,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-  <body>
+      <body>
         <ThemeProvider defaultTheme="dark">
-          {children}
+          <LenisProvider>
+            {children}
+          </LenisProvider>
         </ThemeProvider>
       </body>
     </html>

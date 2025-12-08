@@ -38,12 +38,15 @@ const Navbar: React.FC<NavbarProps> = ({
                     <Image
                         src="/logo-khannda.png"
                         alt="Khannda Logo"
-                        width={120} // Estimate width
+                        width={120}
                         height={40}
                         className="object-contain h-full w-auto"
                         priority
                     />
                 </div>
+                <span className={`font-bold text-lg md:text-xl tracking-tight ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    KHANNDA
+                </span>
             </a>
         );
     };

@@ -6,6 +6,7 @@ export { default as AboutSection } from './AboutSection';
 export { default as ServicesSection } from './ServicesSection';
 export { default as TeamSection } from './TeamSection';
 export { default as PricingSection } from './PricingSection';
+export { StickyScrollShowcase } from './StickyScrollShowcase';
 
 export type { HeroSectionProps } from './HeroSection/HeroSection.types';
 export type { TrustSectionProps } from './TrustSection/TrustSection.types';

@@ -95,6 +95,7 @@ const MarqueeItem: React.FC<MarqueeItemProps> = ({
                 offsetRotate: "auto",
                 zIndex: zIndex,
                 opacity: opacity,
+                willChange: "transform, opacity",
             }}
             aria-hidden={repeatIndex > 0}
         >

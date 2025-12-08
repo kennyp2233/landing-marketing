@@ -48,7 +48,7 @@ export const NavBody = ({ children, className, visible, isDark }: { children: Re
         style={{ minWidth: "1000px" }}
         className={cn(
             "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent transition-colors duration-300 lg:flex",
-            visible && (isDark ? "bg-black/50 border border-white/10" : "bg-white/95 border border-gray-200/30"),
+            visible && (isDark ? "bg-black/50 border border-white/10" : "bg-white/80 border border-gray-200/50 backdrop-blur-md"),
             className
         )}
     >
