@@ -41,8 +41,8 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Desarrollo a Medida",
             description: "Software diseñado específicamente para tus reglas de negocio. Ni más, ni menos.",
-            icon: <IconDeviceMobile className="h-4 w-4 text-[#6c26f9]" />, // Cambiar íconos según corresponda
-            header: <SkeletonSocial />, // Puedes mantener los skeletons o crear unos de código
+            icon: <IconDeviceMobile className={cn("h-4 w-4", isDark ? "text-[#6c26f9]" : "text-orange-500")} />,
+            header: <SkeletonSocial />,
             features: [
                 "Sistemas de Gestión (ERP/CRM)",
                 "Plataformas Web Escalables",
@@ -53,7 +53,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Apps Financieras & Fintech",
             description: "Experiencia comprobada desarrollando para el sector de cooperativas de ahorro y crédito.",
-            icon: <IconChartBar className="h-4 w-4 text-[#d507fa]" />,
+            icon: <IconChartBar className={cn("h-4 w-4", isDark ? "text-[#d507fa]" : "text-orange-600")} />,
             header: <SkeletonStrategy isDark={isDark} />,
             features: [
                 "Seguridad Bancaria",
@@ -65,7 +65,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Sistemas de Gestión Operativa",
             description: "Automatización para negocios físicos como Gimnasios, Consultorios y Retail.",
-            icon: <IconUsers className="h-4 w-4 text-[#0586fd]" />,
+            icon: <IconUsers className={cn("h-4 w-4", isDark ? "text-[#0586fd]" : "text-amber-500")} />,
             header: <SkeletonAds isDark={isDark} />,
             features: [
                 "Control de Acceso Biométrico",
@@ -77,7 +77,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Consultoría Tecnológica",
             description: "Te ayudamos a elegir el stack tecnológico correcto para tu futuro.",
-            icon: <IconTargetArrow className="h-4 w-4 text-[#6c26f9]" />,
+            icon: <IconTargetArrow className={cn("h-4 w-4", isDark ? "text-[#6c26f9]" : "text-orange-400")} />,
             header: <SkeletonBranding isDark={isDark} />,
             features: [
                 "Auditoría de Código",
@@ -87,6 +87,10 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
             className: "md:col-span-1"
         }
     ];
+
+    const headerGradient = isDark
+        ? "bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent"
+        : "bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500 bg-clip-text text-transparent";
 
     return (
         <div className="py-20 px-6 relative overflow-hidden">
@@ -98,7 +102,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                         isDark ? 'text-white' : 'text-gray-900'
                     )}>
                         Nuestros{' '}
-                        <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent">
+                        <span className={headerGradient}>
                             Servicios
                         </span>
                     </h2>
@@ -128,8 +132,16 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                 {/* Garantías / Métricas - ACTUALIZADO PARA KHANNDA */}
                 <div className="grid md:grid-cols-3 gap-4">
                     {/* Tarjeta 1: Enfoque en Eficiencia Operativa */}
-                    <div className={`text-center p-6 rounded-xl border ${isDark ? 'border-white/[0.08] bg-gray-900/20' : 'border-neutral-200 bg-white'}`}>
-                        <div className="text-2xl md:text-3xl font-bold text-[#6c26f9] mb-2">+40%</div>
+                    <div className={cn(
+                        "text-center p-6 rounded-xl border transition-all duration-300",
+                        isDark
+                            ? 'border-white/[0.08] bg-gray-900/20'
+                            : 'border-orange-100 bg-orange-50/50 shadow-sm'
+                    )}>
+                        <div className={cn(
+                            "text-2xl md:text-3xl font-bold mb-2",
+                            isDark ? "text-[#6c26f9]" : "text-orange-600"
+                        )}>+40%</div>
                         <p className={cn(
                             'text-sm md:text-base',
                             isDark ? 'text-gray-300' : 'text-gray-600'
@@ -139,8 +151,16 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                     </div>
 
                     {/* Tarjeta 2: Enfoque en Agilidad de Entrega */}
-                    <div className={`text-center p-6 rounded-xl border ${isDark ? 'border-white/[0.08] bg-gray-900/20' : 'border-neutral-200 bg-white'}`}>
-                        <div className="text-2xl md:text-3xl font-bold text-[#d507fa] mb-2">4 Semanas</div>
+                    <div className={cn(
+                        "text-center p-6 rounded-xl border transition-all duration-300",
+                        isDark
+                            ? 'border-white/[0.08] bg-gray-900/20'
+                            : 'border-orange-100 bg-orange-50/50 shadow-sm'
+                    )}>
+                        <div className={cn(
+                            "text-2xl md:text-3xl font-bold mb-2",
+                            isDark ? "text-[#d507fa]" : "text-amber-600"
+                        )}>4 Semanas</div>
                         <p className={cn(
                             'text-sm md:text-base',
                             isDark ? 'text-gray-300' : 'text-gray-600'
@@ -150,8 +170,16 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                     </div>
 
                     {/* Tarjeta 3: Enfoque en Precio Accesible (Según Brief: $500-$1500) */}
-                    <div className={`text-center p-6 rounded-xl border ${isDark ? 'border-white/[0.08] bg-gray-900/20' : 'border-neutral-200 bg-white'}`}>
-                        <div className="text-2xl md:text-3xl font-bold text-[#0586fd] mb-2">Desde $500</div>
+                    <div className={cn(
+                        "text-center p-6 rounded-xl border transition-all duration-300",
+                        isDark
+                            ? 'border-white/[0.08] bg-gray-900/20'
+                            : 'border-orange-100 bg-orange-50/50 shadow-sm'
+                    )}>
+                        <div className={cn(
+                            "text-2xl md:text-3xl font-bold mb-2",
+                            isDark ? "text-[#0586fd]" : "text-orange-500"
+                        )}>Desde $500</div>
                         <p className={cn(
                             'text-sm md:text-base',
                             isDark ? 'text-gray-300' : 'text-gray-600'

@@ -1,6 +1,6 @@
 // components/features/home/components/HeroSection/FloatingElements.tsx
 import React, { useRef } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface FloatingElementProps {
     isDark: boolean;
@@ -39,7 +39,8 @@ const getTextSizeClasses = (size: 'sm' | 'md' | 'lg') => {
 
 export const FloatingElement: React.FC<FloatingElementProps> = ({ isDark, variant, size }) => {
     const sizeClasses = getSizeClasses(size);
-    const color = isDark ? '#A855F7' : '#6C26F9';
+    // Dark: Purple, Light: Orange
+    const color = isDark ? '#A855F7' : '#F97316';
 
     const renderIcon = () => {
         switch (variant) {
@@ -102,7 +103,7 @@ export const FloatingElement: React.FC<FloatingElementProps> = ({ isDark, varian
         <div className="inline-block mx-4 relative p-2 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg glow-effect">
             <style jsx>{`
                 .glow-effect {
-                    box-shadow: 0 0 15px ${isDark ? 'rgba(168,85,247,0.3)' : 'rgba(108,38,249,0.2)'};
+                    box-shadow: 0 0 15px ${isDark ? 'rgba(168,85,247,0.3)' : 'rgba(249,115,22,0.2)'};
                 }
             `}</style>
             {renderIcon()}
@@ -111,47 +112,59 @@ export const FloatingElement: React.FC<FloatingElementProps> = ({ isDark, varian
 };
 
 export const FloatingLogo: React.FC<FloatingLogoProps> = ({ isDark, size }) => {
-    // 3D Rotation Animation is handled by CSS in parent or marqee for movement, 
-    // but here we can add a self-rotation or just look cool.
+    // 3D Rotation Animation is handled by CSS below along with Scroll Parallax
+    const { scrollY } = useScroll();
 
-    // Using the uploaded logo-3d.jpg
+    // Parallax effect: moves up/down and rotates based on scroll
+    // INCREASED EFFECT MAGNITUDE
+    const y = useTransform(scrollY, [0, 800], [0, -250]); // Moves up significantly as you scroll
+    const rotateX = useTransform(scrollY, [0, 800], [0, 60]); // Tilts back more
+    const scale = useTransform(scrollY, [0, 500], [1, 1.4]); // Grows more
+
+    // Using the uploaded logo-3d.jpg for Dark, logo-orange.jpg for Light
+    const logoSrc = isDark ? "/logo-3d.jpg" : "/logo-orange.jpg";
     const sizePx = size === 'sm' ? 40 : size === 'md' ? 60 : 80;
 
     return (
         <div
             className="inline-block mx-4 relative perspective-container"
             style={{
-                perspective: '1000px',
+                perspective: '1200px', // More perspective depth
                 transformStyle: 'preserve-3d'
             }}
         >
-            <div
+            <motion.div
                 className="logo-3d-card"
                 style={{
                     width: sizePx,
                     height: sizePx,
                     position: 'relative',
                     transformStyle: 'preserve-3d',
-                    animation: 'float-rotate 8s infinite ease-in-out'
+                    y,
+                    rotateX,
+                    scale,
                 }}
             >
                 <style jsx>{`
+                    .logo-3d-card {
+                        animation: float-rotate 10s infinite ease-in-out;
+                    }
                     @keyframes float-rotate {
-                        0%, 100% { transform: rotateY(-15deg) translateY(0px); }
-                        50% { transform: rotateY(15deg) translateY(-10px); }
+                        0%, 100% { transform: rotateY(-20deg) translateY(0px) rotateZ(-2deg); }
+                        50% { transform: rotateY(20deg) translateY(-15px) rotateZ(2deg); }
                     }
                 `}</style>
                 <img
-                    src="/logo-3d.jpg"
+                    src={logoSrc}
                     alt="Logo"
                     className="w-full h-full object-cover rounded-xl shadow-2xl border-2 border-white/20"
                     style={{
                         boxShadow: isDark
-                            ? '0 0 20px rgba(168,85,247,0.5)'
-                            : '0 0 20px rgba(108,38,249,0.4)'
+                            ? '0 0 25px rgba(168,85,247,0.6)'
+                            : '0 0 25px rgba(249,115,22,0.5)'
                     }}
                 />
-            </div>
+            </motion.div>
         </div>
     );
 };
@@ -164,13 +177,13 @@ export const FloatingText: React.FC<FloatingTextProps> = ({ text, isDark, size }
             <span
                 className={`${textSizeClasses} font-mono font-bold px-3 py-1.5 rounded-md backdrop-blur-md`}
                 style={{
-                    color: isDark ? '#E9D5FF' : '#4C1D95', // Purple-100 : Purple-900
+                    color: isDark ? '#E9D5FF' : '#7C2D12', // Purple-100 : Orange-900
                     background: isDark
                         ? 'rgba(88, 28, 135, 0.4)' // Purple-900 with opacity
-                        : 'rgba(237, 233, 254, 0.6)', // Purple-100 with opacity
+                        : 'rgba(255, 237, 213, 0.6)', // Orange-100 with opacity
                     border: isDark
                         ? '1px solid rgba(168, 85, 247, 0.3)'
-                        : '1px solid rgba(139, 92, 246, 0.3)',
+                        : '1px solid rgba(249, 115, 22, 0.3)',
                     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                 }}
             >

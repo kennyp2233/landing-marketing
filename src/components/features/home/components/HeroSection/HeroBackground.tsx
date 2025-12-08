@@ -8,13 +8,15 @@ import { FloatingElement, FloatingLogo, FloatingText } from './FloatingElements'
 const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => {
     // Paths optimizados para offset-path CSS - más suaves y naturales
     // Path principal: curva orgánica centrada (desplazada más arriba)
-    const primaryPath = "M-50,160 C180,80 420,120 620,90 C820,60 980,180 1220,140 C1440,100 1620,180 1750,140";
+    // Paths optimizados para offset-path CSS - separados verticalmente para evitar superposiciones
+    // Path principal: Zona Superior-Media (y: 50 -> 250)
+    const primaryPath = "M-100,250 C300,50 600,250 900,100 C1200,-50 1500,200 1900,100";
 
-    // Path secundario: curva complementaria más baja (baja más abajo)
-    const secondaryPath = "M-50,520 C170,470 370,560 570,520 C770,480 970,560 1170,520 C1370,480 1570,560 1750,520";
+    // Path secundario: Zona Inferior (y: 400 -> 600)
+    const secondaryPath = "M-100,550 C200,450 500,600 800,500 C1100,400 1400,600 1900,500";
 
-    // Path terciario: curva superior sutil (más arriba)
-    const tertiaryPath = "M-50,120 C210,60 390,140 610,100 C810,60 1010,140 1230,100 C1430,60 1630,140 1750,100";
+    // Path terciario: Fondo lejano (y: variable, más plano)
+    const tertiaryPath = "M-100,150 C400,100 800,200 1200,100 C1600,0 2000,150 2400,100";
 
     return (
         <div className="relative min-h-screen overflow-hidden">
@@ -74,6 +76,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                 </MarqueeAlongPath>
 
                 {/* Elementos decorativos estáticos con gradientes más visibles */}
+                {/* Elementos decorativos estáticos con gradientes más visibles */}
                 {/* Capa 1: Glow superior-izquierda */}
                 <div className="absolute top-24 left-6 w-64 h-64 z-20 pointer-events-none">
                     <div
@@ -81,7 +84,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                         style={{
                             background: isDark
                                 ? 'radial-gradient(circle, rgba(108,38,249,0.6) 0%, rgba(168,85,247,0.35) 40%, transparent 70%)'
-                                : 'radial-gradient(circle, rgba(168,85,247,0.45) 0%, rgba(59,130,246,0.25) 40%, transparent 70%)'
+                                : 'radial-gradient(circle, rgba(249,115,22,0.45) 0%, rgba(251,146,60,0.25) 40%, transparent 70%)'
                         }}
                     />
                 </div>
@@ -93,7 +96,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                         style={{
                             background: isDark
                                 ? 'radial-gradient(circle, rgba(213,7,250,0.55) 0%, rgba(108,38,249,0.3) 40%, transparent 70%)'
-                                : 'radial-gradient(circle, rgba(59,130,246,0.45) 0%, rgba(168,85,247,0.25) 40%, transparent 70%)'
+                                : 'radial-gradient(circle, rgba(251,146,60,0.45) 0%, rgba(249,115,22,0.25) 40%, transparent 70%)'
                         }}
                     />
                 </div>
@@ -105,12 +108,12 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                         style={{
                             background: isDark
                                 ? 'radial-gradient(circle, rgba(168,85,247,0.5) 0%, transparent 60%)'
-                                : 'radial-gradient(circle, rgba(108,38,249,0.35) 0%, transparent 60%)'
+                                : 'radial-gradient(circle, rgba(249,115,22,0.35) 0%, transparent 60%)'
                         }}
                     />
                 </div>
 
-                {/* Gradiente de fondo principal más sutil y orgánico - Ajustado a morado del logo */}
+                {/* Gradiente de fondo principal más sutil y orgánico - Ajustado a morado (dark) / naranja (light) */}
                 <div
                     className="absolute inset-0 opacity-25 z-0 pointer-events-none"
                     style={{
@@ -121,9 +124,9 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                                 radial-gradient(ellipse 400px 500px at 50% 50%, rgba(168,85,247,0.08) 0%, transparent 50%)
                             `
                             : `
-                                radial-gradient(ellipse 800px 600px at 20% 30%, rgba(168,85,247,0.08) 0%, transparent 50%),
-                                radial-gradient(ellipse 600px 800px at 80% 70%, rgba(59,130,246,0.06) 0%, transparent 50%),
-                                radial-gradient(ellipse 400px 500px at 50% 50%, rgba(108,38,249,0.05) 0%, transparent 50%)
+                                radial-gradient(ellipse 800px 600px at 20% 30%, rgba(249,115,22,0.08) 0%, transparent 50%),
+                                radial-gradient(ellipse 600px 800px at 80% 70%, rgba(251,146,60,0.06) 0%, transparent 50%),
+                                radial-gradient(ellipse 400px 500px at 50% 50%, rgba(249,115,22,0.05) 0%, transparent 50%)
                             `
                     }}
                 />
@@ -134,7 +137,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                     style={{
                         background: isDark
                             ? 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.1) 100%)'
-                            : 'linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.1) 100%)'
+                            : 'linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.2) 100%)'
                     }}
                 />
             </div>
