@@ -110,10 +110,6 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                     </p>
                 </div>
 
-                // src/components/features/home/components/ServicesSection/index.tsx
-
-                // ... (resto de imports y código anterior se mantienen igual)
-
                 {/* Services BentoGrid */}
                 <BentoGrid className=" mx-auto md:auto-rows-[20rem] mb-4">
                     {services.map((service, index) => (

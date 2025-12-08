@@ -27,17 +27,17 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                     repeat={3}
                     isDark={isDark}
                     zIndexBase={10}
-                    className="opacity-70"
+                    className="opacity-90"
                     offsetY={-10} // offset 0 (posicionado por la path)
                 >
                     <FloatingLogo isDark={isDark} size="md" />
-                    <FloatingElement isDark={isDark} variant="circle" size="lg" />
-                    <FloatingText text="Marketing" isDark={isDark} size="sm" />
-                    <FloatingElement isDark={isDark} variant="star" size="md" />
-                    <FloatingText text="Digital" isDark={isDark} size="sm" />
-                    <FloatingElement isDark={isDark} variant="diamond" size="md" />
-                    <FloatingText text="GlowUp" isDark={isDark} size="md" />
-                    <FloatingElement isDark={isDark} variant="triangle" size="sm" />
+                    <FloatingElement isDark={isDark} variant="code" size="lg" />
+                    <FloatingText text="Dev" isDark={isDark} size="sm" />
+                    <FloatingElement isDark={isDark} variant="terminal" size="md" />
+                    <FloatingText text="Innovation" isDark={isDark} size="sm" />
+                    <FloatingElement isDark={isDark} variant="database" size="md" />
+                    <FloatingText text="Scale" isDark={isDark} size="md" />
+                    <FloatingElement isDark={isDark} variant="cloud" size="sm" />
                 </MarqueeAlongPath>
 
                 {/* Marquee secundario con elementos complementarios */}
@@ -47,15 +47,15 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                     repeat={2}
                     isDark={isDark}
                     zIndexBase={20}
-                    className="opacity-50"
+                    className="opacity-70"
                     offsetY={0} // offset 0 (posicionado por la path)
                 >
-                    <FloatingElement isDark={isDark} variant="circle" size="sm" />
-                    <FloatingElement isDark={isDark} variant="square" size="md" />
-                    <FloatingText text="Estrategia" isDark={isDark} size="sm" />
-                    <FloatingElement isDark={isDark} variant="diamond" size="sm" />
-                    <FloatingText text="Resultados" isDark={isDark} size="sm" />
-                    <FloatingElement isDark={isDark} variant="star" size="sm" />
+                    <FloatingElement isDark={isDark} variant="code" size="sm" />
+                    <FloatingElement isDark={isDark} variant="lock" size="md" />
+                    <FloatingText text="Secure" isDark={isDark} size="sm" />
+                    <FloatingElement isDark={isDark} variant="cpu" size="sm" />
+                    <FloatingText text="Fast" isDark={isDark} size="sm" />
+                    <FloatingElement isDark={isDark} variant="terminal" size="sm" />
                 </MarqueeAlongPath>
 
                 {/* Marquee terciario muy sutil */}
@@ -65,12 +65,12 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                     repeat={2}
                     isDark={isDark}
                     zIndexBase={5}
-                    className="opacity-30"
+                    className="opacity-40"
                     offsetY={0} // offset 0 (posicionado por la path)
                 >
-                    <FloatingElement isDark={isDark} variant="circle" size="sm" />
-                    <FloatingElement isDark={isDark} variant="diamond" size="sm" />
-                    <FloatingElement isDark={isDark} variant="star" size="sm" />
+                    <FloatingElement isDark={isDark} variant="code" size="sm" />
+                    <FloatingElement isDark={isDark} variant="database" size="sm" />
+                    <FloatingElement isDark={isDark} variant="cloud" size="sm" />
                 </MarqueeAlongPath>
 
                 {/* Elementos decorativos estáticos con gradientes más visibles */}
@@ -110,7 +110,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                     />
                 </div>
 
-                {/* Gradiente de fondo principal más sutil y orgánico */}
+                {/* Gradiente de fondo principal más sutil y orgánico - Ajustado a morado del logo */}
                 <div
                     className="absolute inset-0 opacity-25 z-0 pointer-events-none"
                     style={{

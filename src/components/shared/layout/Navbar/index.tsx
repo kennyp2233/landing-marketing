@@ -34,10 +34,11 @@ const Navbar: React.FC<NavbarProps> = ({
                 href="#"
                 className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal"
             >
-                <span className={`font-bold text-lg md:text-xl tracking-tight ${isDark ? "text-white" : "text-gray-900"
-                    }`}>
-                    {BRAND_INFO.name}
-                </span>
+                <img
+                    src="/logo-khannda.png"
+                    alt="Khannda Logo"
+                    className="h-8 md:h-10 w-auto object-contain"
+                />
             </a>
         );
     };
@@ -95,8 +96,8 @@ const Navbar: React.FC<NavbarProps> = ({
                                 href={item.link}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className={`relative text-base md:text-lg font-medium py-3 transition-colors duration-200 ${isDark
-                                        ? "text-gray-200 hover:text-white"
-                                        : "text-gray-700 hover:text-gray-900"
+                                    ? "text-gray-200 hover:text-white"
+                                    : "text-gray-700 hover:text-gray-900"
                                     }`}
                             >
                                 <span className="block">{item.name}</span>

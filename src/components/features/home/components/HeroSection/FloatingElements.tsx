@@ -1,9 +1,10 @@
 // components/features/home/components/HeroSection/FloatingElements.tsx
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 interface FloatingElementProps {
     isDark: boolean;
-    variant: 'circle' | 'square' | 'diamond' | 'star' | 'triangle';
+    variant: 'code' | 'terminal' | 'database' | 'cloud' | 'lock' | 'cpu';
     size: 'sm' | 'md' | 'lg';
 }
 
@@ -20,10 +21,10 @@ interface FloatingTextProps {
 
 const getSizeClasses = (size: 'sm' | 'md' | 'lg') => {
     switch (size) {
-        case 'sm': return 'w-4 h-4';
-        case 'md': return 'w-6 h-6';
-        case 'lg': return 'w-8 h-8';
-        default: return 'w-6 h-6';
+        case 'sm': return 'w-6 h-6';
+        case 'md': return 'w-8 h-8';
+        case 'lg': return 'w-10 h-10';
+        default: return 'w-8 h-8';
     }
 };
 
@@ -38,86 +39,118 @@ const getTextSizeClasses = (size: 'sm' | 'md' | 'lg') => {
 
 export const FloatingElement: React.FC<FloatingElementProps> = ({ isDark, variant, size }) => {
     const sizeClasses = getSizeClasses(size);
-    const baseColor = isDark ? 'rgba(168,85,247,0.6)' : 'rgba(108,38,249,0.4)';
-    
-    const renderShape = () => {
+    const color = isDark ? '#A855F7' : '#6C26F9';
+
+    const renderIcon = () => {
         switch (variant) {
-            case 'circle':
+            case 'code':
                 return (
-                    <div 
-                        className={`${sizeClasses} rounded-full`}
-                        style={{ backgroundColor: baseColor }}
-                    />
+                    <svg className={sizeClasses} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
                 );
-            case 'square':
+            case 'terminal':
                 return (
-                    <div 
-                        className={`${sizeClasses} rounded-sm`}
-                        style={{ backgroundColor: baseColor }}
-                    />
+                    <svg className={sizeClasses} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="4 17 10 11 4 5"></polyline>
+                        <line x1="12" y1="19" x2="20" y2="19"></line>
+                    </svg>
                 );
-            case 'diamond':
+            case 'database':
                 return (
-                    <div 
-                        className={`${sizeClasses} transform rotate-45`}
-                        style={{ backgroundColor: baseColor }}
-                    />
+                    <svg className={sizeClasses} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                    </svg>
                 );
-            case 'triangle':
+            case 'cloud':
                 return (
-                    <div 
-                        className={`${sizeClasses} relative`}
-                    >
-                        <div 
-                            className="w-0 h-0"
-                            style={{
-                                borderLeft: '8px solid transparent',
-                                borderRight: '8px solid transparent',
-                                borderBottom: `16px solid ${baseColor}`,
-                            }}
-                        />
-                    </div>
+                    <svg className={sizeClasses} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                    </svg>
                 );
-            case 'star':
+            case 'lock':
                 return (
-                    <svg className={sizeClasses} viewBox="0 0 24 24">
-                        <path
-                            d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
-                            fill={baseColor}
-                        />
+                    <svg className={sizeClasses} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                );
+            case 'cpu':
+                return (
+                    <svg className={sizeClasses} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <rect x="9" y="9" width="6" height="6"></rect>
+                        <line x1="9" y1="1" x2="9" y2="4"></line>
+                        <line x1="15" y1="1" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="23"></line>
+                        <line x1="15" y1="20" x2="15" y2="23"></line>
+                        <line x1="20" y1="9" x2="23" y2="9"></line>
+                        <line x1="20" y1="14" x2="23" y2="14"></line>
+                        <line x1="1" y1="9" x2="4" y2="9"></line>
+                        <line x1="1" y1="14" x2="4" y2="14"></line>
                     </svg>
                 );
             default:
-                return (
-                    <div 
-                        className={`${sizeClasses} rounded-full`}
-                        style={{ backgroundColor: baseColor }}
-                    />
-                );
+                return null;
         }
     };
 
     return (
-        <div className="inline-block mx-4">
-            {renderShape()}
+        <div className="inline-block mx-4 relative p-2 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg glow-effect">
+            <style jsx>{`
+                .glow-effect {
+                    box-shadow: 0 0 15px ${isDark ? 'rgba(168,85,247,0.3)' : 'rgba(108,38,249,0.2)'};
+                }
+            `}</style>
+            {renderIcon()}
         </div>
     );
 };
 
 export const FloatingLogo: React.FC<FloatingLogoProps> = ({ isDark, size }) => {
-    const sizeClasses = getSizeClasses(size);
-    
+    // 3D Rotation Animation is handled by CSS in parent or marqee for movement, 
+    // but here we can add a self-rotation or just look cool.
+
+    // Using the uploaded logo-3d.jpg
+    const sizePx = size === 'sm' ? 40 : size === 'md' ? 60 : 80;
+
     return (
-        <div className="inline-block mx-4">
-            <div className={`${sizeClasses} flex items-center justify-center rounded-lg`}
+        <div
+            className="inline-block mx-4 relative perspective-container"
+            style={{
+                perspective: '1000px',
+                transformStyle: 'preserve-3d'
+            }}
+        >
+            <div
+                className="logo-3d-card"
                 style={{
-                    background: isDark 
-                        ? 'linear-gradient(135deg, rgba(168,85,247,0.8), rgba(213,7,250,0.6))'
-                        : 'linear-gradient(135deg, rgba(108,38,249,0.6), rgba(59,130,246,0.4))'
-                }}>
-                <span className={`font-bold ${size === 'sm' ? 'text-xs' : size === 'md' ? 'text-sm' : 'text-base'} text-white`}>
-                    G
-                </span>
+                    width: sizePx,
+                    height: sizePx,
+                    position: 'relative',
+                    transformStyle: 'preserve-3d',
+                    animation: 'float-rotate 8s infinite ease-in-out'
+                }}
+            >
+                <style jsx>{`
+                    @keyframes float-rotate {
+                        0%, 100% { transform: rotateY(-15deg) translateY(0px); }
+                        50% { transform: rotateY(15deg) translateY(-10px); }
+                    }
+                `}</style>
+                <img
+                    src="/logo-3d.jpg"
+                    alt="Logo"
+                    className="w-full h-full object-cover rounded-xl shadow-2xl border-2 border-white/20"
+                    style={{
+                        boxShadow: isDark
+                            ? '0 0 20px rgba(168,85,247,0.5)'
+                            : '0 0 20px rgba(108,38,249,0.4)'
+                    }}
+                />
             </div>
         </div>
     );
@@ -125,22 +158,23 @@ export const FloatingLogo: React.FC<FloatingLogoProps> = ({ isDark, size }) => {
 
 export const FloatingText: React.FC<FloatingTextProps> = ({ text, isDark, size }) => {
     const textSizeClasses = getTextSizeClasses(size);
-    
+
     return (
         <div className="inline-block mx-6">
-            <span 
-                className={`${textSizeClasses} font-medium px-2 py-1 rounded-md backdrop-blur-sm`}
+            <span
+                className={`${textSizeClasses} font-mono font-bold px-3 py-1.5 rounded-md backdrop-blur-md`}
                 style={{
-                    color: isDark ? 'rgba(255,255,255,0.7)' : 'rgba(75,85,99,0.8)',
-                    background: isDark 
-                        ? 'rgba(31,41,55,0.3)' 
-                        : 'rgba(255,255,255,0.2)',
-                    border: isDark 
-                        ? '1px solid rgba(255,255,255,0.1)' 
-                        : '1px solid rgba(0,0,0,0.1)'
+                    color: isDark ? '#E9D5FF' : '#4C1D95', // Purple-100 : Purple-900
+                    background: isDark
+                        ? 'rgba(88, 28, 135, 0.4)' // Purple-900 with opacity
+                        : 'rgba(237, 233, 254, 0.6)', // Purple-100 with opacity
+                    border: isDark
+                        ? '1px solid rgba(168, 85, 247, 0.3)'
+                        : '1px solid rgba(139, 92, 246, 0.3)',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                 }}
             >
-                {text}
+                {`<${text} />`}
             </span>
         </div>
     );
