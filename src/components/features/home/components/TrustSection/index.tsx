@@ -1,9 +1,8 @@
 
 // components/features/home/components/TrustSection/index.tsx
 import React from 'react';
-import { Calendar, Puzzle, Smile } from 'lucide-react';
-import { cn } from '../../../../../lib/utils';
 import { BackgroundGradient } from '@/components/shared/ui/BackgroundGradient';
+import { cn } from '@/lib/utils';
 import TrustItem from './TrustItem';
 import { TrustSectionProps } from './TrustSection.types';
 import { Landmark, Dumbbell, Code } from 'lucide-react';

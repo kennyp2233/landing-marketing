@@ -4,35 +4,20 @@
 import React from 'react';
 import {
     IconDeviceMobile,
-    IconVideo,
     IconTargetArrow,
-    IconPalette,
     IconUsers,
     IconChartBar
 } from '@tabler/icons-react';
 import { cn } from '../../../../../lib/utils';
 import { BentoGrid, BentoGridItem } from '../../../../shared/ui/BentoGrid';
-import { SkeletonSocial, SkeletonVideo, SkeletonAds, SkeletonBranding, SkeletonCommunity, SkeletonStrategy } from './AnimatedHeaders';
+import { SkeletonSocial, SkeletonAds, SkeletonBranding, SkeletonStrategy } from './AnimatedHeaders';
 import { useTheme } from '@/providers/ThemeProvider';
 
 interface ServicesSectionProps {
     isDark?: boolean; // Hacer opcional ya que usaremos el hook
 }
 
-// Componente visual para cada servicio
-const ServiceVisual: React.FC<{ gradient: string; icon: React.ReactNode }> = ({ gradient, icon }) => (
-    <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br relative overflow-hidden">
-        <div className={cn(
-            "absolute inset-0 bg-gradient-to-br opacity-20",
-            gradient
-        )} />
-        <div className="flex items-center justify-center w-full h-full relative z-10">
-            <div className="text-4xl text-white drop-shadow-lg">
-                {icon}
-            </div>
-        </div>
-    </div>
-);
+
 
 const ServicesSection: React.FC<ServicesSectionProps> = () => {
     const { isDark } = useTheme();
@@ -66,7 +51,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
             title: "Sistemas de Gestión Operativa",
             description: "Automatización para negocios físicos como Gimnasios, Consultorios y Retail.",
             icon: <IconUsers className={cn("h-4 w-4", isDark ? "text-[#0586fd]" : "text-amber-500")} />,
-            header: <SkeletonAds isDark={isDark} />,
+            header: <SkeletonAds />,
             features: [
                 "Control de Acceso Biométrico",
                 "Facturación Electrónica",

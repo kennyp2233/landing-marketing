@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { cn } from '../../../../lib/utils';
-import { useTheme } from '../../../../providers/ThemeProvider';
 import { MessageCircle } from 'lucide-react';
 
 interface WhatsAppFABProps {
@@ -16,7 +15,7 @@ export const WhatsAppFAB: React.FC<WhatsAppFABProps> = ({
     message = "¡Hola! Me interesa saber más sobre sus servicios de marketing digital.",
     className
 }) => {
-    const { isDark } = useTheme();
+
 
     const handleWhatsAppClick = () => {
         const encodedMessage = encodeURIComponent(message);

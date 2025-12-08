@@ -2,7 +2,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { IconChartBar, IconDeviceMobile, IconPalette, IconTargetArrow, IconUsers, IconVideo } from "@tabler/icons-react";
+import { IconChartBar, IconPalette, IconTargetArrow, IconVideo } from "@tabler/icons-react";
 import { useTheme } from "@/providers";
 
 const SkeletonBase = ({ children }: { children: React.ReactNode }) => {
@@ -54,7 +54,8 @@ export const SkeletonSocial = () => {
     );
 };
 
-export const SkeletonVideo = ({ isDark }: { isDark: boolean }) => {
+export const SkeletonVideo = () => {
+    const { isDark } = useTheme();
     const variants = {
         initial: { scale: 1, opacity: 1 },
         hover: { scale: 1.2, opacity: 0.5, transition: { duration: 0.3 } },
@@ -74,7 +75,7 @@ export const SkeletonVideo = ({ isDark }: { isDark: boolean }) => {
     );
 };
 
-export const SkeletonAds = ({ isDark }: { isDark: boolean }) => {
+export const SkeletonAds = () => {
     const variants = {
         initial: { backgroundPosition: "0 50%" },
         animate: { backgroundPosition: ["0, 50%", "100% 50%", "0 50%"] },

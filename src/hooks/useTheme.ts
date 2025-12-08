@@ -1,5 +1,5 @@
 // hooks/useTheme.ts
-import { useState, useEffect, createContext, useContext } from 'react';
+import { createContext, useContext, useState } from 'react';
 import { Theme, ThemeContextType } from '../lib/types/theme';
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);

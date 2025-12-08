@@ -1,5 +1,5 @@
 // components/features/home/components/HeroSection/FloatingElements.tsx
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 interface FloatingElementProps {

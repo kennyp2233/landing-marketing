@@ -1,6 +1,5 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { useTheme } from '../../../../../providers/ThemeProvider';
 import { Check } from 'lucide-react';
 import Button from '@/components/shared/ui/Button';
 import { PricingPlan } from './PricingSection.types';
@@ -10,7 +9,7 @@ interface PricingCardProps {
 }
 
 export const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
-    const { isDark } = useTheme();
+
 
     return (
         <div

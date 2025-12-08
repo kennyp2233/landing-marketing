@@ -17,7 +17,6 @@ const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
     const { isDark } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
     const [isHovered, setIsHovered] = useState(false);
-    const [containerWidth, setContainerWidth] = useState(0);
 
     const {
         autoScrollSpeed = 40,
@@ -31,18 +30,6 @@ const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
     // This keeps DOM small while allowing percentage-based translate (-50%) looping
     const [dupLogos, setDupLogos] = useState<PressLogo[]>(() => [...logos, ...logos]);
 
-    useEffect(() => {
-        const updateContainerWidth = () => {
-            if (containerRef.current) {
-                setContainerWidth(containerRef.current.offsetWidth);
-            }
-        };
-
-        updateContainerWidth();
-        window.addEventListener('resize', updateContainerWidth);
-        return () => window.removeEventListener('resize', updateContainerWidth);
-    }, []);
-
     // Keep exactly two sets for CSS percentage-based animation; still update when logos change
     useEffect(() => {
         setDupLogos([...logos, ...logos]);
@@ -54,7 +41,6 @@ const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
         if (!containerRef.current) return;
         const update = () => {
             const cw = containerRef.current ? containerRef.current.offsetWidth : 0;
-            setContainerWidth(cw);
             const itemWidth = cw / itemsPerView.desktop + gap;
             const singleSetWidth = Math.max(1, itemWidth * logos.length);
             // duration in seconds: px / (px per sec)

@@ -6,14 +6,14 @@ import {
     NavBody,
     NavItems,
     MobileNav,
-    NavbarButton,
     MobileNavHeader,
     MobileNavToggle,
     MobileNavMenu,
 } from "@/components/shared/ui/ResizableNavbar";
-import { NAVIGATION_ITEMS, BRAND_INFO } from '../../../../lib/constants';
+import { NAVIGATION_ITEMS } from '../../../../lib/constants';
 import { ThemeToggle, Button } from '../../ui';
 import { NavbarProps } from './Navbar.types';
+import Image from 'next/image';
 
 const Navbar: React.FC<NavbarProps> = ({
     isDark,
@@ -34,11 +34,16 @@ const Navbar: React.FC<NavbarProps> = ({
                 href="#"
                 className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal"
             >
-                <img
-                    src="/logo-khannda.png"
-                    alt="Khannda Logo"
-                    className="h-8 md:h-10 w-auto object-contain"
-                />
+                <div className="h-8 md:h-10 w-auto relative">
+                    <Image
+                        src="/logo-khannda.png"
+                        alt="Khannda Logo"
+                        width={120} // Estimate width
+                        height={40}
+                        className="object-contain h-full w-auto"
+                        priority
+                    />
+                </div>
             </a>
         );
     };

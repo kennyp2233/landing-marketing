@@ -1,10 +1,11 @@
 // components/features/home/components/HeroSection/MarqueeAlongPath.tsx
-import React, { useRef, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import {
     motion,
     useMotionValue,
     useTransform,
     useAnimationFrame,
+    MotionValue,
 } from 'framer-motion';
 
 interface MarqueeAlongPathProps {
@@ -12,14 +13,14 @@ interface MarqueeAlongPathProps {
     path: string;
     baseVelocity: number;
     repeat?: number;
-    isDark: boolean;
+    isDark?: boolean;
     zIndexBase: number;
     className?: string;
-    offsetY?: number; // Nuevo prop para transformar el path en Y
+    offsetY?: number;
 }
 
 interface MarqueeItemProps {
-    baseOffset: any;
+    baseOffset: MotionValue<number>;
     path: string;
     itemIndex: number;
     totalItems: number;
@@ -36,7 +37,7 @@ interface MarqueeItemProps {
  */
 const transformPathY = (path: string, offsetY: number): string => {
     if (offsetY === 0) return path;
-    
+
     // Regex para encontrar todos los números en el path (coordenadas)
     return path.replace(/([MLQTCSAH])\s*([0-9.-]+)[\s,]*([0-9.-]+)/g, (match, command, x, y) => {
         const newY = parseFloat(y) + offsetY;
@@ -56,14 +57,14 @@ const wrap = (min: number, max: number, value: number): number => {
     return ((((value - min) % range) + range) % range) + min;
 };
 
-const MarqueeItem: React.FC<MarqueeItemProps> = ({ 
-    baseOffset, 
-    path, 
-    itemIndex, 
-    totalItems, 
-    repeatIndex, 
-    zIndexBase, 
-    children 
+const MarqueeItem: React.FC<MarqueeItemProps> = ({
+    baseOffset,
+    path,
+    itemIndex,
+    totalItems,
+    repeatIndex,
+    zIndexBase,
+    children
 }) => {
     const itemOffset = useTransform(baseOffset, (v: number) => {
         // Distribute items evenly along the path
@@ -107,13 +108,11 @@ const MarqueeAlongPath: React.FC<MarqueeAlongPathProps> = ({
     path,
     baseVelocity,
     repeat = 1,
-    isDark,
     zIndexBase,
     className = '',
     offsetY = 0 // Valor por defecto: sin offset
 }) => {
     const baseOffset = useMotionValue(0);
-    const isHovered = useRef(false);
 
     // Transformar el path aplicando el offsetY
     const transformedPath = useMemo(() => {
@@ -148,9 +147,10 @@ const MarqueeAlongPath: React.FC<MarqueeAlongPathProps> = ({
     // Define static box dimensions matching path range
     const pathWidth = 1800; // from x: -50 to 1750
     const pathHeight = 600;
+
     return (
         // Container fills parent and centers the fixed-size marquee box horizontally and vertically
-        <div className={`absolute inset-0 flex items-center justify-center ${className}`}> 
+        <div className={`absolute inset-0 flex items-center justify-center ${className}`}>
             <div className="relative" style={{ width: pathWidth, height: pathHeight }}>
                 {/* Hidden SVG for path calculations within fixed box */}
                 <svg
@@ -163,6 +163,7 @@ const MarqueeAlongPath: React.FC<MarqueeAlongPathProps> = ({
                 >
                     <path d={transformedPath} stroke="none" fill="none" />
                 </svg>
+
                 {/* Animated marquee items positioned along path within box */}
                 {items.map(({ child, repeatIndex, itemIndex, key }) => (
                     <MarqueeItem

@@ -1,3 +1,4 @@
+// src/components/features/home/components/HeroSection/TechBackground.tsx
 'use client';
 
 import React, { useRef, useMemo } from 'react';
@@ -6,8 +7,10 @@ import { Points, PointMaterial } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
 import { useTheme } from '../../../../../providers/ThemeProvider';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const Stars = ({ isDark, ...props }: { isDark: boolean } & any) => {
-    const ref = useRef<any>();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const ref = useRef<any>(null);
     // Generamos 5000 puntos en una esfera
     const sphere = useMemo(() => {
         const positions = new Float32Array(5000 * 3);
@@ -48,7 +51,7 @@ const Stars = ({ isDark, ...props }: { isDark: boolean } & any) => {
 
 export default function TechBackground() {
     const { isDark } = useTheme();
-    
+
     return (
         <div className={`absolute inset-0 z-0 transition-colors duration-300 ${isDark ? 'bg-black' : 'bg-gray-100'}`}>
             <Canvas camera={{ position: [0, 0, 1] }}>
