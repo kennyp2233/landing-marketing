@@ -147,7 +147,7 @@ const PressSection: React.FC<PressSectionProps> = ({
                                 ? 'bg-gradient-to-r from-gray-200 to-gray-100 bg-clip-text text-transparent'
                                 : 'bg-gradient-to-r from-gray-600 to-gray-800 bg-clip-text text-transparent'
                         )}>
-                            Marcas líderes que han transformado su presencia digital con GlowUp Media
+                            Marcas líderes que han transformado sus procesos con KHANNDA
                         </span>
                     </div>
                 </div>

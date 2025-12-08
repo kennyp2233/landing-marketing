@@ -13,8 +13,8 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
     return (
         <footer className={cn(
             'py-12 px-6 border-t',
-            isDark 
-                ? 'bg-gray-900/50 border-gray-800' 
+            isDark
+                ? 'bg-gray-900/50 border-gray-800'
                 : 'bg-gray-50/50 border-gray-200'
         )}>
             <div className="max-w-6xl mx-auto">
@@ -40,7 +40,7 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
                             'text-sm md:text-base',
                             isDark ? 'text-gray-400' : 'text-gray-600'
                         )}>
-                            © {currentYear} GlowUp Media. Todos los derechos reservados.
+                            © {currentYear} KHANNDA. Todos los derechos reservados.
                         </p>
                     </div>
                 </div>

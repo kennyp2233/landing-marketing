@@ -1,3 +1,4 @@
+// src/components/features/home/components/TeamSection/index.tsx
 "use client";
 
 import React from 'react';
@@ -8,24 +9,24 @@ import { TeamSectionProps, TeamMember } from './TeamSection.types';
 
 const teamMembers: TeamMember[] = [
   {
-    id: 'mateo',
-    name: 'Mateo Izquierdo',
-    role: 'Especialista en Relaciones',
-    description: 'Experto en relaciones y comunicación empática. Mateo crea puentes entre marcas y audiencias. Su intuición y carisma generan vínculos reales que multiplican el impacto de cada mensaje.',
+    id: 'matias',
+    name: 'Matías Villarreal',
+    role: 'Gestión de Relaciones',
+    description: 'El puente entre tu problema y nuestra solución. Mateo se especializa en entender a fondo los dolores operativos de tu negocio para garantizar que el software que construimos sea exactamente lo que necesitas, con una empatía única en la industria.',
     image: '/team/mateo.png',
   },
   {
-    id: 'victor',
-    name: 'Victor Viteri',
-    role: 'Estratega Digital',
-    description: 'Maestro del pensamiento estratégico y la visión a largo plazo. Victor transforma ideas en rutas claras hacia el éxito. Su liderazgo impulsa marcas con propósito, combinando análisis, creatividad y dirección firme.',
+    id: 'jose',
+    name: 'José Terán',
+    role: 'Estrategia Tecnológica',
+    description: 'Visionario de sistemas escalables. Victor transforma ideas abstractas en arquitecturas de software robustas. Su enfoque asegura que tu inversión tecnológica no solo funcione hoy, sino que sea la base sólida para el crecimiento futuro de tu empresa.',
     image: '/team/victor.png',
   },
   {
-    id: 'yandry',
-    name: 'Yandry Ninahualpa',
-    role: 'Director Creativo',
-    description: 'Diseñador de conceptos que marcan. Yandry domina el arte de la narrativa visual y emocional. Su enfoque disruptivo da vida a campañas que no solo se ven bien, sino que dejan huella.',
+    id: 'kevin',
+    name: 'Kevin Cano',
+    role: 'Innovación y Producto',
+    description: 'Diseñador de experiencias funcionales. Yandry se asegura de que la complejidad del código se traduzca en interfaces simples e intuitivas. Su obsesión es que usar nuestro software sea más fácil que usar un cuaderno.',
     image: '/team/yandry.png',
   }
 ];
@@ -50,16 +51,16 @@ export function TeamSection({ isDark }: TeamSectionProps) {
             'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
             darkMode ? 'text-white' : 'text-gray-900'
           )}>
-            Nuestro{' '}
+            El Equipo{' '}
             <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent">
-              Equipo
+              Khannda
             </span>
           </h2>
           <p className={cn(
             'text-lg md:text-xl max-w-3xl mx-auto leading-relaxed',
             darkMode ? 'text-gray-300' : 'text-gray-600'
           )}>
-            Conoce a los talentosos profesionales que hacen posible el éxito de tu marca
+            Empatía, técnica y pasión por resolver problemas reales con código.
           </p>
         </div>
 
@@ -86,9 +87,9 @@ export function TeamSection({ isDark }: TeamSectionProps) {
               : 'bg-black/5 border-black/10 text-gray-700'
           )}>
             <span className="text-sm md:text-base font-medium">
-              ¿Listo para trabajar con nosotros?{' '}
+              ¿Listo para digitalizar tu negocio?{' '}
               <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent font-semibold">
-                Contáctanos
+                Conversemos
               </span>
             </span>
           </div>

@@ -1,3 +1,4 @@
+// src/components/features/home/components/PricingSection/index.tsx
 import React, { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { AnimatePresence, motion } from 'motion/react';
@@ -7,32 +8,31 @@ import { PricingPlan } from './PricingSection.types';
 
 const pricingPlans: PricingPlan[] = [
     {
-        name: "Plan Gold",
-        tier: "Intermedio",
-        description: "Perfecto para empresas que buscan una presencia digital sólida y resultados consistentes",
+        name: "Sistematización Esencial",
+        tier: "Emprendedores",
+        description: "Deja el Excel y automatiza procesos clave. Ideal para negocios que buscan orden y eficiencia inmediata.",
         features: [
-            "12 publicaciones mensuales para Instagram y Facebook",
-            "8 videos editados para Reels/TikTok (educativos, tendencias, testimoniales)",
-            "Pauta publicitaria con 8 anuncios configurados",
-            "Plan editorial estratégico",
-            "Desarrollo conjunto de contenido",
-            "Monitoreo y configuración de audiencias"
+            "Sistema de Gestión (Inventario/Ventas)",
+            "Base de datos segura en la nube",
+            "Reportes básicos automáticos",
+            "Soporte técnico prioritario",
+            "Diseño intuitivo y fácil de usar",
+            "Implementación en 4 semanas"
         ],
         highlight: false
     },
     {
-        name: "Plan Diamond",
-        tier: "Empresarial",
-        description: "La solución completa para marcas que buscan dominar el mercado digital",
+        name: "Transformación Total",
+        tier: "Pymes en Crecimiento",
+        description: "Solución integral a medida para escalar operaciones sin límites. Tu ecosistema digital completo.",
         features: [
-            "18 publicaciones mensuales de diseño profesional",
-            "10 videos premium con producción de alto nivel",
-            "Pauta publicitaria con 10 anuncios optimizados",
-            "Plan de contenidos estratégico a 6 meses",
-            "Sesiones fotográficas incluidas",
-            "Consultoría completa de contenido visual",
-            "Análisis avanzado y reportes semanales",
-            "Optimización continua de campañas"
+            "Desarrollo 100% a medida de tus procesos",
+            "Apps Móviles y Web integradas",
+            "Integraciones con facturación y bancos",
+            "Dashboard de métricas en tiempo real",
+            "Seguridad avanzada y backups",
+            "Mantenimiento y evolución continua",
+            "Arquitectura escalable"
         ],
         highlight: true
     }
@@ -51,16 +51,16 @@ export const PricingSection: React.FC = () => {
                         'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
                         isDark ? 'text-white' : 'text-gray-900'
                     )}>
-                        Nuestros{' '}
+                        Inversión{' '}
                         <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent">
-                            Planes
+                            Inteligente
                         </span>
                     </h2>
                     <p className={cn(
                         'text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed',
                         isDark ? 'text-gray-300' : 'text-gray-600'
                     )}>
-                        Elige el plan perfecto para impulsar tu presencia digital con soluciones completas
+                        Soluciones accesibles desde $500. Rentabiliza tu inversión automatizando lo que hoy te quita tiempo.
                     </p>
                 </div>
                 {/* Pricing Cards */}

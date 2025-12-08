@@ -1,3 +1,4 @@
+// src/components/features/home/components/AboutSection/index.tsx
 "use client";
 
 import React from 'react';
@@ -18,12 +19,13 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                         'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
                         isDark ? 'text-white' : 'text-gray-900'
                     )}>
-                        ¿Quiénes <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent">somos?</span>
+                        Nuestro <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent">ADN</span>
                     </h2>
                 </div>
 
-                {/* WobbleCard Grid - Siguiendo exactamente el patrón del demo */}
+                {/* WobbleCard Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 max-w-7xl mx-auto w-full">
+                    {/* Historia de la marca */}
                     <WobbleCard
                         containerClassName="col-span-1 lg:col-span-2 h-full bg-transparent min-h-[500px] lg:min-h-[300px]"
                         className=""
@@ -31,74 +33,52 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                     >
                         <div className="h-full flex flex-col justify-center max-w-lg">
                             <div className="space-y-8">
-                            <h2 className="text-left text-balance text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.015em] text-white leading-tight">
-                                <span className="text-white font-bold">
-                                    GlowUp Media
-                                </span>{" "}
-                                <span className="text-gray-300">
-                                    impulsa el universo digital
-                                </span>
-                            </h2>                                <div className="space-y-6">
+                                <h2 className="text-left text-balance text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.015em] text-white leading-tight">
+                                    <span className="text-white font-bold">
+                                        Más que código,
+                                    </span>{" "}
+                                    <span className="text-gray-300">
+                                        entendemos tu negocio.
+                                    </span>
+                                </h2>
+                                <div className="space-y-6">
                                     <p className="text-left text-base md:text-lg leading-relaxed text-neutral-200">
-                                        Somos una agencia de marketing digital 
-                                        <span className="text-white font-semibold"> innovadora</span>, especializada en crear 
-                                        <span className="text-white font-semibold"> experiencias de alto impacto</span> que elevan tu 
-                                        marca en el mundo digital competitivo.
+                                        Todo comenzó en una tarde casual de bolos, entre conversaciones sobre el futuro.
+                                        Queríamos construir algo propio. Hoy, esa idea es <span className="text-white font-semibold">KHANNDA</span>:
+                                        nos diferenciamos por nuestra empatía con empresas en crecimiento.
                                     </p>
-                                    
-                                    <div className="flex flex-col space-y-3">
-                                        <div className="flex items-center space-x-3">
-                                            <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
-                                            <span className="text-gray-300 font-medium">Marketing Digital Innovador</span>
-                                        </div>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
-                                            <span className="text-gray-300 font-medium">Experiencias de Alto Impacto</span>
-                                        </div>
-                                        <div className="flex items-center space-x-3">
-                                            <div className="w-2 h-2 bg-white rounded-full opacity-80"></div>
-                                            <span className="text-gray-300 font-medium">Resultados Competitivos</span>
-                                        </div>
-                                    </div>
+                                    <p className="text-left text-base md:text-lg leading-relaxed text-neutral-200">
+                                        Mientras otros entregan algo que cumple, nosotros entregamos <span className="text-white font-semibold">software que transforma</span> y alivia tus dolores operativos reales.
+                                    </p>
                                 </div>
                             </div>
                         </div>
                     </WobbleCard>
 
-                    <WobbleCard 
+                    {/* Visión */}
+                    <WobbleCard
                         containerClassName="col-span-1 min-h-[300px] bg-transparent"
                         variant="purple"
                     >
                         <div className="h-full flex flex-col justify-between space-y-8">
                             <div className="flex-1 flex flex-col justify-center space-y-8">
-                                <div className="relative group">
-                                    <div className="relative bg-white/10 backdrop-blur-xl rounded-full px-6 py-4 shadow-lg border border-white/20">
-                                        <span className="text-3xl md:text-4xl font-bold text-white drop-shadow-lg">
-                                            2025
-                                        </span>
-                                    </div>
-                                </div>
-
                                 <div className="space-y-6">
                                     <h2 className="text-left text-xl md:text-2xl lg:text-3xl font-bold tracking-[-0.015em] uppercase leading-tight">
                                         <span className="text-white drop-shadow-lg">
-                                            Visión
+                                            Nuestra Visión
                                         </span>
                                     </h2>
-                                    
+
                                     <p className="text-left text-base md:text-lg leading-relaxed text-neutral-200">
-                                        Convertirnos en <span className="text-white font-semibold">líderes en el mercado</span> del marketing digital, 
-                                        siendo la agencia que eleva las marcas a través de 
-                                        <span className="text-white font-semibold"> soluciones efectivas, innovadoras y vanguardistas.</span>
+                                        Construir software que impulse negocios, transforme realidades y deje una <span className="text-white font-semibold">huella positiva</span> en la vida de las personas.
                                     </p>
                                 </div>
                             </div>
-                            
-                      
                         </div>
                     </WobbleCard>
 
-                    <WobbleCard 
+                    {/* Misión y Valores */}
+                    <WobbleCard
                         containerClassName="col-span-1 lg:col-span-3 bg-transparent min-h-[500px] lg:min-h-[600px] xl:min-h-[300px]"
                         variant="blue"
                     >
@@ -110,75 +90,58 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                             Misión:
                                         </span>{" "}
                                         <span className="text-gray-300 block lg:inline mt-2 lg:mt-0">
-                                            Soluciones Personalizadas
+                                            Impulso Digital
                                         </span>
                                     </h2>
-                                    
+
                                     <div className="space-y-6">
-                                        <p className="text-left text-lg md:text-xl leading-relaxed text-white font-semibold">
-                                            Elevamos tu presencia digital
-                                        </p>
-                                        
                                         <p className="text-left text-base md:text-lg leading-relaxed text-neutral-200">
-                                            Brindamos <span className="text-white font-semibold">estrategias orientadas a la creatividad</span>, 
-                                            el impacto y el crecimiento. Nuestra misión es 
-                                            <span className="text-white font-semibold"> impulsar marcas</span> y elevar su impacto en un 
-                                            mundo digital competitivo.
+                                            Creamos soluciones digitales que impulsan a emprendedores a crecer,
+                                            <span className="text-white font-semibold"> simplificar su día a día</span> y acercarlos más rápido a sus objetivos.
                                         </p>
                                     </div>
                                 </div>
-                                
+
                                 <div className="space-y-8">
                                     <div className="grid grid-cols-1 gap-6">
+                                        {/* Valores extraídos del Brief */}
                                         <div className="group relative">
-                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#6c26f9] to-[#6c26f9] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
-                                            <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
+                                            <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-4 shadow-xl border border-white/10">
                                                 <div className="flex items-center space-x-4">
-                                                    <div className="relative">
-                                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#6c26f9] to-[#6c26f9] rounded-xl opacity-75 blur"></div>
-                                                        <div className="relative w-12 h-12 bg-gradient-to-r from-[#6c26f9] to-[#6c26f9] rounded-xl flex items-center justify-center shadow-lg">
-                                                            <span className="text-white font-bold text-xl drop-shadow-lg">C</span>
-                                                        </div>
+                                                    <div className="relative w-10 h-10 bg-gradient-to-r from-[#6c26f9] to-[#6c26f9] rounded-lg flex items-center justify-center shadow-lg">
+                                                        <span className="text-white font-bold text-lg">T</span>
                                                     </div>
                                                     <div>
-                                                        <h3 className="text-white font-semibold text-lg drop-shadow-sm">Creatividad</h3>
-                                                        <p className="text-neutral-300 text-sm md:text-base">Innovación en cada proyecto</p>
+                                                        <h3 className="text-white font-semibold text-lg">Transparencia</h3>
+                                                        <p className="text-neutral-300 text-sm">Comunicamos con claridad cada avance.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div className="group relative">
-                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#d507fa] to-[#d507fa] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
-                                            <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
+                                            <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-4 shadow-xl border border-white/10">
                                                 <div className="flex items-center space-x-4">
-                                                    <div className="relative">
-                                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#d507fa] to-[#d507fa] rounded-xl opacity-75 blur"></div>
-                                                        <div className="relative w-12 h-12 bg-gradient-to-r from-[#d507fa] to-[#d507fa] rounded-xl flex items-center justify-center shadow-lg">
-                                                            <span className="text-white font-bold text-xl drop-shadow-lg">I</span>
-                                                        </div>
+                                                    <div className="relative w-10 h-10 bg-gradient-to-r from-[#d507fa] to-[#d507fa] rounded-lg flex items-center justify-center shadow-lg">
+                                                        <span className="text-white font-bold text-lg">R</span>
                                                     </div>
                                                     <div>
-                                                        <h3 className="text-white font-semibold text-lg drop-shadow-sm">Impacto</h3>
-                                                        <p className="text-neutral-300 text-sm md:text-base">Resultados que transforman</p>
+                                                        <h3 className="text-white font-semibold text-lg">Responsabilidad</h3>
+                                                        <p className="text-neutral-300 text-sm">Asumimos la estabilidad de lo que entregamos.</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+
                                         <div className="group relative">
-                                            <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0586fd] to-[#0586fd] rounded-2xl opacity-20 group-hover:opacity-40 blur transition duration-500"></div>
-                                            <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-6 shadow-xl">
+                                            <div className="relative bg-white/5 backdrop-blur-xl rounded-2xl p-4 shadow-xl border border-white/10">
                                                 <div className="flex items-center space-x-4">
-                                                    <div className="relative">
-                                                        <div className="absolute -inset-1 bg-gradient-to-r from-[#0586fd] to-[#0586fd] rounded-xl opacity-75 blur"></div>
-                                                        <div className="relative w-12 h-12 bg-gradient-to-r from-[#0586fd] to-[#0586fd] rounded-xl flex items-center justify-center shadow-lg">
-                                                            <span className="text-white font-bold text-xl drop-shadow-lg">G</span>
-                                                        </div>
+                                                    <div className="relative w-10 h-10 bg-gradient-to-r from-[#0586fd] to-[#0586fd] rounded-lg flex items-center justify-center shadow-lg">
+                                                        <span className="text-white font-bold text-lg">C</span>
                                                     </div>
                                                     <div>
-                                                        <h3 className="text-white font-semibold text-lg drop-shadow-sm">Crecimiento</h3>
-                                                        <p className="text-neutral-300 text-sm md:text-base">Escalamos tu presencia</p>
+                                                        <h3 className="text-white font-semibold text-lg">Calidad</h3>
+                                                        <p className="text-neutral-300 text-sm">Desarrollo robusto antes que entrega apresurada.</p>
                                                     </div>
                                                 </div>
                                             </div>

@@ -110,6 +110,10 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                     </p>
                 </div>
 
+                // src/components/features/home/components/ServicesSection/index.tsx
+
+                // ... (resto de imports y código anterior se mantienen igual)
+
                 {/* Services BentoGrid */}
                 <BentoGrid className=" mx-auto md:auto-rows-[20rem] mb-4">
                     {services.map((service, index) => (
@@ -125,35 +129,38 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                     ))}
                 </BentoGrid>
 
-                {/* Garantías */}
+                {/* Garantías / Métricas - ACTUALIZADO PARA KHANNDA */}
                 <div className="grid md:grid-cols-3 gap-4">
+                    {/* Tarjeta 1: Enfoque en Eficiencia Operativa */}
                     <div className={`text-center p-6 rounded-xl border ${isDark ? 'border-white/[0.08] bg-gray-900/20' : 'border-neutral-200 bg-white'}`}>
-                        <div className="text-2xl md:text-3xl font-bold text-[#6c26f9] mb-2">25%</div>
+                        <div className="text-2xl md:text-3xl font-bold text-[#6c26f9] mb-2">+40%</div>
                         <p className={cn(
                             'text-sm md:text-base',
                             isDark ? 'text-gray-300' : 'text-gray-600'
                         )}>
-                            Más engagement promedio en 30 días
+                            De ahorro en tiempo operativo automatizando tareas manuales
                         </p>
                     </div>
 
+                    {/* Tarjeta 2: Enfoque en Agilidad de Entrega */}
                     <div className={`text-center p-6 rounded-xl border ${isDark ? 'border-white/[0.08] bg-gray-900/20' : 'border-neutral-200 bg-white'}`}>
-                        <div className="text-2xl md:text-3xl font-bold text-[#d507fa] mb-2">48h</div>
+                        <div className="text-2xl md:text-3xl font-bold text-[#d507fa] mb-2">4 Semanas</div>
                         <p className={cn(
                             'text-sm md:text-base',
                             isDark ? 'text-gray-300' : 'text-gray-600'
                         )}>
-                            Tiempo máximo de entrega de videos
+                            Tiempo promedio para implementar tu primera versión funcional
                         </p>
                     </div>
 
+                    {/* Tarjeta 3: Enfoque en Precio Accesible (Según Brief: $500-$1500) */}
                     <div className={`text-center p-6 rounded-xl border ${isDark ? 'border-white/[0.08] bg-gray-900/20' : 'border-neutral-200 bg-white'}`}>
-                        <div className="text-2xl md:text-3xl font-bold text-[#0586fd] mb-2">$150</div>
+                        <div className="text-2xl md:text-3xl font-bold text-[#0586fd] mb-2">Desde $500</div>
                         <p className={cn(
                             'text-sm md:text-base',
                             isDark ? 'text-gray-300' : 'text-gray-600'
                         )}>
-                            Desde solo $150/mes todo incluido
+                            Sistematización accesible para potenciar tu crecimiento
                         </p>
                     </div>
                 </div>
