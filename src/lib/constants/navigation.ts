@@ -1,19 +1,19 @@
 // lib/constants/navigation.ts
 export const NAVIGATION_ITEMS = [
-    { id: 'services', label: 'Servicios', href: '#servicios' },
-    { id: 'cases', label: 'Casos de Éxito', href: '#casos' },
-    { id: 'portfolio', label: 'Portafolio', href: '#portafolio' },
+    { id: 'services', label: 'Soluciones', href: '#servicios' },
+    { id: 'projects', label: 'Proyectos', href: '#casos' },
+    { id: 'tech', label: 'Tecnologías', href: '#tecnologia' },
 ] as const;
 
 export const BRAND_INFO = {
-    name: 'GlowUp Media',
-    tagline: 'Impulsa tu marca. Eleva tu impacto',
-    description: 'Agencia de marketing digital innovadora y estratégica, especializada en crear experiencias de alto impacto.',
+    name: 'Khannda',
+    tagline: 'Built by experts, designed for people', // Tomado de tu logo
+    description: 'Desarrollo de software a medida de alto impacto. Transformamos procesos complejos en soluciones digitales intuitivas para cooperativas, gimnasios y empresas en crecimiento.',
     hero: {
-        title: 'Aumenta tus Ventas',
-        subtitle: '300% en X Días.',
-        description: 'Creamos estrategias digitales que multiplican tus clientes garantizando resultados medibles y rentables.',
-        cta: 'Agenda tu Auditoría GRATIS',
-        rating: 'Basado en x opiniones.',
+        title: 'Software que evoluciona',
+        subtitle: 'con tu negocio.',
+        description: 'Diseñamos y desarrollamos ecosistemas digitales a la medida. Desde sistemas financieros seguros hasta gestión operativa eficiente.',
+        cta: 'Cotizar Proyecto',
+        rating: 'Confiado por instituciones financieras.',
     },
 } as const;

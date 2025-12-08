@@ -6,23 +6,24 @@ import { cn } from '../../../../../lib/utils';
 import { BackgroundGradient } from '@/components/shared/ui/BackgroundGradient';
 import TrustItem from './TrustItem';
 import { TrustSectionProps } from './TrustSection.types';
+import { Landmark, Dumbbell, Code } from 'lucide-react';
 
 const TrustSection: React.FC<TrustSectionProps> = ({ isDark }) => {
     const trustItems = [
         {
-            icon: <Calendar size={24} />,
-            text: 'Estrategias desde el día 1',
-            description: 'Planificación estratégica desde el primer momento'
+            icon: <Landmark size={24} />, // Importar Landmark de lucide-react
+            text: 'Sector Financiero',
+            description: 'Modernización digital para Cooperativa de Ahorro y Crédito. Banca en línea segura y eficiente.'
         },
         {
-            icon: <Puzzle size={24} />,
-            text: 'Soluciones innovadoras',
-            description: 'Creatividad y tecnología al servicio de tu marca'
+            icon: <Dumbbell size={24} />, // Importar Dumbbell de lucide-react
+            text: 'Sector Wellness',
+            description: 'Sistema integral para Gimnasio: Control de accesos, pagos recurrentes y app para usuarios.'
         },
         {
-            icon: <Smile size={24} />,
-            text: 'Marcas que brillan',
-            description: 'Resultados que hacen la diferencia'
+            icon: <Code size={24} />, // Importar Code de lucide-react
+            text: 'Tu Empresa',
+            description: '¿Tienes un proceso complejo? Nosotros construimos la solución para simplificarlo.'
         }
     ];
 

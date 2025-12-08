@@ -39,77 +39,52 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
 
     const services = [
         {
-            title: "Gestión de Redes Sociales",
-            description: "Creamos y gestionamos tu presencia en Instagram y Facebook con contenido estratégico.",
-            header: <SkeletonSocial />,
-            icon: <IconDeviceMobile className="h-4 w-4 text-[#6c26f9]" />,
+            title: "Desarrollo a Medida",
+            description: "Software diseñado específicamente para tus reglas de negocio. Ni más, ni menos.",
+            icon: <IconDeviceMobile className="h-4 w-4 text-[#6c26f9]" />, // Cambiar íconos según corresponda
+            header: <SkeletonSocial />, // Puedes mantener los skeletons o crear unos de código
             features: [
-                "6-18 publicaciones mensuales",
-                "Diseño gráfico profesional",
-                "Carruseles informativos"
+                "Sistemas de Gestión (ERP/CRM)",
+                "Plataformas Web Escalables",
+                "Arquitectura Cloud Segura"
             ],
             className: "md:col-span-1"
         },
         {
-            title: "Creación de Videos & Reels",
-            description: "Producimos videos virales para Reels, TikTok y YouTube Shorts que generan alcance.",
-            header: <SkeletonVideo isDark={isDark} />,
-            icon: <IconVideo className="h-4 w-4 text-[#d507fa]" />,
-            features: [
-                "2-10 videos mensuales editados",
-                "Formato vertical optimizado",
-                "Entrega en 48 horas"
-            ],
-            className: "md:col-span-2"
-        },
-        {
-            title: "Pauta Publicitaria",
-            description: "Configuramos y optimizamos anuncios en Facebook e Instagram para maximizar ROI y alcanzar a tu audiencia ideal.",
-            header: <SkeletonAds isDark={isDark} />,
-            icon: <IconTargetArrow className="h-4 w-4 text-[#0586fd]" />,
-            features: [
-                "Audiencias segmentadas",
-                "Monitoreo diario",
-                "Optimización continua",
-                "Reportes de rendimiento"
-            ],
-            className: "md:col-span-2"
-        },
-        {
-            title: "Branding Digital",
-            description: "Desarrollamos la identidad visual de tu marca para destacar en el mercado digital.",
-            header: <SkeletonBranding isDark={isDark} />,
-            icon: <IconPalette className="h-4 w-4 text-[#6c26f9]" />,
-            features: [
-                "Diseño de logotipo único",
-                "Manual de marca completo",
-                "Aplicaciones digitales"
-            ],
-            className: "md:col-span-1"
-        },
-        {
-            title: "Community Management",
-            description: "Gestionamos tu comunidad digital y creamos vínculos reales con tu audiencia.",
-            header: <SkeletonCommunity isDark={isDark} />,
-            icon: <IconUsers className="h-4 w-4 text-[#1332e9]" />,
-            features: [
-                "Respuesta a comentarios",
-                "Gestión de mensajes directos",
-                "Interacción estratégica"
-            ],
-            className: "md:col-span-1"
-        },
-        {
-            title: "Estrategia & Análisis",
-            description: "Desarrollamos estrategias de contenido basadas en datos y analizamos rendimiento.",
-            header: <SkeletonStrategy isDark={isDark} />,
+            title: "Apps Financieras & Fintech",
+            description: "Experiencia comprobada desarrollando para el sector de cooperativas de ahorro y crédito.",
             icon: <IconChartBar className="h-4 w-4 text-[#d507fa]" />,
+            header: <SkeletonStrategy isDark={isDark} />,
             features: [
-                "Plan editorial estratégico",
-                "Análisis de competencia",
-                "Métricas de rendimiento"
+                "Seguridad Bancaria",
+                "Integración con Core Bancario",
+                "Reportes en Tiempo Real"
             ],
             className: "md:col-span-2"
+        },
+        {
+            title: "Sistemas de Gestión Operativa",
+            description: "Automatización para negocios físicos como Gimnasios, Consultorios y Retail.",
+            icon: <IconUsers className="h-4 w-4 text-[#0586fd]" />,
+            header: <SkeletonAds isDark={isDark} />,
+            features: [
+                "Control de Acceso Biométrico",
+                "Facturación Electrónica",
+                "Gestión de Membresías"
+            ],
+            className: "md:col-span-2"
+        },
+        {
+            title: "Consultoría Tecnológica",
+            description: "Te ayudamos a elegir el stack tecnológico correcto para tu futuro.",
+            icon: <IconTargetArrow className="h-4 w-4 text-[#6c26f9]" />,
+            header: <SkeletonBranding isDark={isDark} />,
+            features: [
+                "Auditoría de Código",
+                "Transformación Digital",
+                "Optimización de Procesos"
+            ],
+            className: "md:col-span-1"
         }
     ];
 
