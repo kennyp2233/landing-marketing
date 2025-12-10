@@ -36,26 +36,26 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
             className: "md:col-span-1"
         },
         {
-            title: "Apps Financieras & Fintech",
-            description: "Experiencia comprobada desarrollando para el sector de cooperativas de ahorro y crédito.",
+            title: "Alta Seguridad & Fintech",
+            description: "Arquitectura de software con estándares bancarios. Seguridad, transaccionalidad y manejo de datos críticos sin fallos.",
             icon: <IconChartBar className={cn("h-4 w-4", isDark ? "text-[#d507fa]" : "text-orange-600")} />,
             header: <SkeletonStrategy isDark={isDark} />,
             features: [
-                "Seguridad Bancaria",
-                "Integración con Core Bancario",
-                "Reportes en Tiempo Real"
+                "Encriptación de Grado Militar",
+                "Integración con Pasarelas de Pago",
+                "Auditoría y Compliance"
             ],
             className: "md:col-span-2"
         },
         {
-            title: "Sistemas de Gestión Operativa",
-            description: "Automatización para negocios físicos como Gimnasios, Consultorios y Retail.",
+            title: "Automatización Operativa",
+            description: "Digitalizamos el núcleo de tu negocio. Control de accesos, facturación y gestión de usuarios centralizada.",
             icon: <IconUsers className={cn("h-4 w-4", isDark ? "text-[#0586fd]" : "text-amber-500")} />,
             header: <SkeletonAds />,
             features: [
-                "Control de Acceso Biométrico",
-                "Facturación Electrónica",
-                "Gestión de Membresías"
+                "Control Biométrico & IoT",
+                "Facturación Electrónica Automática",
+                "Gestión de Membresías/Suscripciones"
             ],
             className: "md:col-span-2"
         },

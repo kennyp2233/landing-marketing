@@ -10,8 +10,8 @@ const HeroContent: React.FC<HeroContentProps> = ({ isDark }) => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen px-6 text-center z-10">
             <div className="mb-8">
-                {/* Puedes cambiar reviewCount por "Proyectos Entregados" */}
-                <RatingBadge isDark={isDark} reviewCount="Software de Calidad" rating={5} />
+                {/* Texto del badge actualizado para ser más general */}
+                <RatingBadge isDark={isDark} reviewCount="Software de Alto Impacto" rating={5} />
             </div>
 
             <div className="max-w-5xl mx-auto mb-6">
@@ -32,7 +32,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ isDark }) => {
                 'text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed',
                 isDark ? 'text-gray-300' : 'text-gray-600'
             )}>
-                En <span className="font-bold text-white">Khannda</span>, no usamos plantillas. Creamos software a medida robusto para cooperativas, gimnasios y empresas que exigen excelencia operativa.
+                En <span className="font-bold text-white">Khannda</span>, no usamos plantillas. Creamos ecosistemas digitales robustos y a medida para empresas visionarias que buscan escalar sus operaciones con tecnología de vanguardia.
             </p>
 
             <div className="flex gap-4">

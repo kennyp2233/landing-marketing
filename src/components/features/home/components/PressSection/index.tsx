@@ -67,28 +67,10 @@ const PressSection: React.FC<PressSectionProps> = ({
 
     return (
         <section className={cn(
-            'pt-1 pb-8 relative overflow-hidden mx-auto max-w-7xl',
-            'before:absolute before:inset-0 before:bg-gradient-to-b before:pointer-events-none',
-            isDark
-                ? 'before:from-transparent before:via-gray-900/40 before:to-transparent'
-                : 'before:from-transparent before:via-gray-50/20 before:to-transparent'
+            'pt-1 pb-8 relative overflow-hidden mx-auto max-w-7xl'
         )}>
             {/* Removed gradient accent line for cleaner transition */}
             {/* <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] rounded-full" /> */}
-
-            {/* Enhanced fade effects with static gradients */}
-            <div className={cn(
-                'absolute left-0 top-0 bottom-0 w-40 pointer-events-none z-10',
-                isDark
-                    ? 'bg-gradient-to-r from-black via-black/90 to-transparent'
-                    : 'bg-gradient-to-r from-white via-white/90 to-transparent'
-            )} />
-            <div className={cn(
-                'absolute right-0 top-0 bottom-0 w-40 pointer-events-none z-10',
-                isDark
-                    ? 'bg-gradient-to-l from-black via-black/90 to-transparent'
-                    : 'bg-gradient-to-l from-white via-white/90 to-transparent'
-            )} />
 
             {/* Decorative floating elements - adjusted opacity for dark mode */}
             <div className={cn(
@@ -152,11 +134,13 @@ const PressSection: React.FC<PressSectionProps> = ({
                     </div>
                 </div>
 
-                {/* Infinite Logo Carousel */}
-                <InfiniteLogoCarousel
-                    logos={pressLogos}
-                    config={defaultConfig}
-                />
+                {/* Infinite Logo Carousel with Mask for transparency */}
+                <div className="[mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
+                    <InfiniteLogoCarousel
+                        logos={pressLogos}
+                        config={defaultConfig}
+                    />
+                </div>
 
                 {/* Enhanced bottom decorative element */}
                 <div className="flex justify-center mt-8">

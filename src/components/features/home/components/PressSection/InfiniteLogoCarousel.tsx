@@ -163,18 +163,7 @@ const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
             </div>
 
             {/* Gradient overlays for smooth fade effect - consistent with main section */}
-            <div className={cn(
-                'absolute top-0 left-0 w-40 h-full pointer-events-none z-10 animate-pulse',
-                isDark
-                    ? 'bg-gradient-to-r from-black via-black/90 to-transparent'
-                    : 'bg-gradient-to-r from-white via-white/90 to-transparent'
-            )} />
-            <div className={cn(
-                'absolute top-0 right-0 w-40 h-full pointer-events-none z-10 animate-pulse',
-                isDark
-                    ? 'bg-gradient-to-l from-black via-black/90 to-transparent'
-                    : 'bg-gradient-to-l from-white via-white/90 to-transparent'
-            )} />
+            {/* Gradient overlays removed to allow parent mask to handle transparency */}
 
             {/* Optional dots indicator */}
             {showDots && (
