@@ -3,21 +3,19 @@
 
 import React from 'react';
 import {
-    IconDeviceMobile,
-    IconTargetArrow,
-    IconUsers,
-    IconChartBar
+    IconCode,
+    IconShieldLock,
+    IconRobot,
+    IconBulb
 } from '@tabler/icons-react';
 import { cn } from '../../../../../lib/utils';
-import { BentoGrid, BentoGridItem } from '../../../../shared/ui/BentoGrid';
-import { SkeletonSocial, SkeletonAds, SkeletonBranding, SkeletonStrategy } from './AnimatedHeaders';
+import { BentoGrid, BentoGridItem, ScrollReveal } from '../../../../shared/ui';
+import { SkeletonDev, SkeletonAutomation, SkeletonConsulting, SkeletonSecurity } from './AnimatedHeaders';
 import { useTheme } from '@/providers/ThemeProvider';
 
 interface ServicesSectionProps {
-    isDark?: boolean; // Hacer opcional ya que usaremos el hook
+    isDark?: boolean;
 }
-
-
 
 const ServicesSection: React.FC<ServicesSectionProps> = () => {
     const { isDark } = useTheme();
@@ -26,8 +24,8 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Desarrollo a Medida",
             description: "Software diseñado específicamente para tus reglas de negocio. Ni más, ni menos.",
-            icon: <IconDeviceMobile className={cn("h-4 w-4", isDark ? "text-[#6c26f9]" : "text-orange-500")} />,
-            header: <SkeletonSocial />,
+            icon: <IconCode className={cn("h-4 w-4", isDark ? "text-[#6c26f9]" : "text-orange-500")} />,
+            header: <SkeletonDev />,
             features: [
                 "Sistemas de Gestión (ERP/CRM)",
                 "Plataformas Web Escalables",
@@ -38,8 +36,8 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Alta Seguridad & Fintech",
             description: "Arquitectura de software con estándares bancarios. Seguridad, transaccionalidad y manejo de datos críticos sin fallos.",
-            icon: <IconChartBar className={cn("h-4 w-4", isDark ? "text-[#d507fa]" : "text-orange-600")} />,
-            header: <SkeletonStrategy isDark={isDark} />,
+            icon: <IconShieldLock className={cn("h-4 w-4", isDark ? "text-[#d507fa]" : "text-orange-600")} />,
+            header: <SkeletonSecurity />,
             features: [
                 "Encriptación de Grado Militar",
                 "Integración con Pasarelas de Pago",
@@ -50,8 +48,8 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Automatización Operativa",
             description: "Digitalizamos el núcleo de tu negocio. Control de accesos, facturación y gestión de usuarios centralizada.",
-            icon: <IconUsers className={cn("h-4 w-4", isDark ? "text-[#0586fd]" : "text-amber-500")} />,
-            header: <SkeletonAds />,
+            icon: <IconRobot className={cn("h-4 w-4", isDark ? "text-[#0586fd]" : "text-amber-500")} />,
+            header: <SkeletonAutomation />,
             features: [
                 "Control Biométrico & IoT",
                 "Facturación Electrónica Automática",
@@ -62,8 +60,8 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Consultoría Tecnológica",
             description: "Te ayudamos a elegir el stack tecnológico correcto para tu futuro.",
-            icon: <IconTargetArrow className={cn("h-4 w-4", isDark ? "text-[#6c26f9]" : "text-orange-400")} />,
-            header: <SkeletonBranding isDark={isDark} />,
+            icon: <IconBulb className={cn("h-4 w-4", isDark ? "text-[#6c26f9]" : "text-orange-400")} />,
+            header: <SkeletonConsulting />,
             features: [
                 "Auditoría de Código",
                 "Transformación Digital",
@@ -80,98 +78,109 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
     return (
         <div className="py-20 px-6 relative overflow-hidden">
             <div className="max-w-7xl mx-auto">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <h2 className={cn(
-                        'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
-                        isDark ? 'text-white' : 'text-gray-900'
-                    )}>
-                        Nuestros{' '}
-                        <span className={headerGradient}>
-                            Servicios
-                        </span>
-                    </h2>
-                    <p className={cn(
-                        'text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed',
-                        isDark ? 'text-gray-300' : 'text-gray-600'
-                    )}>
-                        Soluciones completas de marketing digital que garantizan resultados medibles para tu marca
-                    </p>
-                </div>
+                {/* Header with scroll reveal */}
+                <ScrollReveal delay={0} direction="up">
+                    <div className="text-center mb-16">
+                        <h2 className={cn(
+                            'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
+                            isDark ? 'text-white' : 'text-gray-900'
+                        )}>
+                            Nuestros{' '}
+                            <span className={headerGradient}>
+                                Servicios
+                            </span>
+                        </h2>
+                        <p className={cn(
+                            'text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed',
+                            isDark ? 'text-gray-300' : 'text-gray-600'
+                        )}>
+                            Soluciones completas de desarrollo que garantizan resultados medibles para tu negocio
+                        </p>
+                    </div>
+                </ScrollReveal>
 
-                {/* Services BentoGrid */}
+                {/* Services BentoGrid with staggered reveals */}
                 <BentoGrid className=" mx-auto md:auto-rows-[20rem] mb-4">
                     {services.map((service, index) => (
-                        <BentoGridItem
+                        <ScrollReveal
                             key={index}
-                            title={service.title}
-                            description={service.description}
-                            header={service.header}
-                            icon={service.icon}
-                            features={service.features}
-                            className={cn("[&>p:text-lg]", service.className)}
-                        />
+                            delay={0.1 + index * 0.1}
+                            direction={index % 2 === 0 ? "right" : "left"}
+                            className={service.className}
+                        >
+                            <BentoGridItem
+                                title={service.title}
+                                description={service.description}
+                                header={service.header}
+                                icon={service.icon}
+                                features={service.features}
+                                className={cn("[&>p:text-lg]", "h-full")} // Ensure full height inside wrapper
+                            />
+                        </ScrollReveal>
                     ))}
                 </BentoGrid>
 
-                {/* Garantías / Métricas - ACTUALIZADO PARA KHANNDA */}
+                {/* Metrics cards with staggered reveals */}
                 <div className="grid md:grid-cols-3 gap-4">
-                    {/* Tarjeta 1: Enfoque en Eficiencia Operativa */}
-                    <div className={cn(
-                        "text-center p-6 rounded-xl border transition-all duration-300",
-                        isDark
-                            ? 'border-white/[0.08] bg-gray-900/20'
-                            : 'border-orange-100 bg-orange-50/50 shadow-sm'
-                    )}>
+                    <ScrollReveal delay={0.2} direction="right">
                         <div className={cn(
-                            "text-2xl md:text-3xl font-bold mb-2",
-                            isDark ? "text-[#6c26f9]" : "text-orange-600"
-                        )}>+40%</div>
-                        <p className={cn(
-                            'text-sm md:text-base',
-                            isDark ? 'text-gray-300' : 'text-gray-600'
+                            "text-center p-6 rounded-xl border transition-all duration-300",
+                            isDark
+                                ? 'border-white/[0.08] bg-gray-900/20'
+                                : 'border-orange-100 bg-orange-50/50 shadow-sm'
                         )}>
-                            De ahorro en tiempo operativo automatizando tareas manuales
-                        </p>
-                    </div>
+                            <div className={cn(
+                                "text-2xl md:text-3xl font-bold mb-2",
+                                isDark ? "text-[#6c26f9]" : "text-orange-600"
+                            )}>+40%</div>
+                            <p className={cn(
+                                'text-sm md:text-base',
+                                isDark ? 'text-gray-300' : 'text-gray-600'
+                            )}>
+                                De ahorro en tiempo operativo automatizando tareas manuales
+                            </p>
+                        </div>
+                    </ScrollReveal>
 
-                    {/* Tarjeta 2: Enfoque en Agilidad de Entrega */}
-                    <div className={cn(
-                        "text-center p-6 rounded-xl border transition-all duration-300",
-                        isDark
-                            ? 'border-white/[0.08] bg-gray-900/20'
-                            : 'border-orange-100 bg-orange-50/50 shadow-sm'
-                    )}>
+                    <ScrollReveal delay={0.3} direction="up">
                         <div className={cn(
-                            "text-2xl md:text-3xl font-bold mb-2",
-                            isDark ? "text-[#d507fa]" : "text-amber-600"
-                        )}>4 Semanas</div>
-                        <p className={cn(
-                            'text-sm md:text-base',
-                            isDark ? 'text-gray-300' : 'text-gray-600'
+                            "text-center p-6 rounded-xl border transition-all duration-300",
+                            isDark
+                                ? 'border-white/[0.08] bg-gray-900/20'
+                                : 'border-orange-100 bg-orange-50/50 shadow-sm'
                         )}>
-                            Tiempo promedio para implementar tu primera versión funcional
-                        </p>
-                    </div>
+                            <div className={cn(
+                                "text-2xl md:text-3xl font-bold mb-2",
+                                isDark ? "text-[#d507fa]" : "text-amber-600"
+                            )}>4 Semanas</div>
+                            <p className={cn(
+                                'text-sm md:text-base',
+                                isDark ? 'text-gray-300' : 'text-gray-600'
+                            )}>
+                                Tiempo promedio para implementar tu primera versión funcional
+                            </p>
+                        </div>
+                    </ScrollReveal>
 
-                    {/* Tarjeta 3: Enfoque en Precio Accesible (Según Brief: $500-$1500) */}
-                    <div className={cn(
-                        "text-center p-6 rounded-xl border transition-all duration-300",
-                        isDark
-                            ? 'border-white/[0.08] bg-gray-900/20'
-                            : 'border-orange-100 bg-orange-50/50 shadow-sm'
-                    )}>
+                    <ScrollReveal delay={0.4} direction="left">
                         <div className={cn(
-                            "text-2xl md:text-3xl font-bold mb-2",
-                            isDark ? "text-[#0586fd]" : "text-orange-500"
-                        )}>Desde $500</div>
-                        <p className={cn(
-                            'text-sm md:text-base',
-                            isDark ? 'text-gray-300' : 'text-gray-600'
+                            "text-center p-6 rounded-xl border transition-all duration-300",
+                            isDark
+                                ? 'border-white/[0.08] bg-gray-900/20'
+                                : 'border-orange-100 bg-orange-50/50 shadow-sm'
                         )}>
-                            Sistematización accesible para potenciar tu crecimiento
-                        </p>
-                    </div>
+                            <div className={cn(
+                                "text-2xl md:text-3xl font-bold mb-2",
+                                isDark ? "text-[#0586fd]" : "text-orange-500"
+                            )}>Desde $500</div>
+                            <p className={cn(
+                                'text-sm md:text-base',
+                                isDark ? 'text-gray-300' : 'text-gray-600'
+                            )}>
+                                Sistematización accesible para potenciar tu crecimiento
+                            </p>
+                        </div>
+                    </ScrollReveal>
                 </div>
             </div>
         </div>
