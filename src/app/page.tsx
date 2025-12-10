@@ -40,8 +40,8 @@ export default function HomePage() {
 
       {/* WhatsApp FAB */}
       <WhatsAppFAB
-        phoneNumber="1234567890"
-        message="¡Hola! Me interesa conocer más sobre sus servicios de marketing digital."
+        phoneNumber="+593995498636"
+        message="¡Hola! Me interesa conocer más sobre sus servicios."
       />
     </div>
   );
