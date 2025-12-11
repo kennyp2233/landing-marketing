@@ -10,26 +10,26 @@ const sizeClasses = {
     lg: { container: 'w-12 h-12', text: 'text-2xl' },
 };
 
-const Logo: React.FC<LogoProps> = ({ size = 'md', showText = true, className }) => {
+const Logo: React.FC<LogoProps> = ({ size = 'md', showText = true, className, isDark = true }) => {
     const currentSize = sizeClasses[size];
-    
+
     return (
         <div className={cn('flex items-center gap-2', className)}>
             {/* Isotipo K de Khannda */}
             <div className={cn('relative flex items-center justify-center', currentSize.container)}>
-                <Image 
+                <Image
                     src="/logo-khannda.png"
                     alt="Khannda Logo"
                     width={48}
                     height={48}
-                    className="object-contain"
+                    className={cn("object-contain transition-all", !isDark && "brightness-0")}
                     priority
                 />
             </div>
 
             {showText && (
                 <div className="flex flex-col">
-                    <span className={cn('font-bold tracking-wide text-white', currentSize.text)}>
+                    <span className={cn('font-bold tracking-wide', isDark ? 'text-white' : 'text-black', currentSize.text)}>
                         KHANNDA
                     </span>
                 </div>

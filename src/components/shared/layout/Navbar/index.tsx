@@ -1,6 +1,7 @@
 // components/shared/layout/Navbar/index.tsx
 "use client";
 import React, { useState } from 'react';
+import { cn } from '@/lib/utils';
 import {
     Navbar as ResizableNavbar,
     NavBody,
@@ -40,7 +41,7 @@ const Navbar: React.FC<NavbarProps> = ({
                         alt="Khannda Logo"
                         width={120}
                         height={40}
-                        className="object-contain h-full w-auto"
+                        className={cn("object-contain h-full w-auto transition-all", !isDark && "brightness-0")}
                         priority
                     />
                 </div>
@@ -51,6 +52,24 @@ const Navbar: React.FC<NavbarProps> = ({
         );
     };
 
+    // Wrapper to strip props preventing them from reaching the DOM div
+    const NavActions = ({ isDark, onThemeToggle, visible }: any) => (
+        <div className="flex items-center gap-4">
+            <div className="relative z-50">
+                <ThemeToggle
+                    isDark={isDark}
+                    onToggle={onThemeToggle}
+                />
+            </div>
+            <Button
+                variant="primary"
+                size="md"
+            >
+                Contáctanos
+            </Button>
+        </div>
+    );
+
     return (
         <div className="relative w-full">
             <ResizableNavbar isDark={isDark}>
@@ -58,20 +77,7 @@ const Navbar: React.FC<NavbarProps> = ({
                 <NavBody isDark={isDark}>
                     <CustomNavbarLogo />
                     <NavItems items={navItems} isDark={isDark} />
-                    <div className="flex items-center gap-4">
-                        <div className="relative z-50">
-                            <ThemeToggle
-                                isDark={isDark}
-                                onToggle={onThemeToggle}
-                            />
-                        </div>
-                        <Button
-                            variant="primary"
-                            size="md"
-                        >
-                            Contáctanos
-                        </Button>
-                    </div>
+                    <NavActions isDark={isDark} onThemeToggle={onThemeToggle} />
                 </NavBody>
 
                 {/* Mobile Navigation */}
@@ -124,7 +130,7 @@ const Navbar: React.FC<NavbarProps> = ({
                     </MobileNavMenu>
                 </MobileNav>
             </ResizableNavbar>
-        </div>
+        </div >
     );
 };
 

@@ -126,7 +126,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                             <div className="group relative">
                                                 <div className={cn(
                                                     "relative backdrop-blur-xl rounded-2xl p-4 shadow-xl border",
-                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/60 border-purple-100"
+                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/90 border-purple-200 shadow-sm"
                                                 )}>
                                                     <div className="flex items-center space-x-4">
                                                         <div className={cn(
@@ -146,7 +146,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                             <div className="group relative">
                                                 <div className={cn(
                                                     "relative backdrop-blur-xl rounded-2xl p-4 shadow-xl border",
-                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/60 border-purple-100"
+                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/90 border-purple-200 shadow-sm"
                                                 )}>
                                                     <div className="flex items-center space-x-4">
                                                         <div className={cn(
@@ -166,7 +166,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                             <div className="group relative">
                                                 <div className={cn(
                                                     "relative backdrop-blur-xl rounded-2xl p-4 shadow-xl border",
-                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/60 border-purple-100"
+                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/90 border-purple-200 shadow-sm"
                                                 )}>
                                                     <div className="flex items-center space-x-4">
                                                         <div className={cn(

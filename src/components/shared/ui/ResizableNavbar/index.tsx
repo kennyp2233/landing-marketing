@@ -52,7 +52,13 @@ export const NavBody = ({ children, className, visible, isDark }: { children: Re
             className
         )}
     >
-        {children}
+
+        {React.Children.map(children, (child) =>
+            React.isValidElement(child)
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                ? React.cloneElement(child as any, { visible, isDark })
+                : child
+        )}
     </motion.div>
 );
 
@@ -145,7 +151,7 @@ export const MobileNavToggle = ({ isOpen, onClick, isDark }: { isOpen: boolean; 
 // Logo and brand
 export const NavbarLogo = ({ isDark }: { isDark?: boolean }) => (
     <a href="#" className="relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal">
-        <img src="https://assets.aceternity.com/logo-dark.png" alt="logo" width={30} height={30} />
+        <img src="/logo-khannda.png" alt="logo" className={cn("h-8 w-auto object-contain transition-all", !isDark && "brightness-0")} />
         <span className={cn("font-medium", isDark ? "text-white" : "text-gray-900")}>Startup</span>
     </a>
 );

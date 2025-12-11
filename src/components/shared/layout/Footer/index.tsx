@@ -21,7 +21,7 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
                 <div className="grid md:grid-cols-3 gap-8 items-center">
                     {/* Logo */}
                     <div className="text-center md:text-left">
-                        <Logo />
+                        <Logo isDark={isDark} />
                     </div>
 
                     {/* Tagline */}
