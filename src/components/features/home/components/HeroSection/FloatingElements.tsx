@@ -39,8 +39,8 @@ const getTextSizeClasses = (size: 'sm' | 'md' | 'lg') => {
 
 export const FloatingElement: React.FC<FloatingElementProps> = ({ isDark, variant, size }) => {
     const sizeClasses = getSizeClasses(size);
-    // Dark: Purple, Light: Orange
-    const color = isDark ? '#A855F7' : '#F97316';
+    // Dark: Purple, Light: Purple
+    const color = isDark ? '#A855F7' : '#8a3c86';
 
     const renderIcon = () => {
         switch (variant) {
@@ -103,7 +103,7 @@ export const FloatingElement: React.FC<FloatingElementProps> = ({ isDark, varian
         <div className="inline-block mx-4 relative p-2 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg glow-effect">
             <style jsx>{`
                 .glow-effect {
-                    box-shadow: 0 0 15px ${isDark ? 'rgba(168,85,247,0.3)' : 'rgba(249,115,22,0.2)'};
+                    box-shadow: 0 0 15px ${isDark ? 'rgba(168,85,247,0.3)' : 'rgba(138,60,134,0.3)'};
                 }
             `}</style>
             {renderIcon()}
@@ -122,7 +122,7 @@ export const FloatingLogo: React.FC<FloatingLogoProps> = ({ isDark, size }) => {
     const scale = useTransform(scrollY, [0, 500], [1, 1.4]); // Grows more
 
     // Using the uploaded logo-3d.jpg for Dark, logo-orange.jpg for Light
-    const logoSrc = isDark ? "/logo-3d.jpg" : "/logo-orange.jpg";
+    const logoSrc = isDark ? "/logo-3d.jpg" : "/logo-3d.jpg";
     const sizePx = size === 'sm' ? 40 : size === 'md' ? 60 : 80;
 
     return (
@@ -161,7 +161,7 @@ export const FloatingLogo: React.FC<FloatingLogoProps> = ({ isDark, size }) => {
                     style={{
                         boxShadow: isDark
                             ? '0 0 25px rgba(168,85,247,0.6)'
-                            : '0 0 25px rgba(249,115,22,0.5)'
+                            : '0 0 25px rgba(138,60,134,0.5)'
                     }}
                 />
             </motion.div>
@@ -177,13 +177,13 @@ export const FloatingText: React.FC<FloatingTextProps> = ({ text, isDark, size }
             <span
                 className={`${textSizeClasses} font-mono font-bold px-3 py-1.5 rounded-md backdrop-blur-md`}
                 style={{
-                    color: isDark ? '#E9D5FF' : '#7C2D12', // Purple-100 : Orange-900
+                    color: isDark ? '#E9D5FF' : '#592355', // Purple-100 : Dark Purple
                     background: isDark
                         ? 'rgba(88, 28, 135, 0.4)' // Purple-900 with opacity
-                        : 'rgba(255, 237, 213, 0.6)', // Orange-100 with opacity
+                        : 'rgba(233, 213, 255, 0.6)', // Purple-100 with opacity
                     border: isDark
                         ? '1px solid rgba(168, 85, 247, 0.3)'
-                        : '1px solid rgba(249, 115, 22, 0.3)',
+                        : '1px solid rgba(138, 60, 134, 0.3)',
                     boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)'
                 }}
             >

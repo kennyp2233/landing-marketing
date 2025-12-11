@@ -24,7 +24,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Desarrollo a Medida",
             description: "Software diseñado específicamente para tus reglas de negocio. Ni más, ni menos.",
-            icon: <IconCode className={cn("h-4 w-4", isDark ? "text-[#6c26f9]" : "text-orange-500")} />,
+            icon: <IconCode className={cn("h-4 w-4", isDark ? "text-[#592355]" : "text-[#592355]")} />,
             header: <SkeletonDev />,
             features: [
                 "Sistemas de Gestión (ERP/CRM)",
@@ -36,7 +36,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Alta Seguridad & Fintech",
             description: "Arquitectura de software con estándares bancarios. Seguridad, transaccionalidad y manejo de datos críticos sin fallos.",
-            icon: <IconShieldLock className={cn("h-4 w-4", isDark ? "text-[#d507fa]" : "text-orange-600")} />,
+            icon: <IconShieldLock className={cn("h-4 w-4", isDark ? "text-[#8a3c86]" : "text-[#712F6D]")} />,
             header: <SkeletonSecurity />,
             features: [
                 "Encriptación de Grado Militar",
@@ -48,7 +48,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Automatización Operativa",
             description: "Digitalizamos el núcleo de tu negocio. Control de accesos, facturación y gestión de usuarios centralizada.",
-            icon: <IconRobot className={cn("h-4 w-4", isDark ? "text-[#0586fd]" : "text-amber-500")} />,
+            icon: <IconRobot className={cn("h-4 w-4", isDark ? "text-[#8a3c86]" : "text-[#712F6D]")} />,
             header: <SkeletonAutomation />,
             features: [
                 "Control Biométrico & IoT",
@@ -60,7 +60,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
         {
             title: "Consultoría Tecnológica",
             description: "Te ayudamos a elegir el stack tecnológico correcto para tu futuro.",
-            icon: <IconBulb className={cn("h-4 w-4", isDark ? "text-[#6c26f9]" : "text-orange-400")} />,
+            icon: <IconBulb className={cn("h-4 w-4", isDark ? "text-[#592355]" : "text-[#592355]")} />,
             header: <SkeletonConsulting />,
             features: [
                 "Auditoría de Código",
@@ -72,8 +72,8 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
     ];
 
     const headerGradient = isDark
-        ? "bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent"
-        : "bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500 bg-clip-text text-transparent";
+        ? "bg-gradient-to-r from-[#592355] to-[#8a3c86] bg-clip-text text-transparent"
+        : "bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent";
 
     return (
         <div className="py-20 px-6 relative overflow-hidden">
@@ -127,11 +127,11 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                             "text-center p-6 rounded-xl border transition-all duration-300",
                             isDark
                                 ? 'border-white/[0.08] bg-gray-900/20'
-                                : 'border-orange-100 bg-orange-50/50 shadow-sm'
+                                : 'border-purple-100 bg-purple-50/50 shadow-sm'
                         )}>
                             <div className={cn(
                                 "text-2xl md:text-3xl font-bold mb-2",
-                                isDark ? "text-[#6c26f9]" : "text-orange-600"
+                                isDark ? "text-[#592355]" : "text-[#592355]"
                             )}>+40%</div>
                             <p className={cn(
                                 'text-sm md:text-base',
@@ -147,11 +147,11 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                             "text-center p-6 rounded-xl border transition-all duration-300",
                             isDark
                                 ? 'border-white/[0.08] bg-gray-900/20'
-                                : 'border-orange-100 bg-orange-50/50 shadow-sm'
+                                : 'border-purple-100 bg-purple-50/50 shadow-sm'
                         )}>
                             <div className={cn(
                                 "text-2xl md:text-3xl font-bold mb-2",
-                                isDark ? "text-[#d507fa]" : "text-amber-600"
+                                isDark ? "text-[#8a3c86]" : "text-[#8a3c86]"
                             )}>4 Semanas</div>
                             <p className={cn(
                                 'text-sm md:text-base',
@@ -167,11 +167,11 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                             "text-center p-6 rounded-xl border transition-all duration-300",
                             isDark
                                 ? 'border-white/[0.08] bg-gray-900/20'
-                                : 'border-orange-100 bg-orange-50/50 shadow-sm'
+                                : 'border-purple-100 bg-purple-50/50 shadow-sm'
                         )}>
                             <div className={cn(
                                 "text-2xl md:text-3xl font-bold mb-2",
-                                isDark ? "text-[#0586fd]" : "text-orange-500"
+                                isDark ? "text-[#8a3c86]" : "text-[#8a3c86]"
                             )}>Desde $500</div>
                             <p className={cn(
                                 'text-sm md:text-base',

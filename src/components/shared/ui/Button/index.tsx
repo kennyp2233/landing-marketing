@@ -17,11 +17,11 @@ const Button: React.FC<ButtonProps> = ({
     const baseClasses = 'inline-flex items-center justify-center rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2';
 
     const variants = {
-        // Gradiente consistente con la paleta de marca
-        primary: 'bg-[#6c26f9] text-white hover:shadow-lg hover:scale-105 focus:ring-purple-500 hover:shadow-purple-500/25',
-        secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500',
-        outline: 'border-2 border-gradient-to-r border-[#6c26f9] text-purple-500 hover:bg-gradient-to-r hover:from-[#6c26f9] hover:via-[#d507fa] hover:to-[#0586fd] hover:text-white focus:ring-purple-500',
-        ghost: 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:ring-gray-500',
+        // Gradiente unificado (Naranja Light / Purple Dark Subtle)
+        primary: 'bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] text-white hover:shadow-lg hover:scale-105 hover:shadow-[#8a3c86]/25',
+        secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200 focus:ring-gray-500 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700',
+        outline: 'border-2 border-[#592355] text-[#8a3c86] hover:text-white hover:border-transparent hover:bg-gradient-to-r hover:from-[#592355] hover:via-[#712F6D] hover:to-[#8a3c86]',
+        ghost: 'text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:ring-gray-500 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800',
     };
 
     const sizes = {

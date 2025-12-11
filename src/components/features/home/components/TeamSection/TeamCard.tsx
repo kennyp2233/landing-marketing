@@ -46,7 +46,7 @@ export function TeamCard({
       {/* Hover gradient overlay with brand colors */}
       <div className={cn(
         "absolute inset-0 transition-all duration-500 ease-out",
-        "bg-gradient-to-t from-[#6c26f9]/60 via-[#d507fa]/20 to-transparent",
+        "bg-gradient-to-t from-[#592355]/60 via-[#8a3c86]/20 to-transparent",
         isHovered ? "opacity-100" : "opacity-0"
       )} />
 
@@ -88,7 +88,7 @@ export function TeamCard({
       {/* Decorative border that appears on hover */}
       <div className={cn(
         "absolute inset-0 rounded-2xl transition-all duration-500 ease-out",
-        "border-2 border-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd]",
+        "border-2 border-[#592355] dark:border-[#592355] md:border-transparent md:hover:border-[#592355] md:dark:hover:border-[#8a3c86]",
         isHovered ? "border-opacity-60" : "border-opacity-0"
       )} />
     </div>

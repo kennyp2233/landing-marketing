@@ -8,12 +8,16 @@ export const COLORS = {
         lightBlue: '#0586fd',
     },
     gradients: {
-        // Gradiente principal consistente con la paleta
-        primary: 'from-[#6c26f9] via-[#d507fa] to-[#0586fd]',
+        // Gradiente principal consistente con la paleta (Dark Mode Default)
+        primary: 'from-[#592355] to-[#8a3c86]',
+        // Gradiente unificado (Light/Dark switch)
+        unified: 'bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86]',
+        // Gradiente unificado con clip de texto
+        unifiedText: 'bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] bg-clip-text text-transparent',
         // Gradiente para estrellas
-        stars: 'from-[#6c26f9] to-[#d507fa]',
+        stars: 'from-[#592355] to-[#8a3c86]',
         // Gradiente para texto hero (vertical)
-        heroText: 'bg-gradient-to-b from-[#6c26f9] via-[#d507fa] to-[#0586fd]',
+        heroText: 'bg-gradient-to-b from-[#592355] to-[#8a3c86]',
         // Gradiente para badge (plomo a transparente)
         badge: 'bg-gradient-to-t from-gray-900/80 to-transparent',
     },

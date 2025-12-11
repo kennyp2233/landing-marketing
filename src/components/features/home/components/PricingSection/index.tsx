@@ -54,7 +54,7 @@ export const PricingSection: React.FC = () => {
                             isDark ? 'text-white' : 'text-gray-900'
                         )}>
                             Inversión{' '}
-                            <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent">
+                            <span className="bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent">
                                 Inteligente
                             </span>
                         </h2>

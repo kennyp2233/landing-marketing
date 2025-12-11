@@ -28,7 +28,7 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
                     <div className="text-center">
                         <p className={cn(
                             'text-base md:text-lg font-medium',
-                            'bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent'
+                            'bg-gradient-to-r from-[#592355] to-[#8a3c86] bg-clip-text text-transparent'
                         )}>
                             Impulsa tu marca. Eleva tu impacto.
                         </p>

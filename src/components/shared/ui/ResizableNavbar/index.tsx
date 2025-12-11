@@ -33,7 +33,7 @@ export const Navbar = ({ children, className, isDark }: { children: React.ReactN
 export const NavBody = ({ children, className, visible, isDark }: { children: React.ReactNode; className?: string; visible?: boolean; isDark?: boolean }) => (
     <motion.div
         animate={{
-            backdropFilter: visible ? "blur(10px)" : "none",
+            backdropFilter: visible ? "blur(20px)" : "none",
             boxShadow: visible
                 ? "0 0 24px rgba(34,42,53,0.06),0 1px 1px rgba(0,0,0,0.05),0 0 0 1px rgba(34,42,53,0.04),0 0 4px rgba(34,42,53,0.08),0 16px 68px rgba(47,48,55,0.05),0 1px 0 rgba(255,255,255,0.1) inset"
                 : "none",
@@ -48,7 +48,7 @@ export const NavBody = ({ children, className, visible, isDark }: { children: Re
         style={{ minWidth: "1000px" }}
         className={cn(
             "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent transition-colors duration-300 lg:flex",
-            visible && (isDark ? "bg-black/50 border border-white/10" : "bg-white/80 border border-gray-200/50 backdrop-blur-md"),
+            visible && (isDark ? "bg-black/30 border border-white/20 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)]" : "bg-white/60 border border-white/60 shadow-xl backdrop-blur-2xl"),
             className
         )}
     >
@@ -67,7 +67,7 @@ export const NavItems = ({ items, className, onItemClick, isDark }: { items: { n
                     href={item.link}
                     onClick={onItemClick}
                     onMouseEnter={() => setHovered(idx)}
-                    className={cn("relative px-4 py-2 transition-colors duration-200 font-medium", isDark ? "text-gray-200 hover:text-white" : "text-gray-700 hover:text-gray-900")}
+                    className={cn("relative px-4 py-2 transition-colors duration-200 text-sm font-medium", isDark ? "text-gray-200 hover:text-white" : "text-gray-700 hover:text-gray-900")}
                 >
                     {hovered === idx && (
                         <motion.div layoutId="hovered" className={cn("absolute inset-0 h-full w-full rounded-full", isDark ? "bg-white/15" : "bg-gray-100/80")} />
@@ -83,7 +83,7 @@ export const NavItems = ({ items, className, onItemClick, isDark }: { items: { n
 export const MobileNav = ({ children, className, visible, isDark }: { children: React.ReactNode; className?: string; visible?: boolean; isDark?: boolean }) => (
     <motion.div
         animate={{
-            backdropFilter: visible ? "blur(10px)" : "none",
+            backdropFilter: visible ? "blur(20px)" : "none",
             boxShadow: visible
                 ? "0 0 24px rgba(34,42,53,0.06),0 1px 1px rgba(0,0,0,0.05),0 0 0 1px rgba(34,42,53,0.04),0 0 4px rgba(34,42,53,0.08),0 16px 68px rgba(47,48,55,0.05),0 1px 0 rgba(255,255,255,0.1) inset"
                 : "none",
@@ -98,7 +98,7 @@ export const MobileNav = ({ children, className, visible, isDark }: { children: 
         transition={{ type: "spring", stiffness: 200, damping: 50 }}
         className={cn(
             "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent transition-colors duration-300 lg:hidden",
-            visible && (isDark ? "bg-black/95 border border-white/10" : "bg-white/95 border border-gray-200/30"),
+            visible && (isDark ? "bg-black/40 border border-white/20" : "bg-white/70 border border-white/50"),
             className
         )}
     >
@@ -163,7 +163,7 @@ export const NavbarButton = ({ href, as: Tag = "a", children, className, variant
             case "dark":
                 return "bg-black text-white shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]";
             case "gradient":
-                return "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]";
+                return "bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]";
             default:
                 return "";
         }

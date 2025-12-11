@@ -40,8 +40,8 @@ export function TeamSection({ isDark }: TeamSectionProps) {
     <section className="py-20 px-6 relative overflow-hidden">
       {/* Background decorative gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-gradient-to-r from-[#6c26f9]/10 to-[#d507fa]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-gradient-to-r from-[#d507fa]/10 to-[#0586fd]/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-gradient-to-r from-[#592355]/10 to-[#8a3c86]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-gradient-to-r from-[#8a3c86]/10 to-[#592355]/10 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto relative">
@@ -51,9 +51,9 @@ export function TeamSection({ isDark }: TeamSectionProps) {
             'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
             darkMode ? 'text-white' : 'text-gray-900'
           )}>
-            El Equipo{' '}
-            <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent">
-              Khannda
+            Nuestro{' '}
+            <span className="bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent">
+              Equipo
             </span>
           </h2>
           <p className={cn(
@@ -88,7 +88,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
           )}>
             <span className="text-sm md:text-base font-medium">
               ¿Listo para digitalizar tu negocio?{' '}
-              <span className="bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent font-semibold">
+              <span className="bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent font-semibold">
                 Conversemos
               </span>
             </span>

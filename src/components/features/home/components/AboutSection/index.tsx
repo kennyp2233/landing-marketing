@@ -16,9 +16,10 @@ export function AboutSection({ isDark }: AboutSectionProps) {
     const textMuted = isDark ? 'text-neutral-200' : 'text-gray-700';
 
     // Gradiente Orange para Light, Purple/Blue para Dark
-    const gradientText = isDark
-        ? "bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent"
-        : "bg-gradient-to-r from-orange-600 via-amber-600 to-orange-500 bg-clip-text text-transparent";
+    // Unified Gradient for Text
+    const gradientText = "bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent";
+
+    const iconGradient = "bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86]";
 
     return (
         <section className="py-20 px-6 relative overflow-hidden">
@@ -125,12 +126,12 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                             <div className="group relative">
                                                 <div className={cn(
                                                     "relative backdrop-blur-xl rounded-2xl p-4 shadow-xl border",
-                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/60 border-orange-100"
+                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/60 border-purple-100"
                                                 )}>
                                                     <div className="flex items-center space-x-4">
                                                         <div className={cn(
                                                             "relative w-10 h-10 rounded-lg flex items-center justify-center shadow-lg",
-                                                            isDark ? "bg-gradient-to-r from-[#6c26f9] to-[#6c26f9]" : "bg-gradient-to-r from-orange-500 to-orange-600"
+                                                            iconGradient
                                                         )}>
                                                             <span className="text-white font-bold text-lg">T</span>
                                                         </div>
@@ -145,12 +146,12 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                             <div className="group relative">
                                                 <div className={cn(
                                                     "relative backdrop-blur-xl rounded-2xl p-4 shadow-xl border",
-                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/60 border-orange-100"
+                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/60 border-purple-100"
                                                 )}>
                                                     <div className="flex items-center space-x-4">
                                                         <div className={cn(
                                                             "relative w-10 h-10 rounded-lg flex items-center justify-center shadow-lg",
-                                                            isDark ? "bg-gradient-to-r from-[#d507fa] to-[#d507fa]" : "bg-gradient-to-r from-amber-500 to-amber-600"
+                                                            iconGradient
                                                         )}>
                                                             <span className="text-white font-bold text-lg">R</span>
                                                         </div>
@@ -165,12 +166,12 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                                             <div className="group relative">
                                                 <div className={cn(
                                                     "relative backdrop-blur-xl rounded-2xl p-4 shadow-xl border",
-                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/60 border-orange-100"
+                                                    isDark ? "bg-white/5 border-white/10" : "bg-white/60 border-purple-100"
                                                 )}>
                                                     <div className="flex items-center space-x-4">
                                                         <div className={cn(
                                                             "relative w-10 h-10 rounded-lg flex items-center justify-center shadow-lg",
-                                                            isDark ? "bg-gradient-to-r from-[#0586fd] to-[#0586fd]" : "bg-gradient-to-r from-orange-400 to-orange-500"
+                                                            isDark ? "bg-gradient-to-r from-[#592355] to-[#8a3c86]" : "bg-gradient-to-r from-[#592355] to-[#8a3c86]"
                                                         )}>
                                                             <span className="text-white font-bold text-lg">C</span>
                                                         </div>

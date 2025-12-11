@@ -32,7 +32,7 @@ const Stars = ({ isDark, ...props }: { isDark: boolean } & any) => {
     });
 
     // Color de las estrellas según el tema
-    const starColor = isDark ? "#d507fa" : "#9333ea"; // Magenta en dark, púrpura más oscuro en light
+    const starColor = "#8a3c86"; // Logo purple for both modes
 
     return (
         <group rotation={[0, 0, Math.PI / 4]}>

@@ -18,14 +18,14 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
                 "rounded-2xl h-full w-full p-4 overflow-hidden border relative z-20 flex flex-col transition-all duration-300",
                 isDark
                     ? "bg-gray-900/80 border-white/[0.1] group-hover:border-slate-600"
-                    : "bg-white border-orange-100/80 hover:border-orange-200 hover:shadow-xl shadow-md",
-                plan.highlight && (isDark ? "ring-2 ring-purple-500/50" : "ring-1 ring-orange-400/30")
+                    : "bg-white border-purple-100/80 hover:border-purple-200 hover:shadow-xl shadow-md",
+                plan.highlight && (isDark ? "ring-2 ring-purple-500/50" : "ring-1 ring-purple-400/30")
             )}
         >
             {plan.highlight && (
                 <div className={cn(
                     "absolute -top-3 left-1/2 transform -translate-x-1/2 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-lg",
-                    isDark ? "bg-purple-600" : "bg-orange-500"
+                    "bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86]"
                 )}>
                     Más Popular
                 </div>
@@ -37,8 +37,8 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
                         <span className={cn(
                             "text-sm font-semibold mb-3 inline-block",
                             plan.highlight
-                                ? cn("px-3 py-1 rounded-full text-white", isDark ? "bg-purple-600" : "bg-orange-500")
-                                : cn("uppercase tracking-wider py-1 font-bold", isDark ? "text-purple-400" : "text-orange-600")
+                                ? cn("px-3 py-1 rounded-full text-white", "bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86]")
+                                : cn("uppercase tracking-wider py-1 font-bold bg-clip-text text-transparent bg-gradient-to-r", "from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86]")
                         )}>
                             {plan.tier}
                         </span>
@@ -66,7 +66,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
                             )}>
                                 <Check className={cn(
                                     "w-4 h-4 mr-3 flex-shrink-0 mt-0.5",
-                                    isDark ? "text-purple-500" : "text-orange-500"
+                                    isDark ? "text-[#8a3c86]" : "text-[#592355]"
                                 )} />
                                 {feature}
                             </li>

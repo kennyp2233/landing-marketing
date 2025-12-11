@@ -8,15 +8,20 @@ import { FloatingElement, FloatingLogo, FloatingText } from './FloatingElements'
 const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => {
     // Paths optimizados para offset-path CSS - más suaves y naturales
     // Path principal: curva orgánica centrada (desplazada más arriba)
-    // Paths optimizados para offset-path CSS - separados verticalmente para evitar superposiciones
-    // Path principal: Zona Superior-Media (y: 50 -> 250)
-    const primaryPath = "M-100,250 C300,50 600,250 900,100 C1200,-50 1500,200 1900,100";
+    // Fibonacci Harmony Implementation
+    // Vertical Zones based on Golden Ratio (Canvas ~600px):
+    // Zone 1 (Top): ~144px (Fib 12)
+    // Zone 2 (Mid): ~233px (Fib 13)
+    // Zone 3 (Bottom): ~377px (Fib 14)
 
-    // Path secundario: Zona Inferior (y: 400 -> 600)
-    const secondaryPath = "M-100,550 C200,450 500,600 800,500 C1100,400 1400,600 1900,500";
+    // Path Principal (Mid-High): Fluid curve centered ~200px
+    const primaryPath = "M-100,200 Q950,50 2000,200";
 
-    // Path terciario: Fondo lejano (y: variable, más plano)
-    const tertiaryPath = "M-100,150 C400,100 800,200 1200,100 C1600,0 2000,150 2400,100";
+    // Path Secundario (Bottom): Gently opposing curve centered ~450px
+    const secondaryPath = "M-100,450 Q950,600 2000,450";
+
+    // Path Terciario (Top/Background): Flatter curve for depth centered ~100px
+    const tertiaryPath = "M-100,100 Q1000,150 2100,100";
 
     return (
         <div className="relative min-h-screen overflow-hidden">
@@ -25,7 +30,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                 {/* Marquee principal con elementos principales */}
                 <MarqueeAlongPath
                     path={primaryPath}
-                    baseVelocity={5}
+                    baseVelocity={5} // Fibonacci 5
                     repeat={3}
                     isDark={isDark}
                     zIndexBase={10}
@@ -45,7 +50,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                 {/* Marquee secundario con elementos complementarios */}
                 <MarqueeAlongPath
                     path={secondaryPath}
-                    baseVelocity={-5}
+                    baseVelocity={-3} // Fibonacci 3 (Reverse)
                     repeat={2}
                     isDark={isDark}
                     zIndexBase={20}
@@ -63,7 +68,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                 {/* Marquee terciario muy sutil */}
                 <MarqueeAlongPath
                     path={tertiaryPath}
-                    baseVelocity={8}
+                    baseVelocity={8} // Fibonacci 8
                     repeat={2}
                     isDark={isDark}
                     zIndexBase={5}
@@ -84,7 +89,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                         style={{
                             background: isDark
                                 ? 'radial-gradient(circle, rgba(108,38,249,0.6) 0%, rgba(168,85,247,0.35) 40%, transparent 70%)'
-                                : 'radial-gradient(circle, rgba(249,115,22,0.45) 0%, rgba(251,146,60,0.25) 40%, transparent 70%)'
+                                : 'radial-gradient(circle, rgba(138,60,134,0.45) 0%, rgba(168,85,247,0.25) 40%, transparent 70%)'
                         }}
                     />
                 </div>
@@ -96,7 +101,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                         style={{
                             background: isDark
                                 ? 'radial-gradient(circle, rgba(213,7,250,0.55) 0%, rgba(108,38,249,0.3) 40%, transparent 70%)'
-                                : 'radial-gradient(circle, rgba(251,146,60,0.45) 0%, rgba(249,115,22,0.25) 40%, transparent 70%)'
+                                : 'radial-gradient(circle, rgba(168,85,247,0.45) 0%, rgba(138,60,134,0.25) 40%, transparent 70%)'
                         }}
                     />
                 </div>
@@ -108,7 +113,7 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                         style={{
                             background: isDark
                                 ? 'radial-gradient(circle, rgba(168,85,247,0.5) 0%, transparent 60%)'
-                                : 'radial-gradient(circle, rgba(249,115,22,0.35) 0%, transparent 60%)'
+                                : 'radial-gradient(circle, rgba(138,60,134,0.35) 0%, transparent 60%)'
                         }}
                     />
                 </div>
@@ -124,9 +129,9 @@ const HeroBackground: React.FC<HeroBackgroundProps> = ({ isDark, children }) => 
                                 radial-gradient(ellipse 400px 500px at 50% 50%, rgba(168,85,247,0.08) 0%, transparent 50%)
                             `
                             : `
-                                radial-gradient(ellipse 800px 600px at 20% 30%, rgba(249,115,22,0.08) 0%, transparent 50%),
-                                radial-gradient(ellipse 600px 800px at 80% 70%, rgba(251,146,60,0.06) 0%, transparent 50%),
-                                radial-gradient(ellipse 400px 500px at 50% 50%, rgba(249,115,22,0.05) 0%, transparent 50%)
+                                radial-gradient(ellipse 800px 600px at 20% 30%, rgba(138,60,134,0.08) 0%, transparent 50%),
+                                radial-gradient(ellipse 600px 800px at 80% 70%, rgba(168,85,247,0.06) 0%, transparent 50%),
+                                radial-gradient(ellipse 400px 500px at 50% 50%, rgba(138,60,134,0.05) 0%, transparent 50%)
                             `
                     }}
                 />

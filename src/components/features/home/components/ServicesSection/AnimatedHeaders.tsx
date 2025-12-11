@@ -32,11 +32,11 @@ export const SkeletonDev = () => {
 
     // Simulate code lines typing in
     const lines = [
-        { width: "60%", color: isDark ? "bg-[#d507fa]" : "bg-orange-500" },
+        { width: "60%", color: isDark ? "bg-[#8a3c86]" : "bg-[#8a3c86]" },
         { width: "80%", color: isDark ? "bg-gray-700" : "bg-gray-300" },
-        { width: "40%", color: isDark ? "bg-[#0586fd]" : "bg-amber-500" },
+        { width: "40%", color: isDark ? "bg-[#8a3c86]" : "bg-[#8a3c86]" },
         { width: "70%", color: isDark ? "bg-gray-700" : "bg-gray-300" },
-        { width: "50%", color: isDark ? "bg-[#6c26f9]" : "bg-orange-600" },
+        { width: "50%", color: isDark ? "bg-[#592355]" : "bg-[#592355]" },
     ];
 
     const containerVars: Variants = {
@@ -102,7 +102,7 @@ export const SkeletonSecurity = () => {
                         key={i}
                         className={cn(
                             "absolute inset-0 rounded-full border",
-                            isDark ? "border-[#d507fa]/30" : "border-amber-500/30"
+                            isDark ? "border-[#8a3c86]/30" : "border-[#8a3c86]/30"
                         )}
                         style={{ width: 60, height: 60 }} // Base size matching icon
                         animate={{
@@ -123,8 +123,8 @@ export const SkeletonSecurity = () => {
                     className={cn(
                         "relative z-10 p-3 rounded-xl shadow-lg",
                         isDark
-                            ? "bg-gradient-to-br from-[#6c26f9] to-[#d507fa] text-white"
-                            : "bg-gradient-to-br from-orange-500 to-amber-500 text-white"
+                            ? "bg-gradient-to-br from-[#592355] to-[#8a3c86] text-white"
+                            : "bg-gradient-to-br from-[#592355] to-[#8a3c86] text-white"
                     )}
                     whileHover={{ scale: 1.1 }}
                 >
@@ -139,7 +139,7 @@ export const SkeletonSecurity = () => {
 export const SkeletonAutomation = () => {
     const { isDark } = useTheme();
 
-    const pathColor = isDark ? "#6c26f9" : "#f97316"; // Purple vs Orange
+    const pathColor = isDark ? "#592355" : "#712F6D"; // Purple vs Purple
 
     return (
         <SkeletonBase className="items-center justify-center">
@@ -188,7 +188,7 @@ const NodeIcon = ({ icon: Icon, isDark, delay, active }: any) => (
             isDark
                 ? "bg-gray-900 border-white/10 text-white"
                 : "bg-white border-gray-100 text-gray-700",
-            active && (isDark ? "border-[#0586fd] text-[#0586fd]" : "border-orange-500 text-orange-500")
+            active && (isDark ? "border-[#8a3c86] text-[#8a3c86]" : "border-[#8a3c86] text-[#8a3c86]")
         )}
         initial={{ scale: 0 }}
         whileInView={{ scale: 1 }}
@@ -220,8 +220,8 @@ export const SkeletonConsulting = () => {
                     className={cn(
                         "w-3 rounded-t-md",
                         isDark
-                            ? "bg-gradient-to-t from-[#6c26f9]/50 to-[#0586fd]"
-                            : "bg-gradient-to-t from-orange-200 to-orange-500"
+                            ? "bg-gradient-to-t from-[#592355]/50 to-[#8a3c86]"
+                            : "bg-gradient-to-t from-[#592355] to-[#8a3c86]"
                     )}
                     style={{ "--target-height": `${h}%` } as any}
                     variants={barVars}
@@ -237,7 +237,7 @@ export const SkeletonConsulting = () => {
                 animate={{ opacity: [0.5, 1, 0.5] }}
                 transition={{ duration: 2, repeat: Infinity }}
             >
-                <IconBulb className={isDark ? "text-yellow-400" : "text-amber-500"} size={20} />
+                <IconBulb className={isDark ? "text-yellow-400" : "text-[#8a3c86]"} size={20} />
             </motion.div>
         </SkeletonBase>
     );

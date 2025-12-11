@@ -22,18 +22,11 @@ const HeroContent: React.FC<HeroContentProps> = ({ isDark }) => {
                     Tu visión.
                 </h1>
                 <h2 className={cn(
-                    'text-3xl md:text-4xl lg:text-5xl font-bold mt-2 bg-gradient-to-r from-[#6c26f9] via-[#d507fa] to-[#0586fd] bg-clip-text text-transparent'
+                    'text-3xl md:text-4xl lg:text-5xl font-bold mt-2 bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] bg-clip-text text-transparent'
                 )}>
                     Nuestro Código.
                 </h2>
             </div>
-
-            <p className={cn(
-                'text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed',
-                isDark ? 'text-gray-300' : 'text-gray-600'
-            )}>
-                En <span className="font-bold text-white">Khannda</span>, no usamos plantillas. Creamos ecosistemas digitales robustos y a medida para empresas visionarias que buscan escalar sus operaciones con tecnología de vanguardia.
-            </p>
 
             <div className="flex gap-4">
                 <Button variant="primary" size="lg" className="text-lg px-8 py-4">

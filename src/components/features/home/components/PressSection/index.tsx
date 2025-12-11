@@ -75,17 +75,17 @@ const PressSection: React.FC<PressSectionProps> = ({
             {/* Decorative floating elements - adjusted opacity for dark mode */}
             <div className={cn(
                 "absolute top-10 left-10 w-2 h-2 rounded-full animate-bounce",
-                "bg-gradient-to-r from-[#6c26f9] to-[#d507fa]",
+                "bg-gradient-to-r from-[#592355] to-[#8a3c86]",
                 isDark ? "opacity-60" : "opacity-40"
             )} style={{ animationDelay: '0s' }} />
             <div className={cn(
                 "absolute top-20 right-20 w-1 h-1 rounded-full animate-bounce",
-                "bg-gradient-to-r from-[#d507fa] to-[#0586fd]",
+                "bg-gradient-to-r from-[#592355] to-[#8a3c86]",
                 isDark ? "opacity-50" : "opacity-30"
             )} style={{ animationDelay: '1s' }} />
             <div className={cn(
                 "absolute bottom-20 left-20 w-1.5 h-1.5 rounded-full animate-bounce",
-                "bg-gradient-to-r from-[#0586fd] to-[#6c26f9]",
+                "bg-gradient-to-r from-[#8a3c86] to-[#592355]",
                 isDark ? "opacity-55" : "opacity-35"
             )} style={{ animationDelay: '2s' }} />
 
@@ -94,13 +94,13 @@ const PressSection: React.FC<PressSectionProps> = ({
                 {/* Enhanced header with gradient effects */}
                 <div className="text-center mb-8 pb-2">
                     <div className="inline-flex items-center justify-center mb-6">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#6c26f9] to-[#d507fa] flex items-center justify-center mr-3">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#592355] to-[#8a3c86] flex items-center justify-center mr-3">
                             <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
                         </div>
                         <p className={cn(
-                            'text-xs font-bold tracking-widest uppercase bg-gradient-to-r from-[#6c26f9] to-[#d507fa] bg-clip-text text-transparent leading-relaxed pb-1',
+                            'text-xs font-bold tracking-widest uppercase bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent leading-relaxed pb-1',
                             'transform hover:scale-105 transition-transform duration-300'
                         )}>
                             TRUSTED BY
@@ -153,9 +153,9 @@ const PressSection: React.FC<PressSectionProps> = ({
                             : 'bg-white/70 border-white/30'
                     )}>
                         <div className="flex space-x-1">
-                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#6c26f9] to-[#d507fa] animate-pulse" />
-                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#d507fa] to-[#0586fd] animate-pulse" style={{ animationDelay: '0.5s' }} />
-                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#0586fd] to-[#6c26f9] animate-pulse" style={{ animationDelay: '1s' }} />
+                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#592355] to-[#8a3c86] animate-pulse" />
+                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#592355] to-[#8a3c86] animate-pulse" style={{ animationDelay: '0.5s' }} />
+                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#8a3c86] to-[#592355] animate-pulse" style={{ animationDelay: '1s' }} />
                         </div>
                         <span className={cn(
                             'text-xs font-semibold',
@@ -166,9 +166,9 @@ const PressSection: React.FC<PressSectionProps> = ({
                             Y muchas más empresas confían en nosotros
                         </span>
                         <div className="flex space-x-1">
-                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#6c26f9] to-[#d507fa] animate-pulse" style={{ animationDelay: '1.5s' }} />
-                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#d507fa] to-[#0586fd] animate-pulse" style={{ animationDelay: '2s' }} />
-                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#0586fd] to-[#6c26f9] animate-pulse" style={{ animationDelay: '2.5s' }} />
+                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#592355] to-[#8a3c86] animate-pulse" style={{ animationDelay: '1.5s' }} />
+                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#592355] to-[#8a3c86] animate-pulse" style={{ animationDelay: '2s' }} />
+                            <div className="w-2 h-2 rounded-full bg-gradient-to-r from-[#8a3c86] to-[#592355] animate-pulse" style={{ animationDelay: '2.5s' }} />
                         </div>
                     </div>
                 </div>
