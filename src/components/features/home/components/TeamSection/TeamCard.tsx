@@ -75,7 +75,7 @@ export function TeamCard({
           <div className={cn(
             "rounded-lg p-4 border transition-all duration-700 ease-out",
             isHovered
-              ? "bg-white/10 backdrop-blur-sm border-white/20"
+              ? "bg-white/10 backdrop-blur-sm border-white/10"
               : "bg-transparent backdrop-blur-none border-transparent"
           )}>
             <p className="text-white/90 text-sm leading-relaxed">

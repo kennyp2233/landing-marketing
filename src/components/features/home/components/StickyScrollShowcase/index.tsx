@@ -212,7 +212,7 @@ function ShowcaseCard({
                 'relative w-full max-w-md aspect-square rounded-3xl overflow-hidden',
                 'border backdrop-blur-xl',
                 isDark
-                    ? 'bg-white/5 border-white/10'
+                    ? 'bg-white/5 border-white/5'
                     : 'bg-white/80 border-gray-200/50 shadow-2xl'
             )}
             style={{

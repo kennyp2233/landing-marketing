@@ -17,7 +17,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
             className={cn(
                 "rounded-2xl h-full w-full p-4 overflow-hidden border relative z-20 flex flex-col transition-all duration-300",
                 isDark
-                    ? "bg-gray-900/80 border-white/[0.1] group-hover:border-slate-600"
+                    ? "bg-gray-900/80 border-white/[0.05] group-hover:border-slate-600"
                     : "bg-white border-purple-100/80 hover:border-purple-200 hover:shadow-xl shadow-md",
                 plan.highlight && (isDark ? "ring-2 ring-purple-500/50" : "ring-1 ring-purple-400/30")
             )}

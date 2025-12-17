@@ -36,11 +36,11 @@ export const BentoGridItem = ({
     features?: string[]; // Mantengo features por si se usa en otro lado, pero no en Services.
 }) => {
     const { isDark } = useTheme();
-    
+
     return (
         <div
             className={cn(
-                `group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border p-4 transition duration-200 hover:shadow-xl ${isDark ? 'border-white/[0.2] bg-black shadow-none' : 'border-neutral-200 bg-white'}`,
+                `group/bento shadow-input row-span-1 flex flex-col justify-between space-y-4 rounded-xl border p-4 transition duration-200 hover:shadow-xl ${isDark ? 'border-white/[0.1] bg-black shadow-none' : 'border-neutral-200 bg-white'}`,
                 className
             )}
         >

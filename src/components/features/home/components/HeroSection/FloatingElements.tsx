@@ -100,7 +100,7 @@ export const FloatingElement: React.FC<FloatingElementProps> = ({ isDark, varian
     };
 
     return (
-        <div className="inline-block mx-4 relative p-2 rounded-xl backdrop-blur-sm bg-white/5 border border-white/10 shadow-lg glow-effect">
+        <div className="inline-block mx-4 relative p-2 rounded-xl backdrop-blur-sm bg-white/5 border border-white/5 shadow-lg glow-effect">
             <style jsx>{`
                 .glow-effect {
                     box-shadow: 0 0 15px ${isDark ? 'rgba(168,85,247,0.3)' : 'rgba(138,60,134,0.3)'};
@@ -157,7 +157,7 @@ export const FloatingLogo: React.FC<FloatingLogoProps> = ({ isDark, size }) => {
                 <img
                     src={logoSrc}
                     alt="Logo"
-                    className="w-full h-full object-cover rounded-xl shadow-2xl border-2 border-white/20"
+                    className="w-full h-full object-cover rounded-xl shadow-2xl border-2 border-white/10"
                     style={{
                         boxShadow: isDark
                             ? '0 0 25px rgba(168,85,247,0.6)'

@@ -186,7 +186,7 @@ const NodeIcon = ({ icon: Icon, isDark, delay, active }: any) => (
         className={cn(
             "p-2 rounded-full border shadow-sm",
             isDark
-                ? "bg-gray-900 border-white/10 text-white"
+                ? "bg-gray-900 border-white/5 text-white"
                 : "bg-white border-gray-100 text-gray-700",
             active && (isDark ? "border-[#8a3c86] text-[#8a3c86]" : "border-[#8a3c86] text-[#8a3c86]")
         )}

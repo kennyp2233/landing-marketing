@@ -48,7 +48,7 @@ export const NavBody = ({ children, className, visible, isDark }: { children: Re
         style={{ minWidth: "1000px" }}
         className={cn(
             "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent transition-colors duration-300 lg:flex",
-            visible && (isDark ? "bg-black/30 border border-white/20 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)]" : "bg-white/60 border border-white/60 shadow-xl backdrop-blur-2xl"),
+            visible && (isDark ? "bg-black/30 border border-white/10 shadow-[0_8px_32px_0_rgba(255,255,255,0.05)]" : "bg-white/60 border border-white/60 shadow-xl backdrop-blur-2xl"),
             className
         )}
     >
@@ -104,7 +104,7 @@ export const MobileNav = ({ children, className, visible, isDark }: { children: 
         transition={{ type: "spring", stiffness: 200, damping: 50 }}
         className={cn(
             "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-transparent transition-colors duration-300 lg:hidden",
-            visible && (isDark ? "bg-black/40 border border-white/20" : "bg-white/70 border border-white/50"),
+            visible && (isDark ? "bg-black/40 border border-white/10" : "bg-white/70 border border-white/50"),
             className
         )}
     >
@@ -127,7 +127,7 @@ export const MobileNavMenu = ({ children, className, isOpen, isDark }: { childre
                 exit={{ opacity: 0 }}
                 className={cn(
                     "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg px-6 py-8 shadow-lg backdrop-blur-md",
-                    isDark ? "bg-black/98 border border-white/10" : "bg-white/98 border border-gray-200/30",
+                    isDark ? "bg-black/98 border border-white/5" : "bg-white/98 border border-gray-200/30",
                     className
                 )}
             >
