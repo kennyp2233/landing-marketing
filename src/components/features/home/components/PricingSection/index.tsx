@@ -7,6 +7,10 @@ import { PricingCard } from './PricingCard';
 import { PricingPlan } from './PricingSection.types';
 import { ScrollReveal } from '../../../../shared/ui';
 
+interface PricingSectionProps {
+    isDark?: boolean;
+}
+
 const pricingPlans: PricingPlan[] = [
     {
         name: "Sistematización Esencial",
@@ -39,67 +43,129 @@ const pricingPlans: PricingPlan[] = [
     }
 ];
 
-export const PricingSection: React.FC = () => {
-    const { isDark } = useTheme();
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+export const PricingSection: React.FC<PricingSectionProps> = ({ isDark }) => {
+    // Use prop content
+    const darkMode = isDark;
 
     return (
-        <section className="py-20 px-6 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto">
-                {/* Header with scroll reveal */}
+        <section className={cn(
+            "py-24 px-6 relative overflow-hidden transition-colors duration-300",
+            darkMode ? "bg-neutral-950" : "bg-neutral-50"
+        )}>
+            {/* Background Grid */}
+            <div className={cn(
+                "absolute inset-0 bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]",
+                darkMode
+                    ? "bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)]"
+                    : "bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)]"
+            )} />
+
+            <div className="max-w-7xl mx-auto relative z-10">
                 <ScrollReveal delay={0} direction="up">
                     <div className="text-center mb-16">
+                        <div className={cn("inline-block px-3 py-1 mb-4 rounded-full backdrop-blur-sm border",
+                            darkMode ? "bg-white/5 border-white/5" : "bg-black/5 border-black/5"
+                        )}>
+                            <span className="text-xs font-mono text-purple-300 uppercase tracking-widest">Investment</span>
+                        </div>
                         <h2 className={cn(
-                            'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
-                            isDark ? 'text-white' : 'text-gray-900'
+                            "text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 transition-colors",
+                            darkMode ? "text-white" : "text-black"
                         )}>
-                            Inversión{' '}
-                            <span className="bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent">
-                                Inteligente
-                            </span>
+                            Modelos de <span className="gradient-text font-bold">Colaboración</span>
                         </h2>
-                        <p className={cn(
-                            'text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed',
-                            isDark ? 'text-gray-300' : 'text-gray-600'
+                        <p className={cn("text-lg max-w-2xl mx-auto font-light leading-relaxed transition-colors",
+                            darkMode ? "text-neutral-400" : "text-neutral-600"
                         )}>
-                            Soluciones accesibles desde $500. Rentabiliza tu inversión automatizando lo que hoy te quita tiempo.
+                            Transparencia total. Sin costos ocultos.
                         </p>
                     </div>
                 </ScrollReveal>
 
-                {/* Pricing Cards with staggered reveals */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                    {pricingPlans.map((plan, idx) => (
-                        <ScrollReveal key={plan.name} delay={0.1 + idx * 0.15} direction={idx % 2 === 0 ? "right" : "left"}>
-                            <div
-                                className="relative group block p-2 h-full w-full"
-                                onMouseEnter={() => setHoveredIndex(idx)}
-                                onMouseLeave={() => setHoveredIndex(null)}
-                            >
-                                <AnimatePresence>
-                                    {hoveredIndex === idx && (
-                                        <motion.span
-                                            className={cn(
-                                                "absolute inset-0 h-full w-full block rounded-3xl",
-                                                isDark ? "bg-slate-800/[0.8]" : "bg-neutral-200"
-                                            )}
-                                            layoutId="hoverBackground"
-                                            initial={{ opacity: 0 }}
-                                            animate={{
-                                                opacity: 1,
-                                                transition: { duration: 0.15 },
-                                            }}
-                                            exit={{
-                                                opacity: 0,
-                                                transition: { duration: 0.15, delay: 0.2 },
-                                            }}
-                                        />
-                                    )}
-                                </AnimatePresence>
-                                <PricingCard plan={plan} />
+                    {/* Plan 1: Sistematización Esencial */}
+                    <ScrollReveal delay={0.1} direction="right">
+                        <div className={cn(
+                            "relative overflow-hidden rounded-2xl border transition-all duration-300 h-full p-8 flex flex-col group",
+                            darkMode
+                                ? "bg-neutral-900/40 border-white/5 hover:border-white/10 hover:bg-neutral-900/60"
+                                : "bg-white/40 border-black/5 hover:border-black/10 hover:bg-white/60"
+                        )}>
+                            <div className="mb-6">
+                                <h3 className={cn("text-xl font-bold mb-2 transition-colors", darkMode ? "text-white" : "text-black")}>Sistematización Esencial</h3>
+                                <p className={cn("text-sm h-10 transition-colors", darkMode ? "text-neutral-400" : "text-neutral-600")}>Ideal para validar productos o iniciar la transformación digital.</p>
                             </div>
-                        </ScrollReveal>
-                    ))}
+
+                            <div className={cn("my-6 pt-6 border-t", darkMode ? "border-white/5" : "border-black/5")}>
+                                <div className="flex items-baseline">
+                                    <span className={cn("text-3xl font-bold transition-colors", darkMode ? "text-white" : "text-black")}>Project-Based</span>
+                                </div>
+                                <p className="text-xs text-neutral-500 mt-1">Cotización por alcance definido</p>
+                            </div>
+
+                            <ul className="space-y-4 mb-8 flex-1">
+                                {["MVP en 4-6 semanas", "Diseño UI/UX Esencial", "Infraestructura Cloud Básica", "1 Mes de Soporte Post-Launch"].map((feat, i) => (
+                                    <li key={i} className={cn("flex items-start text-sm transition-colors", darkMode ? "text-neutral-300" : "text-neutral-600")}>
+                                        <div className="mr-3 mt-1 w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0" />
+                                        {feat}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <a href="#contact" className={cn(
+                                "w-full py-3 px-4 rounded-lg border text-sm font-medium transition-colors text-center block",
+                                darkMode
+                                    ? "bg-white/5 hover:bg-white/10 border-white/10 text-white"
+                                    : "bg-black/5 hover:bg-black/10 border-black/10 text-black"
+                            )}>
+                                Iniciar Conversación &rarr;
+                            </a>
+                        </div>
+                    </ScrollReveal>
+
+                    {/* Plan 2: Transformación Total */}
+                    <ScrollReveal delay={0.2} direction="left">
+                        <div className={cn(
+                            "relative overflow-hidden rounded-2xl border transition-all duration-300 h-full p-8 flex flex-col relative group",
+                            darkMode
+                                ? "bg-neutral-900/40 border-purple-500/30 hover:border-purple-500/50 hover:bg-neutral-900/60"
+                                : "bg-white/60 border-purple-500/20 hover:border-purple-500/40 hover:bg-white/80"
+                        )}>
+                            {/* Glowing effect for premium card */}
+                            <div className="absolute -inset-0.5 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+
+                            <div className="relative z-10 flex flex-col h-full">
+                                <div className="absolute top-0 right-0 px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full">
+                                    <span className="text-xs font-bold text-purple-300 uppercase tracking-wider">Enterprise</span>
+                                </div>
+
+                                <div className="mb-6">
+                                    <h3 className={cn("text-xl font-bold mb-2 transition-colors", darkMode ? "text-white" : "text-black")}>Transformación Total</h3>
+                                    <p className={cn("text-sm h-10 transition-colors", darkMode ? "text-neutral-400" : "text-neutral-600")}>Para empresas que requieren evolución continua y escalabilidad.</p>
+                                </div>
+
+                                <div className={cn("my-6 pt-6 border-t", darkMode ? "border-white/5" : "border-black/5")}>
+                                    <div className="flex items-baseline">
+                                        <span className={cn("text-3xl font-bold transition-colors", darkMode ? "text-white" : "text-black")}>Retainer / Partner</span>
+                                    </div>
+                                    <p className="text-xs text-neutral-500 mt-1">Equipo dedicado + Evolución continua</p>
+                                </div>
+
+                                <ul className="space-y-4 mb-8 flex-1">
+                                    {["Equipo de Ingeniería Dedicado", "Arquitectura Escalable & Microservicios", "Auditoría de Seguridad Continua", "SLA Garantizado 99.9%"].map((feat, i) => (
+                                        <li key={i} className={cn("flex items-start text-sm transition-colors", darkMode ? "text-neutral-300" : "text-neutral-600")}>
+                                            <div className="mr-3 mt-1 w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                                            {feat}
+                                        </li>
+                                    ))}
+                                </ul>
+
+                                <a href="#contact" className="w-full py-3 px-4 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium transition-colors text-center block shadow-[0_0_20px_rgba(168,85,247,0.3)]">
+                                    Agendar Consultoría &rarr;
+                                </a>
+                            </div>
+                        </div>
+                    </ScrollReveal>
                 </div>
             </div>
         </section>

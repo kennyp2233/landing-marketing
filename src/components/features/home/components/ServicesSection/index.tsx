@@ -3,11 +3,11 @@
 
 import React from 'react';
 import {
-    IconCode,
-    IconShieldLock,
-    IconRobot,
-    IconBulb
-} from '@tabler/icons-react';
+    Code2,
+    ShieldCheck,
+    Cpu,
+    Zap
+} from 'lucide-react';
 import { cn } from '../../../../../lib/utils';
 import { BentoGrid, BentoGridItem, ScrollReveal } from '../../../../shared/ui';
 import { SkeletonDev, SkeletonAutomation, SkeletonConsulting, SkeletonSecurity } from './AnimatedHeaders';
@@ -17,95 +17,87 @@ interface ServicesSectionProps {
     isDark?: boolean;
 }
 
-const ServicesSection: React.FC<ServicesSectionProps> = () => {
-    const { isDark } = useTheme();
+const ServicesSection: React.FC<ServicesSectionProps> = ({ isDark }) => {
+    // Use prop content
+    const darkMode = isDark;
 
     const services = [
         {
             title: "Desarrollo a Medida",
-            description: "Software diseñado específicamente para tus reglas de negocio. Ni más, ni menos.",
-            icon: <IconCode className={cn("h-4 w-4", isDark ? "text-[#592355]" : "text-[#592355]")} />,
+            description: "Arquitectura de software diseñada para escalar. Código limpio, modular y mantenible.",
+            icon: <Code2 className={cn("h-5 w-5", darkMode ? "text-purple-400" : "text-purple-600")} />,
             header: <SkeletonDev />,
-            features: [
-                "Sistemas de Gestión (ERP/CRM)",
-                "Plataformas Web Escalables",
-                "Arquitectura Cloud Segura"
-            ],
+            features: ["Microservicios", "APIs REST/GraphQL", "Cloud Native"],
             className: "md:col-span-1"
         },
         {
             title: "Alta Seguridad & Fintech",
-            description: "Arquitectura de software con estándares bancarios. Seguridad, transaccionalidad y manejo de datos críticos sin fallos.",
-            icon: <IconShieldLock className={cn("h-4 w-4", isDark ? "text-[#8a3c86]" : "text-[#712F6D]")} />,
+            description: "Infraestructura crítica con estándares bancarios. Protección de datos y transaccionalidad garantizada.",
+            icon: <ShieldCheck className={cn("h-5 w-5", darkMode ? "text-purple-400" : "text-purple-600")} />,
             header: <SkeletonSecurity />,
-            features: [
-                "Encriptación de Grado Militar",
-                "Integración con Pasarelas de Pago",
-                "Auditoría y Compliance"
-            ],
+            features: ["Encriptación E2E", "Compliance PCI-DSS", "Auditoría Continua"],
             className: "md:col-span-2"
         },
         {
             title: "Automatización Operativa",
-            description: "Digitalizamos el núcleo de tu negocio. Control de accesos, facturación y gestión de usuarios centralizada.",
-            icon: <IconRobot className={cn("h-4 w-4", isDark ? "text-[#8a3c86]" : "text-[#712F6D]")} />,
+            description: "Eliminamos el trabajo manual. Bots, scripts y flujos de trabajo inteligentes que trabajan 24/7.",
+            icon: <Cpu className={cn("h-5 w-5", darkMode ? "text-purple-400" : "text-purple-600")} />,
             header: <SkeletonAutomation />,
-            features: [
-                "Control Biométrico & IoT",
-                "Facturación Electrónica Automática",
-                "Gestión de Membresías/Suscripciones"
-            ],
+            features: ["RPA / Bots", "Integración de Sistemas", "Webhooks & Eventos"],
             className: "md:col-span-2"
         },
         {
             title: "Consultoría Tecnológica",
-            description: "Te ayudamos a elegir el stack tecnológico correcto para tu futuro.",
-            icon: <IconBulb className={cn("h-4 w-4", isDark ? "text-[#592355]" : "text-[#592355]")} />,
+            description: "Auditoría de deuda técnica y roadmap de modernización para empresas establecidas.",
+            icon: <Zap className={cn("h-5 w-5", darkMode ? "text-purple-400" : "text-purple-600")} />,
             header: <SkeletonConsulting />,
-            features: [
-                "Auditoría de Código",
-                "Transformación Digital",
-                "Optimización de Procesos"
-            ],
+            features: ["Code Reviews", "System Design", "Tech Stack Selection"],
             className: "md:col-span-1"
         }
     ];
 
-    const headerGradient = isDark
-        ? "bg-gradient-to-r from-[#592355] to-[#8a3c86] bg-clip-text text-transparent"
-        : "bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent";
-
     return (
-        <div className="py-20 px-6 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto">
-                {/* Header with scroll reveal */}
+        <div className={cn(
+            "py-24 px-6 relative overflow-hidden transition-colors duration-300",
+            darkMode ? "bg-neutral-950" : "bg-neutral-50"
+        )}>
+            {/* Background Grid */}
+            <div className={cn(
+                "absolute inset-0 bg-[size:24px_24px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]",
+                darkMode
+                    ? "bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)]"
+                    : "bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)]"
+            )} />
+
+            <div className="max-w-7xl mx-auto relative z-10">
+                {/* Header */}
                 <ScrollReveal delay={0} direction="up">
-                    <div className="text-center mb-16">
-                        <h2 className={cn(
-                            'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
-                            isDark ? 'text-white' : 'text-gray-900'
+                    <div className="text-center mb-20">
+                        <div className={cn("inline-block px-3 py-1 mb-4 rounded-full backdrop-blur-sm border",
+                            darkMode ? "bg-white/5 border-white/5" : "bg-black/5 border-black/5"
                         )}>
-                            Nuestros{' '}
-                            <span className={headerGradient}>
-                                Servicios
-                            </span>
+                            <span className="text-xs font-mono text-purple-300 uppercase tracking-widest">Capabilities</span>
+                        </div>
+                        <h2 className={cn("text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 transition-colors",
+                            darkMode ? "text-white" : "text-black"
+                        )}>
+                            Nuestros <span className="gradient-text font-bold">Servicios</span>
                         </h2>
-                        <p className={cn(
-                            'text-base md:text-lg max-w-3xl mx-auto mb-8 leading-relaxed',
-                            isDark ? 'text-gray-300' : 'text-gray-600'
+                        <p className={cn("text-lg max-w-2xl mx-auto font-light leading-relaxed transition-colors",
+                            darkMode ? "text-neutral-400" : "text-neutral-600"
                         )}>
-                            Soluciones completas de desarrollo que garantizan resultados medibles para tu negocio
+                            Ingeniería de software de primer nivel para resolver desafíos de negocio complejos.
                         </p>
                     </div>
                 </ScrollReveal>
 
-                {/* Services BentoGrid with staggered reveals */}
-                <BentoGrid className=" mx-auto md:auto-rows-[20rem] mb-4">
+                {/* Services BentoGrid */}
+                <BentoGrid className="mx-auto md:auto-rows-[22rem] mb-12">
                     {services.map((service, index) => (
                         <ScrollReveal
                             key={index}
                             delay={0.1 + index * 0.1}
-                            direction={index % 2 === 0 ? "right" : "left"}
+                            direction="up"
                             className={service.className}
                         >
                             <BentoGridItem
@@ -114,73 +106,41 @@ const ServicesSection: React.FC<ServicesSectionProps> = () => {
                                 header={service.header}
                                 icon={service.icon}
                                 features={service.features}
-                                className={cn("[&>p:text-lg]", "h-full")} // Ensure full height inside wrapper
+                                className={cn(
+                                    "h-full transition-colors",
+                                    darkMode
+                                        ? "bg-neutral-900/40 border-white/5 hover:border-white/10"
+                                        : "bg-white/40 border-black/5 hover:border-black/10",
+                                    service.className
+                                )}
                             />
                         </ScrollReveal>
                     ))}
                 </BentoGrid>
 
-                {/* Metrics cards with staggered reveals */}
-                <div className="grid md:grid-cols-3 gap-4">
-                    <ScrollReveal delay={0.2} direction="right">
-                        <div className={cn(
-                            "text-center p-6 rounded-xl border transition-all duration-300",
-                            isDark
-                                ? 'border-white/[0.08] bg-gray-900/20'
-                                : 'border-purple-100 bg-purple-50/50 shadow-sm'
-                        )}>
-                            <div className={cn(
-                                "text-2xl md:text-3xl font-bold mb-2",
-                                isDark ? "text-[#592355]" : "text-[#592355]"
-                            )}>+40%</div>
-                            <p className={cn(
-                                'text-sm md:text-base',
-                                isDark ? 'text-gray-300' : 'text-gray-600'
-                            )}>
-                                De ahorro en tiempo operativo automatizando tareas manuales
-                            </p>
-                        </div>
-                    </ScrollReveal>
-
-                    <ScrollReveal delay={0.3} direction="up">
-                        <div className={cn(
-                            "text-center p-6 rounded-xl border transition-all duration-300",
-                            isDark
-                                ? 'border-white/[0.08] bg-gray-900/20'
-                                : 'border-purple-100 bg-purple-50/50 shadow-sm'
-                        )}>
-                            <div className={cn(
-                                "text-2xl md:text-3xl font-bold mb-2",
-                                isDark ? "text-[#8a3c86]" : "text-[#8a3c86]"
-                            )}>4 Semanas</div>
-                            <p className={cn(
-                                'text-sm md:text-base',
-                                isDark ? 'text-gray-300' : 'text-gray-600'
-                            )}>
-                                Tiempo promedio para implementar tu primera versión funcional
-                            </p>
-                        </div>
-                    </ScrollReveal>
-
-                    <ScrollReveal delay={0.4} direction="left">
-                        <div className={cn(
-                            "text-center p-6 rounded-xl border transition-all duration-300",
-                            isDark
-                                ? 'border-white/[0.08] bg-gray-900/20'
-                                : 'border-purple-100 bg-purple-50/50 shadow-sm'
-                        )}>
-                            <div className={cn(
-                                "text-2xl md:text-3xl font-bold mb-2",
-                                isDark ? "text-[#8a3c86]" : "text-[#8a3c86]"
-                            )}>Desde $500</div>
-                            <p className={cn(
-                                'text-sm md:text-base',
-                                isDark ? 'text-gray-300' : 'text-gray-600'
-                            )}>
-                                Sistematización accesible para potenciar tu crecimiento
-                            </p>
-                        </div>
-                    </ScrollReveal>
+                {/* Metrics - Technical Style */}
+                <div className={cn("grid md:grid-cols-3 gap-6 border-t pt-12 transition-colors",
+                    darkMode ? "border-white/5" : "border-black/5"
+                )}>
+                    {[
+                        { val: "+40%", label: "Eficiencia Operativa", desc: "Reducción promedio de carga manual." },
+                        { val: "4 WKS", label: "Time-to-Market", desc: "Ciclos de desarrollo ágiles y rápidos." },
+                        { val: "100%", label: "Propiedad del Código", desc: "Entregamos repositorios completos." }
+                    ].map((metric, i) => (
+                        <ScrollReveal key={i} delay={0.3 + i * 0.1} direction="up">
+                            <div className="text-center p-6 group">
+                                <div className={cn("text-3xl md:text-4xl font-mono font-bold mb-2 group-hover:text-purple-400 transition-colors",
+                                    darkMode ? "text-white" : "text-black"
+                                )}>
+                                    {metric.val}
+                                </div>
+                                <div className={cn("text-sm font-bold uppercase tracking-wider mb-1 transition-colors",
+                                    darkMode ? "text-white" : "text-black"
+                                )}>{metric.label}</div>
+                                <p className={cn("text-sm transition-colors", darkMode ? "text-neutral-500" : "text-neutral-600")}>{metric.desc}</p>
+                            </div>
+                        </ScrollReveal>
+                    ))}
                 </div>
             </div>
         </div>

@@ -7,10 +7,13 @@
   --background: #ffffff;
   --foreground: #171717;
 
-  --color-primary: #ec4899;
-  /* rosa fuerte */
-  --color-secondary: #6366f1;
-  /* índigo */
+  /* Brand Colors - Standardized Purple Gradient */
+  --purple-start: #592355;
+  --purple-mid: #712F6D;
+  --purple-end: #8a3c86;
+
+  --color-primary: var(--purple-end);
+  --color-secondary: var(--purple-start);
 
   /* Priorizar HELVETICAWORLD / Helvetica World en toda la app */
   --font-sans: 'HELVETICAWORLD', 'Helvetica World', 'HelveticaWorld', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
@@ -18,7 +21,6 @@
 
   /* Soft border colors */
   --color-border: #e5e7eb;
-  /* gray-200 for light mode */
 }
 
 @theme inline {
@@ -30,15 +32,31 @@
 }
 
 /* =============================
-   🌙 Modo Oscuro automático
+   🌙 Modo Oscuro (System + Class)
+   ============================= */
+/* =============================
+   🌙 Modo Oscuro (System + Class)
    ============================= */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not(.light) {
     --background: #0a0a0a;
     --foreground: #ededed;
-    --color-border: #27272a;
-    /* zinc-800 for dark mode */
+    --color-border: #262626;
   }
+}
+
+/* Force dark mode when class is applied */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --color-border: #262626;
+}
+
+/* Force light mode when class is applied */
+.light {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-border: #e5e7eb;
 }
 
 /* =============================
@@ -79,14 +97,14 @@ body {
   */
 
   .gradient-text {
-    background-image: linear-gradient(to right, var(--color-secondary), var(--color-primary), #3b82f6);
+    background-image: linear-gradient(to right, var(--purple-start), var(--purple-mid), var(--purple-end));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .gradient-bg {
-    background-image: linear-gradient(to right, var(--color-secondary), var(--color-primary), #3b82f6);
+    background-image: linear-gradient(to right, var(--purple-start), var(--purple-mid), var(--purple-end));
   }
 }
 

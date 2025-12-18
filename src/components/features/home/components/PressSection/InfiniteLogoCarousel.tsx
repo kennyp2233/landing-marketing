@@ -8,11 +8,13 @@ import { useTheme } from '../../../../../providers/ThemeProvider';
 interface InfiniteLogoCarouselProps {
     logos: PressLogo[];
     config: LogoCarouselConfig;
+    className?: string;
 }
 
 const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
     logos,
-    config
+    config,
+    className
 }) => {
     const { isDark } = useTheme();
     const containerRef = useRef<HTMLDivElement>(null);
@@ -131,7 +133,7 @@ const InfiniteLogoCarousel: React.FC<InfiniteLogoCarouselProps> = ({
 
     return (
         <div
-            className="relative overflow-hidden"
+            className={cn("relative overflow-hidden", className)}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             ref={containerRef}

@@ -4,6 +4,7 @@ import React from 'react';
 export interface PressSectionProps {
     logos?: PressLogo[];
     carouselConfig?: LogoCarouselConfig;
+    isDark?: boolean;
 }
 
 export interface PressLogo {

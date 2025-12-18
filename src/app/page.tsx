@@ -12,25 +12,25 @@ export default function HomePage() {
 
   return (
     <div className={cn(
-      'min-h-screen transition-all duration-300',
-      isDark ? 'bg-black text-white' : 'bg-white text-gray-900'
+      'min-h-screen transition-all duration-300 bg-background text-foreground'
     )}>
       <Navbar
         isDark={isDark}
         onThemeToggle={toggleTheme}
       />
 
-      <div className="pt-20">
+      <div className="">
         <HeroSection isDark={isDark} />
 
         {/* TrustSection eliminada para reducir redundancia */}
-        <PressSection />
+        {/* TrustSection eliminada para reducir redundancia */}
+        <PressSection isDark={isDark} />
 
         <AboutSection isDark={isDark} />
 
-        <ServicesSection />
+        <ServicesSection isDark={isDark} />
 
-        <PricingSection />
+        <PricingSection isDark={isDark} />
 
         <TeamSection isDark={isDark} />
 

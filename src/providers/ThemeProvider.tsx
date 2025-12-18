@@ -21,40 +21,75 @@ interface ThemeProviderProps {
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     children,
-    defaultTheme = 'dark'
+    defaultTheme = 'system'
 }) => {
+    // 1. Initialize with defaultTheme so Server and Client 1st pass match
     const [theme, setTheme] = useState<Theme>(defaultTheme);
+    const [mounted, setMounted] = useState(false);
 
     const toggleTheme = () => {
-        setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+        setTheme(prev => {
+            const next = prev === 'dark' ? 'light' : 'dark';
+            // When toggling manually, we explicitly set light/dark and exit system mode logic temporarily if intended, 
+            // but for simple toggle:
+            return next;
+        });
     };
 
-    const isDark = theme === 'dark';
+    // Calculate effective dark mode based on theme state + system preference
+    // If theme is 'system', we need to check matchMedia
+    const getEffectiveTheme = (t: Theme) => {
+        if (t === 'system') {
+            if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light'; // default system light
+        }
+        return t;
+    };
 
-    // Persist theme preference
-    // Initialize theme from localStorage
+    // 2. Hydration Mismatch Fix: Only access window/localStorage AFTER mount
     useEffect(() => {
+        setMounted(true);
+
         const savedTheme = localStorage.getItem('glowup-theme') as Theme;
         if (savedTheme) {
             setTheme(savedTheme);
+        } else if (defaultTheme === 'system') {
+            // If nothing saved and default is system, we leave it as 'system' 
+            // and let the effective calculator handle the class
         }
-    }, []);
+    }, [defaultTheme]);
 
-    // Apply initial dark class based on state (in case default was used before mount effect runs)
-    // Actually, we can just rely on the second effect to sync everything.
-    // But to avoid flash, we might want to keep the class logic in the second effect only?
-    // The previous code had class application in both which is redundant.
-    // Let's simplify.
-
+    // 3. Sync DOM class whenever state changes (but only if mounted to avoid mismatches if needed, 
+    // though classes on html usually done via effect are fine)
     useEffect(() => {
+        if (!mounted) return;
+
         localStorage.setItem('glowup-theme', theme);
-        // Apply dark class to document
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
+
+        const effective = getEffectiveTheme(theme);
+        const root = document.documentElement;
+
+        // Remove both first to clear state
+        root.classList.remove('dark', 'light');
+
+        if (effective === 'dark') {
+            root.classList.add('dark');
         } else {
-            document.documentElement.classList.remove('dark');
+            root.classList.add('light');
         }
-    }, [theme]);
+    }, [theme, mounted]);
+
+    // Derived state for consumers
+    // Note: During SSR, 'system' might default to false or true depending on preference. 
+    // Usually usage of isDark in UI requires mounted check or suppressing hydration warning.
+    // We will return false (light) or defaultTheme logic for SSR safety.
+    const isDark = mounted ? getEffectiveTheme(theme) === 'dark' : (defaultTheme === 'dark');
+
+    // Prevent hydration mismatch for children using the context
+    // Optionally return null until mounted if the UI heavily depends on correct theme
+    // but that causes layout shift. Better to just let it update.
 
     return (
         <ThemeContext.Provider value={{ theme, toggleTheme, isDark }}>

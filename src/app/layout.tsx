@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <ThemeProvider defaultTheme="dark">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <LenisProvider>
             {children}
           </LenisProvider>

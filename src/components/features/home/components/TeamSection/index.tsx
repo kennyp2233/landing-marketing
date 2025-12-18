@@ -32,34 +32,44 @@ const teamMembers: TeamMember[] = [
 ];
 
 export function TeamSection({ isDark }: TeamSectionProps) {
-  const { isDark: themeIsDark } = useTheme();
-  const darkMode = isDark !== undefined ? isDark : themeIsDark;
+  // Use prop or context, but prop is passed from page
+  const darkMode = isDark;
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
 
   return (
-    <section className="py-20 px-6 relative overflow-hidden">
+    <section className={cn(
+      "py-24 px-6 relative overflow-hidden transition-colors duration-300",
+      darkMode ? "bg-neutral-950" : "bg-neutral-50"
+    )}>
+      {/* Background Grid */}
+      <div className={cn(
+        "absolute inset-0 bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]",
+        darkMode
+          ? "bg-[linear-gradient(to_right,#ffffff02_1px,transparent_1px),linear-gradient(to_bottom,#ffffff02_1px,transparent_1px)]"
+          : "bg-[linear-gradient(to_right,#00000005_1px,transparent_1px),linear-gradient(to_bottom,#00000005_1px,transparent_1px)]"
+      )} />
+
       {/* Background decorative gradients */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-gradient-to-r from-[#592355]/10 to-[#8a3c86]/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-gradient-to-r from-[#8a3c86]/10 to-[#592355]/10 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-purple-900/10 rounded-full blur-3xl opacity-50" />
+        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-purple-900/10 rounded-full blur-3xl opacity-50" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative">
+      <div className="max-w-7xl mx-auto relative relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
+          <div className={cn("inline-block px-3 py-1 mb-4 rounded-full backdrop-blur-sm border",
+            darkMode ? "bg-white/5 border-white/5" : "bg-black/5 border-black/5"
+          )}>
+            <span className="text-xs font-mono text-purple-300 uppercase tracking-widest">Leadership</span>
+          </div>
           <h2 className={cn(
-            'text-3xl md:text-4xl lg:text-5xl font-bold mb-6',
-            darkMode ? 'text-white' : 'text-gray-900'
+            'text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 transition-colors',
+            darkMode ? 'text-white' : 'text-black'
           )}>
-            Nuestro{' '}
-            <span className="bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent">
-              Equipo
-            </span>
+            Nuestro <span className="gradient-text font-bold">Equipo</span>
           </h2>
-          <p className={cn(
-            'text-lg md:text-xl max-w-3xl mx-auto leading-relaxed',
-            darkMode ? 'text-gray-300' : 'text-gray-600'
-          )}>
+          <p className={cn("text-lg max-w-2xl mx-auto font-light leading-relaxed transition-colors", darkMode ? "text-neutral-400" : "text-neutral-600")}>
             Empatía, técnica y pasión por resolver problemas reales con código.
           </p>
         </div>
@@ -81,7 +91,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
         {/* Bottom Call to Action */}
         <div className="text-center mt-16">
           <div className={cn(
-            'inline-flex items-center px-6 py-3 rounded-full backdrop-blur-sm border',
+            'inline-flex items-center px-6 py-3 rounded-full backdrop-blur-sm border transition-colors',
             darkMode
               ? 'bg-white/5 border-white/10 text-white/80'
               : 'bg-black/5 border-black/10 text-gray-700'
