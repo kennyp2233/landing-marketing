@@ -17,11 +17,15 @@ export const useTheme = () => {
 interface ThemeProviderProps {
     children: React.ReactNode;
     defaultTheme?: Theme;
+    attribute?: string;
+    enableSystem?: boolean;
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     children,
-    defaultTheme = 'system'
+    defaultTheme = 'system',
+    attribute,
+    enableSystem
 }) => {
     // 1. Initialize with defaultTheme so Server and Client 1st pass match
     const [theme, setTheme] = useState<Theme>(defaultTheme);
