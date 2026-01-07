@@ -13,7 +13,7 @@ const teamMembers: TeamMember[] = [
     name: 'Matías Villarreal',
     role: 'Gestión de Relaciones',
     description: 'El puente entre tu problema y nuestra solución. Matías se especializa en entender a fondo los dolores operativos de tu negocio para garantizar que el software que construimos sea exactamente lo que necesitas, con una empatía única en la industria.',
-    image: '/team/mati.png',
+    image: '/team/Mati.png',
   },
   {
     id: 'jose',
@@ -27,7 +27,7 @@ const teamMembers: TeamMember[] = [
     name: 'Kevin Cano',
     role: 'Innovación y Producto',
     description: 'Diseñador de experiencias funcionales. Yandry se asegura de que la complejidad del código se traduzca en interfaces simples e intuitivas. Su obsesión es que usar nuestro software sea más fácil que usar un cuaderno.',
-    image: '/team/yandry.png',
+    image: '/team/logo-khannda.png',
   }
 ];
 
