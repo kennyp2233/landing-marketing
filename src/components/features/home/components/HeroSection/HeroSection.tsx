@@ -10,9 +10,12 @@ import { HeroSectionProps } from './HeroSection.types';
 // Genesis Component - The central Logo Element
 const KhanndaLogoReveal = ({ progress, isDark }: { progress: any, isDark: boolean }) => {
     // Rotate and scale based on scroll
-    const scale = useTransform(progress, [0, 0.4, 0.6], [1, 1.2, 2]);
+    // Rotate and scale based on scroll - ZOOM EFFECT (Scale up to 15x)
+    const scale = useTransform(progress, [0, 0.4, 0.6], [1, 2, 15]);
+    // Opacity fades out as we zoom in
     const opacity = useTransform(progress, [0.4, 0.55], [1, 0]);
-    const blur = useTransform(progress, [0.3, 0.55], [0, 20]);
+    // Blur increases as we zoom in (motion blur effect)
+    const blur = useTransform(progress, [0.4, 0.55], [0, 20]);
 
     return (
         <motion.div

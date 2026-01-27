@@ -1,8 +1,7 @@
-// lib/constants/navigation.ts
 export const NAVIGATION_ITEMS = [
-    { id: 'services', label: 'Soluciones', href: '#servicios' },
-    { id: 'projects', label: 'Proyectos', href: '#casos' },
-    { id: 'tech', label: 'Tecnologías', href: '#tecnologia' },
+    { id: 'services', label: 'Soluciones', href: '/soluciones' },
+    { id: 'projects', label: 'Proyectos', href: '/proyectos' },
+    { id: 'tech', label: 'Tecnologías', href: '/tecnologia' },
 ] as const;
 
 export const BRAND_INFO = {
