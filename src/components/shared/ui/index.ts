@@ -6,6 +6,7 @@ export { default as WhatsAppFAB } from './WhatsAppFAB';
 export { default as ScrollReveal } from './ScrollReveal';
 export { WobbleCard } from './WobbleCard';
 export { BentoGrid, BentoGridItem } from './BentoGrid';
+export { AnimatedModal, SolutionModalContent } from './AnimatedModal';
 export type { ButtonProps } from './Button/Button.types';
 export type { LogoProps } from './Logo/Logo.types';
 export type { ThemeToggleProps } from './ThemeToggle/ThemeToggle.types';

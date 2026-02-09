@@ -16,7 +16,7 @@ export function SolutionsTabs() {
                     <div className="mt-4 text-base md:text-lg font-normal text-neutral-200/80 max-w-lg">
                         Conecta tus aplicaciones favoritas y automatiza tareas repetitivas. Flujos de trabajo inteligentes que ahorran horas de trabajo manual cada semana.
                     </div>
-                    <DummyContent />
+                    <TabImage src="/assets/images/n8n-flow.png" alt="Automatización n8n" />
                 </div>
             ),
         },
@@ -29,7 +29,7 @@ export function SolutionsTabs() {
                     <div className="mt-4 text-base md:text-lg font-normal text-neutral-200/80 max-w-lg">
                         Desarrollo de aplicaciones web y móviles personalizadas. Soluciones escalables construidas con las últimas tecnologías del mercado.
                     </div>
-                    <DummyContent />
+                    <TabImage src="/assets/images/team-development.png" alt="Equipo de desarrollo" />
                 </div>
             ),
         },
@@ -42,7 +42,7 @@ export function SolutionsTabs() {
                     <div className="mt-4 text-base md:text-lg font-normal text-neutral-200/80 max-w-lg">
                         Analizamos y digitalizamos tus operaciones comerciales. Transformamos procesos lentos en sistemas ágiles y eficientes.
                     </div>
-                    <DummyContent />
+                    <TabImage src="/assets/images/team-consulting.png" alt="Equipo de consultoría" />
                 </div>
             ),
         }
@@ -55,11 +55,11 @@ export function SolutionsTabs() {
     );
 }
 
-const DummyContent = () => {
+const TabImage = ({ src, alt }: { src: string; alt: string }) => {
     return (
         <Image
-            src="/linear.webp"
-            alt="dummy image"
+            src={src}
+            alt={alt}
             width={1000}
             height={1000}
             className="object-cover object-left-top h-[60%] md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto"

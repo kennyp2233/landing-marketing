@@ -27,7 +27,7 @@ const teamMembers: TeamMember[] = [
     name: 'Kevin Cano',
     role: 'Innovación y Producto',
     description: 'Diseñador de experiencias funcionales. Yandry se asegura de que la complejidad del código se traduzca en interfaces simples e intuitivas. Su obsesión es que usar nuestro software sea más fácil que usar un cuaderno.',
-    image: '/team/logo-khannda.png',
+    image: '/logo-khannda.png',
   }
 ];
 

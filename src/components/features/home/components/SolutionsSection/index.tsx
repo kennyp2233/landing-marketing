@@ -3,7 +3,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
-import { Zap } from 'lucide-react';
 import { SolutionsCards } from './SolutionsCards';
 
 interface SolutionsSectionProps {
@@ -14,7 +13,7 @@ interface SolutionsSectionProps {
 
 export function SolutionsSection({ isDark }: SolutionsSectionProps) {
     return (
-        <section id="servicios" className={cn("py-32 relative overflow-hidden transition-colors duration-300", isDark ? "bg-neutral-950" : "bg-neutral-50")}>
+        <section id="servicios" className={cn("min-h-screen pt-24 pb-8 relative overflow-hidden transition-colors duration-300 bg-background flex flex-col")}>
 
             {/* Background Decorations */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -22,20 +21,9 @@ export function SolutionsSection({ isDark }: SolutionsSectionProps) {
                 <div className={cn("absolute -bottom-[20%] -left-[10%] w-[500px] h-[500px] rounded-full blur-[100px] opacity-20", isDark ? "bg-blue-900" : "bg-blue-200")} />
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className={cn(
-                            "inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium mb-6 border",
-                            isDark ? "bg-white/5 border-white/10 text-purple-300" : "bg-purple-50 border-purple-100 text-purple-700"
-                        )}
-                    >
-                        <Zap size={14} />
-                        <span className="tracking-widest uppercase">Soluciones Integrales</span>
-                    </motion.div>
+            <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+                <div className="text-center max-w-3xl mx-auto mb-8">
+
 
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -44,7 +32,7 @@ export function SolutionsSection({ isDark }: SolutionsSectionProps) {
                         transition={{ delay: 0.1 }}
                         className={cn("text-4xl md:text-5xl font-bold tracking-tight mb-6", isDark ? "text-white" : "text-neutral-900")}
                     >
-                        Tecnología que <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">Impulsa</span> tu Negocio
+                        Tecnología que <span className="gradient-text">Impulsa</span> tu Negocio
                     </motion.h2>
 
                     <motion.p

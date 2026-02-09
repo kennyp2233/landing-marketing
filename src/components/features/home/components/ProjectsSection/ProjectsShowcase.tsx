@@ -7,57 +7,57 @@ import { cn } from "@/lib/utils";
 export function ProjectsShowcase() {
     const tabs = [
         {
-            title: "Cooperativa Terán",
+            title: "Cooperativa César Terán",
             value: "finance",
             content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-blue-900 to-slate-900 border border-white/20">
-                    <p>Cooperativa Digital</p>
-                    <div className="mt-4 text-base md:text-lg font-normal text-neutral-200/80 max-w-lg">
-                        Plataforma integral para gestión financiera. Módulos de contabilidad, gestión de socios y banca en línea.
-                    </div>
-                    <DummyContent />
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 text-xl md:text-3xl font-bold text-white bg-neutral-900/60 backdrop-blur-md border border-white/10 shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/10 pointer-events-none" />
+                    <p className="relative z-10 mb-2">Cooperativa Terán</p>
+                    <VideoContent />
                 </div>
             ),
         },
         {
-            title: "Gym Tulcán",
+            title: "Gym CT Tulcán",
             value: "fitness",
             content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-indigo-900 to-purple-900 border border-white/20">
-                    <p>Gym Master Pro</p>
-                    <div className="mt-4 text-base md:text-lg font-normal text-neutral-200/80 max-w-lg">
-                        Software de gestión para gimnasios. Control de acceso, membresías, facturación y seguimiento de clientes.
-                    </div>
-                    <DummyContent />
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 text-xl md:text-3xl font-bold text-white bg-neutral-900/60 backdrop-blur-md border border-white/10 shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-transparent to-indigo-500/10 pointer-events-none" />
+                    <p className="relative z-10 mb-2">Gym Tulcán</p>
+                    <VideoContent />
                 </div>
             ),
         },
         {
-            title: "E-Commerce",
+            title: "KSZ Fútbol Club",
             value: "retail",
             content: (
-                <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-emerald-900 to-teal-900 border border-white/20">
-                    <p>Retail & E-Commerce</p>
-                    <div className="mt-4 text-base md:text-lg font-normal text-neutral-200/80 max-w-lg">
-                        Soluciones de comercio electrónico escalables con integración de pagos y gestión de inventario en tiempo real.
-                    </div>
-                    <DummyContent />
+                <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 text-xl md:text-3xl font-bold text-white bg-neutral-900/60 backdrop-blur-md border border-white/10 shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 via-transparent to-emerald-500/10 pointer-events-none" />
+                    <p className="relative z-10 mb-2">E-Commerce</p>
+                    <VideoContent />
                 </div>
             ),
         }
     ];
 
     return (
-        <div className="h-[25rem] md:h-[40rem] [perspective:1000px] relative b flex flex-col max-w-5xl mx-auto w-full items-start justify-start my-12">
+        <div className="h-[22rem] md:h-[34rem] [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-start">
             <Tabs tabs={tabs} />
         </div>
     );
 }
 
-const DummyContent = () => {
+const VideoContent = () => {
     return (
-        <div className="object-cover object-left-top h-[60%] md:h-[90%] absolute -bottom-10 inset-x-0 w-[90%] rounded-xl mx-auto bg-black/50 backdrop-blur-sm border border-white/10 flex items-center justify-center">
-            <p className="text-white/50 text-basic font-medium">Video Demo Placeholder</p>
+        <div className="absolute top-20 bottom-4 inset-x-0 w-[94%] rounded-xl mx-auto overflow-hidden border border-white/10 shadow-inner bg-black/40 z-20">
+            <iframe
+                src="https://www.youtube.com/embed/v5Tq4UY8-08"
+                title="Project Demo"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="w-full h-full"
+            />
         </div>
     );
 };

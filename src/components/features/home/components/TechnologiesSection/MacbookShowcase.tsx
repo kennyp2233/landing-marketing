@@ -6,11 +6,11 @@ import { cn } from "@/lib/utils";
 
 export function MacbookShowcase() {
     return (
-        <div className="w-full overflow-hidden bg-white dark:bg-[#0B0B0F]">
+        <div className="w-full overflow-hidden bg-background">
             <MacbookScroll
                 title={
                     <span className="text-4xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200">
-                        Arsenal <span className="text-blue-500">Tecnológico</span>
+                        Arsenal <span className="gradient-text">Tecnológico</span>
                     </span>
                 }
                 badge={

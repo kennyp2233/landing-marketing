@@ -71,7 +71,7 @@ export const CardContainer = ({
         <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
             <div
                 className={cn(
-                    "py-20 flex items-center justify-center",
+                    "py-4 flex items-center justify-center",
                     containerClassName
                 )}
                 style={{
@@ -120,7 +120,6 @@ export const CardBody = ({
 };
 
 export const CardItem = ({
-    as: Tag = "div",
     children,
     className,
     translateX = 0,
@@ -129,9 +128,7 @@ export const CardItem = ({
     rotateX = 0,
     rotateY = 0,
     rotateZ = 0,
-    ...rest
 }: {
-    as?: React.ElementType;
     children: React.ReactNode;
     className?: string;
     translateX?: number | string;
@@ -140,13 +137,13 @@ export const CardItem = ({
     rotateX?: number | string;
     rotateY?: number | string;
     rotateZ?: number | string;
-    [key: string]: any;
 }) => {
     const ref = useRef<HTMLDivElement>(null);
     const [isMouseEntered] = useMouseEnter();
 
     useEffect(() => {
         handleAnimations();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isMouseEntered]);
 
     const handleAnimations = () => {
@@ -159,13 +156,12 @@ export const CardItem = ({
     };
 
     return (
-        <Tag
+        <div
             ref={ref}
             className={cn("w-fit transition duration-200 ease-out", className)}
-            {...rest}
         >
             {children}
-        </Tag>
+        </div>
     );
 };
 

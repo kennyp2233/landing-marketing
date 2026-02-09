@@ -12,8 +12,7 @@ export default function TecnologiaPage() {
 
     return (
         <div className={cn(
-            'min-h-screen transition-all duration-300 bg-background text-foreground',
-            isDark ? 'bg-black' : 'bg-neutral-50'
+            'min-h-screen transition-all duration-300 bg-background text-foreground'
         )}>
             <Navbar
                 isDark={isDark}

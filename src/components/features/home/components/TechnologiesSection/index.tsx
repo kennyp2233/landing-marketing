@@ -14,7 +14,7 @@ interface TechnologiesSectionProps {
 
 export function TechnologiesSection({ isDark }: TechnologiesSectionProps) {
     return (
-        <section id="tecnologia" className={cn("relative overflow-hidden transition-colors duration-300", isDark ? "bg-black" : "bg-neutral-50")}>
+        <section id="tecnologia" className={cn("relative overflow-hidden transition-colors duration-300 bg-background")}>
             <div className="w-full">
                 <MacbookShowcase />
                 <div className="-mt-[50vh] relative z-10">

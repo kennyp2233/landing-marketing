@@ -1,6 +1,7 @@
 // components/shared/layout/Navbar/index.tsx
 "use client";
 import React, { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import {
     Navbar as ResizableNavbar,
@@ -23,6 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({
 }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const pathname = usePathname();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -39,11 +41,17 @@ const Navbar: React.FC<NavbarProps> = ({
         link: item.href,
     }));
 
+    // Check if a nav item is active
+    const isActiveLink = (link: string) => {
+        if (link === '/') return pathname === '/';
+        return pathname.startsWith(link);
+    };
+
     return (
         <React.Fragment>
             {/* 1. Floating Logo - Top Left - Always Visible & Fixed */}
             <div className={cn("fixed top-6 left-6 z-50", isDark ? "mix-blend-difference" : "")}>
-                <a href="#" className="flex items-center space-x-3 group">
+                <a href="/" className="flex items-center space-x-3 group">
                     <div className="h-10 w-auto relative transition-transform group-hover:scale-110 duration-300">
                         <Image
                             src="/logo-khannda.png"
@@ -80,20 +88,27 @@ const Navbar: React.FC<NavbarProps> = ({
                         : "bg-transparent border-transparent shadow-none",
                     "hover:bg-neutral-900/80 dark:hover:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-900/80" // Adjust hover states
                 )}>
-                    {navItems.map((item, idx) => (
-                        <a
-                            key={idx}
-                            href={item.link}
-                            className={cn(
-                                "px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300",
-                                isDark
-                                    ? "text-neutral-400 hover:text-white hover:bg-white/10"
-                                    : "text-neutral-600 hover:text-black hover:bg-black/5"
-                            )}
-                        >
-                            {item.name}
-                        </a>
-                    ))}
+                    {navItems.map((item, idx) => {
+                        const isActive = isActiveLink(item.link);
+                        return (
+                            <a
+                                key={idx}
+                                href={item.link}
+                                className={cn(
+                                    "px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300",
+                                    isActive
+                                        ? isDark
+                                            ? "text-purple-400 bg-purple-500/10"
+                                            : "text-purple-600 bg-purple-500/10"
+                                        : isDark
+                                            ? "text-neutral-400 hover:text-white hover:bg-white/10"
+                                            : "text-neutral-600 hover:text-black hover:bg-black/5"
+                                )}
+                            >
+                                {item.name}
+                            </a>
+                        );
+                    })}
 
                     {/* Dividers & Actions */}
                     <div className={cn("w-px h-5 mx-2", isDark ? "bg-white/10" : "bg-black/10")} />
@@ -154,19 +169,26 @@ const Navbar: React.FC<NavbarProps> = ({
                 isDark={isDark}
             >
                 <div className="flex flex-col items-center justify-center space-y-8 mt-12">
-                    {navItems.map((item, idx) => (
-                        <a
-                            key={idx}
-                            href={item.link}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className={cn(
-                                "text-2xl font-light tracking-widest transition-colors",
-                                isDark ? "text-white hover:text-purple-400" : "text-black hover:text-purple-600"
-                            )}
-                        >
-                            {item.name}
-                        </a>
-                    ))}
+                    {navItems.map((item, idx) => {
+                        const isActive = isActiveLink(item.link);
+                        return (
+                            <a
+                                key={idx}
+                                href={item.link}
+                                onClick={() => setIsMobileMenuOpen(false)}
+                                className={cn(
+                                    "text-2xl font-light tracking-widest transition-colors",
+                                    isActive
+                                        ? "text-purple-400 border-b-2 border-purple-400 pb-1"
+                                        : isDark
+                                            ? "text-white hover:text-purple-400"
+                                            : "text-black hover:text-purple-600"
+                                )}
+                            >
+                                {item.name}
+                            </a>
+                        );
+                    })}
                     <button className={cn(
                         "mt-8 px-8 py-3 rounded-full font-bold transition-colors",
                         isDark ? "bg-white text-black hover:bg-neutral-200" : "bg-black text-white hover:bg-neutral-800"

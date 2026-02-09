@@ -12,8 +12,7 @@ export default function SolucionesPage() {
 
     return (
         <div className={cn(
-            'min-h-screen transition-all duration-300 bg-background text-foreground',
-            isDark ? 'bg-neutral-950' : 'bg-neutral-50'
+            'min-h-screen transition-all duration-300 bg-background text-foreground'
         )}>
             <Navbar
                 isDark={isDark}

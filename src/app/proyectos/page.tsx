@@ -12,8 +12,7 @@ export default function ProyectosPage() {
 
     return (
         <div className={cn(
-            'min-h-screen transition-all duration-300 bg-background text-foreground',
-            isDark ? 'bg-neutral-900' : 'bg-white'
+            'min-h-screen transition-all duration-300 bg-background text-foreground'
         )}>
             <Navbar
                 isDark={isDark}

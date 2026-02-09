@@ -45,7 +45,7 @@ const TechItem = ({ label, value, icon: Icon }: { label: string, value: string, 
 
 export const TechDetailSection = () => {
     return (
-        <div className="w-full bg-black min-h-screen relative z-20 pt-20 pb-32 px-6">
+        <div className="w-full bg-background min-h-screen relative z-20 pt-20 pb-32 px-6">
             <div className="max-w-7xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
