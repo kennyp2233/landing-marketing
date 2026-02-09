@@ -6,6 +6,7 @@ import { useTheme } from '../../../../../providers/ThemeProvider';
 import { PricingCard } from './PricingCard';
 import { PricingPlan } from './PricingSection.types';
 import { ScrollReveal } from '../../../../shared/ui';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 interface PricingSectionProps {
     isDark?: boolean;
@@ -44,8 +45,8 @@ const pricingPlans: PricingPlan[] = [
 ];
 
 export const PricingSection: React.FC<PricingSectionProps> = ({ isDark }) => {
-    // Use prop content
     const darkMode = isDark;
+    const { t } = useLanguage();
 
     return (
         <section className={cn(
@@ -66,18 +67,21 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ isDark }) => {
                         <div className={cn("inline-block px-3 py-1 mb-4 rounded-full backdrop-blur-sm border",
                             darkMode ? "bg-white/5 border-white/5" : "bg-black/5 border-black/5"
                         )}>
-                            <span className="text-xs font-mono text-purple-300 uppercase tracking-widest">Investment</span>
+                            <span className={cn(
+                                "text-xs font-mono uppercase tracking-widest",
+                                darkMode ? "text-purple-300" : "text-purple-600"
+                            )}>{t.pricing.badge}</span>
                         </div>
                         <h2 className={cn(
                             "text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 transition-colors",
                             darkMode ? "text-white" : "text-black"
                         )}>
-                            Modelos de <span className="gradient-text font-bold">Colaboración</span>
+                            {t.pricing.title} <span className="gradient-text font-bold">{t.pricing.titleHighlight}</span>
                         </h2>
                         <p className={cn("text-lg max-w-2xl mx-auto font-light leading-relaxed transition-colors",
                             darkMode ? "text-neutral-400" : "text-neutral-600"
                         )}>
-                            Transparencia total. Sin costos ocultos.
+                            {t.pricing.subtitle}
                         </p>
                     </div>
                 </ScrollReveal>
@@ -92,19 +96,19 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ isDark }) => {
                                 : "bg-white/40 border-black/5 hover:border-black/10 hover:bg-white/60"
                         )}>
                             <div className="mb-6">
-                                <h3 className={cn("text-xl font-bold mb-2 transition-colors", darkMode ? "text-white" : "text-black")}>Sistematización Esencial</h3>
-                                <p className={cn("text-sm h-10 transition-colors", darkMode ? "text-neutral-400" : "text-neutral-600")}>Ideal para validar productos o iniciar la transformación digital.</p>
+                                <h3 className={cn("text-xl font-bold mb-2 transition-colors", darkMode ? "text-white" : "text-black")}>{t.pricing.plans.essential.name}</h3>
+                                <p className={cn("text-sm h-10 transition-colors", darkMode ? "text-neutral-400" : "text-neutral-600")}>{t.pricing.plans.essential.description}</p>
                             </div>
 
                             <div className={cn("my-6 pt-6 border-t", darkMode ? "border-white/5" : "border-black/5")}>
                                 <div className="flex items-baseline">
-                                    <span className={cn("text-3xl font-bold transition-colors", darkMode ? "text-white" : "text-black")}>Project-Based</span>
+                                    <span className={cn("text-3xl font-bold transition-colors", darkMode ? "text-white" : "text-black")}>{t.pricing.plans.essential.pricing}</span>
                                 </div>
-                                <p className="text-xs text-neutral-500 mt-1">Cotización por alcance definido</p>
+                                <p className="text-xs text-neutral-500 mt-1">{t.pricing.plans.essential.pricingNote}</p>
                             </div>
 
                             <ul className="space-y-4 mb-8 flex-1">
-                                {["MVP en 4-6 semanas", "Diseño UI/UX Esencial", "Infraestructura Cloud Básica", "1 Mes de Soporte Post-Launch"].map((feat, i) => (
+                                {t.pricing.plans.essential.features.map((feat: string, i: number) => (
                                     <li key={i} className={cn("flex items-start text-sm transition-colors", darkMode ? "text-neutral-300" : "text-neutral-600")}>
                                         <div className="mr-3 mt-1 w-1.5 h-1.5 rounded-full bg-purple-500 shrink-0" />
                                         {feat}
@@ -118,7 +122,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ isDark }) => {
                                     ? "bg-white/5 hover:bg-white/10 border-white/10 text-white"
                                     : "bg-black/5 hover:bg-black/10 border-black/10 text-black"
                             )}>
-                                Iniciar Conversación &rarr;
+                                {t.pricing.plans.essential.cta} &rarr;
                             </a>
                         </div>
                     </ScrollReveal>
@@ -136,23 +140,23 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ isDark }) => {
 
                             <div className="relative z-10 flex flex-col h-full">
                                 <div className="absolute top-0 right-0 px-3 py-1 bg-purple-500/20 border border-purple-500/30 rounded-full">
-                                    <span className="text-xs font-bold text-purple-300 uppercase tracking-wider">Enterprise</span>
+                                    <span className="text-xs font-bold text-purple-300 uppercase tracking-wider">{t.pricing.plans.enterprise.tier}</span>
                                 </div>
 
                                 <div className="mb-6">
-                                    <h3 className={cn("text-xl font-bold mb-2 transition-colors", darkMode ? "text-white" : "text-black")}>Transformación Total</h3>
-                                    <p className={cn("text-sm h-10 transition-colors", darkMode ? "text-neutral-400" : "text-neutral-600")}>Para empresas que requieren evolución continua y escalabilidad.</p>
+                                    <h3 className={cn("text-xl font-bold mb-2 transition-colors", darkMode ? "text-white" : "text-black")}>{t.pricing.plans.enterprise.name}</h3>
+                                    <p className={cn("text-sm h-10 transition-colors", darkMode ? "text-neutral-400" : "text-neutral-600")}>{t.pricing.plans.enterprise.description}</p>
                                 </div>
 
                                 <div className={cn("my-6 pt-6 border-t", darkMode ? "border-white/5" : "border-black/5")}>
                                     <div className="flex items-baseline">
-                                        <span className={cn("text-3xl font-bold transition-colors", darkMode ? "text-white" : "text-black")}>Retainer / Partner</span>
+                                        <span className={cn("text-3xl font-bold transition-colors", darkMode ? "text-white" : "text-black")}>{t.pricing.plans.enterprise.pricing}</span>
                                     </div>
-                                    <p className="text-xs text-neutral-500 mt-1">Equipo dedicado + Evolución continua</p>
+                                    <p className="text-xs text-neutral-500 mt-1">{t.pricing.plans.enterprise.pricingNote}</p>
                                 </div>
 
                                 <ul className="space-y-4 mb-8 flex-1">
-                                    {["Equipo de Ingeniería Dedicado", "Arquitectura Escalable & Microservicios", "Auditoría de Seguridad Continua", "SLA Garantizado 99.9%"].map((feat, i) => (
+                                    {t.pricing.plans.enterprise.features.map((feat: string, i: number) => (
                                         <li key={i} className={cn("flex items-start text-sm transition-colors", darkMode ? "text-neutral-300" : "text-neutral-600")}>
                                             <div className="mr-3 mt-1 w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                                             {feat}
@@ -161,7 +165,7 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ isDark }) => {
                                 </ul>
 
                                 <a href="#contact" className="w-full py-3 px-4 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium transition-colors text-center block shadow-[0_0_20px_rgba(168,85,247,0.3)]">
-                                    Agendar Consultoría &rarr;
+                                    {t.pricing.plans.enterprise.cta} &rarr;
                                 </a>
                             </div>
                         </div>

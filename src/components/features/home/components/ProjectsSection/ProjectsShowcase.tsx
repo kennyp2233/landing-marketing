@@ -3,38 +3,41 @@
 import React from "react";
 import { Tabs } from "../../../../../components/shared/ui/tabs";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 export function ProjectsShowcase() {
+    const { t } = useLanguage();
+
     const tabs = [
         {
-            title: "Cooperativa César Terán",
+            title: t.projects.showcase.finance.title,
             value: "finance",
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 text-xl md:text-3xl font-bold text-white bg-neutral-900/60 backdrop-blur-md border border-white/10 shadow-2xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-500/20 via-transparent to-blue-500/10 pointer-events-none" />
-                    <p className="relative z-10 mb-2">Cooperativa Terán</p>
+                    <p className="relative z-10 mb-2">{t.projects.showcase.finance.type}</p>
                     <VideoContent />
                 </div>
             ),
         },
         {
-            title: "Gym CT Tulcán",
+            title: t.projects.showcase.fitness.title,
             value: "fitness",
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 text-xl md:text-3xl font-bold text-white bg-neutral-900/60 backdrop-blur-md border border-white/10 shadow-2xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 via-transparent to-indigo-500/10 pointer-events-none" />
-                    <p className="relative z-10 mb-2">Gym Tulcán</p>
+                    <p className="relative z-10 mb-2">{t.projects.showcase.fitness.type}</p>
                     <VideoContent />
                 </div>
             ),
         },
         {
-            title: "KSZ Fútbol Club USA",
+            title: t.projects.showcase.retail.title,
             value: "retail",
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 text-xl md:text-3xl font-bold text-white bg-neutral-900/60 backdrop-blur-md border border-white/10 shadow-2xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 via-transparent to-emerald-500/10 pointer-events-none" />
-                    <p className="relative z-10 mb-2">E-Commerce</p>
+                    <p className="relative z-10 mb-2">{t.projects.showcase.retail.type}</p>
                     <VideoContent />
                 </div>
             ),

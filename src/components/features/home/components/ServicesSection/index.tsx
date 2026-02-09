@@ -11,49 +11,55 @@ import {
 import { cn } from '../../../../../lib/utils';
 import { BentoGrid, BentoGridItem, ScrollReveal } from '../../../../shared/ui';
 import { SkeletonDev, SkeletonAutomation, SkeletonConsulting, SkeletonSecurity } from './AnimatedHeaders';
-import { useTheme } from '@/providers/ThemeProvider';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 interface ServicesSectionProps {
     isDark?: boolean;
 }
 
 const ServicesSection: React.FC<ServicesSectionProps> = ({ isDark }) => {
-    // Use prop content
     const darkMode = isDark;
+    const { t } = useLanguage();
 
     const services = [
         {
-            title: "Desarrollo a Medida",
-            description: "Arquitectura de software diseñada para escalar. Código limpio, modular y mantenible.",
+            title: t.services.items.development.title,
+            description: t.services.items.development.description,
             icon: <Code2 className={cn("h-5 w-5", darkMode ? "text-purple-400" : "text-purple-600")} />,
             header: <SkeletonDev />,
-            features: ["Microservicios", "APIs REST/GraphQL", "Cloud Native"],
+            features: t.services.items.development.features,
             className: "md:col-span-1"
         },
         {
-            title: "Alta Seguridad & Fintech",
-            description: "Infraestructura crítica con estándares bancarios. Protección de datos y transaccionalidad garantizada.",
+            title: t.services.items.security.title,
+            description: t.services.items.security.description,
             icon: <ShieldCheck className={cn("h-5 w-5", darkMode ? "text-purple-400" : "text-purple-600")} />,
             header: <SkeletonSecurity />,
-            features: ["Encriptación E2E", "Compliance PCI-DSS", "Auditoría Continua"],
+            features: t.services.items.security.features,
             className: "md:col-span-2"
         },
         {
-            title: "Automatización Operativa",
-            description: "Eliminamos el trabajo manual. Bots, scripts y flujos de trabajo inteligentes que trabajan 24/7.",
+            title: t.services.items.automation.title,
+            description: t.services.items.automation.description,
             icon: <Cpu className={cn("h-5 w-5", darkMode ? "text-purple-400" : "text-purple-600")} />,
             header: <SkeletonAutomation />,
-            features: ["RPA / Bots", "Integración de Sistemas", "Webhooks & Eventos"],
+            features: t.services.items.automation.features,
             className: "md:col-span-2"
         },
         {
-            title: "Consultoría Tecnológica",
-            description: "Auditoría de deuda técnica y roadmap de modernización para empresas establecidas.",
+            title: t.services.items.consulting.title,
+            description: t.services.items.consulting.description,
             icon: <Zap className={cn("h-5 w-5", darkMode ? "text-purple-400" : "text-purple-600")} />,
             header: <SkeletonConsulting />,
-            features: ["Code Reviews", "System Design", "Tech Stack Selection"],
+            features: t.services.items.consulting.features,
             className: "md:col-span-1"
         }
+    ];
+
+    const metrics = [
+        { val: t.services.metrics.efficiency.value, label: t.services.metrics.efficiency.label, desc: t.services.metrics.efficiency.desc },
+        { val: t.services.metrics.timeToMarket.value, label: t.services.metrics.timeToMarket.label, desc: t.services.metrics.timeToMarket.desc },
+        { val: t.services.metrics.ownership.value, label: t.services.metrics.ownership.label, desc: t.services.metrics.ownership.desc }
     ];
 
     return (
@@ -76,17 +82,17 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ isDark }) => {
                         <div className={cn("inline-block px-3 py-1 mb-4 rounded-full backdrop-blur-sm border",
                             darkMode ? "bg-white/5 border-white/5" : "bg-black/5 border-black/5"
                         )}>
-                            <span className="text-xs font-mono text-purple-300 uppercase tracking-widest">Capabilities</span>
+                            <span className="text-xs font-mono text-purple-300 uppercase tracking-widest">{t.services.badge}</span>
                         </div>
                         <h2 className={cn("text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 transition-colors",
                             darkMode ? "text-white" : "text-black"
                         )}>
-                            Nuestros <span className="gradient-text font-bold">Servicios</span>
+                            {t.services.title} <span className="gradient-text font-bold">{t.services.titleHighlight}</span>
                         </h2>
                         <p className={cn("text-lg max-w-2xl mx-auto font-light leading-relaxed transition-colors",
                             darkMode ? "text-neutral-400" : "text-neutral-600"
                         )}>
-                            Ingeniería de software de primer nivel para resolver desafíos de negocio complejos.
+                            {t.services.subtitle}
                         </p>
                     </div>
                 </ScrollReveal>
@@ -122,11 +128,7 @@ const ServicesSection: React.FC<ServicesSectionProps> = ({ isDark }) => {
                 <div className={cn("grid md:grid-cols-3 gap-6 border-t pt-12 transition-colors",
                     darkMode ? "border-white/5" : "border-black/5"
                 )}>
-                    {[
-                        { val: "+40%", label: "Eficiencia Operativa", desc: "Reducción promedio de carga manual." },
-                        { val: "4 WKS", label: "Time-to-Market", desc: "Ciclos de desarrollo ágiles y rápidos." },
-                        { val: "100%", label: "Propiedad del Código", desc: "Entregamos repositorios completos." }
-                    ].map((metric, i) => (
+                    {metrics.map((metric, i) => (
                         <ScrollReveal key={i} delay={0.3 + i * 0.1} direction="up">
                             <div className="text-center p-6 group">
                                 <div className={cn("text-3xl md:text-4xl font-mono font-bold mb-2 group-hover:text-purple-400 transition-colors",

@@ -4,45 +4,48 @@ import React from "react";
 import { Tabs } from "../../../../../components/shared/ui/tabs";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 export function SolutionsTabs() {
+    const { t } = useLanguage();
+
     const tabs = [
         {
-            title: "Automatización",
+            title: t.solutions.topics.automation.title,
             value: "automation",
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-blue-700 to-cyan-900 border border-white/20">
-                    <p>Automatización con n8n</p>
+                    <p>{t.solutions.topics.automation.cardTitle}</p>
                     <div className="mt-4 text-base md:text-lg font-normal text-neutral-200/80 max-w-lg">
-                        Conecta tus aplicaciones favoritas y automatiza tareas repetitivas. Flujos de trabajo inteligentes que ahorran horas de trabajo manual cada semana.
+                        {t.solutions.topics.automation.description}
                     </div>
-                    <TabImage src="/assets/images/n8n-flow.png" alt="Automatización n8n" />
+                    <TabImage src="/assets/images/n8n-flow.png" alt={t.solutions.topics.automation.cardTitle} />
                 </div>
             ),
         },
         {
-            title: "Desarrollo",
+            title: t.solutions.topics.development.title,
             value: "development",
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-purple-700 to-violet-900 border border-white/20">
-                    <p>Software a la Medida</p>
+                    <p>{t.solutions.topics.development.cardTitle}</p>
                     <div className="mt-4 text-base md:text-lg font-normal text-neutral-200/80 max-w-lg">
-                        Desarrollo de aplicaciones web y móviles personalizadas. Soluciones escalables construidas con las últimas tecnologías del mercado.
+                        {t.solutions.topics.development.description}
                     </div>
-                    <TabImage src="/assets/images/team-development.png" alt="Equipo de desarrollo" />
+                    <TabImage src="/assets/images/team-development.png" alt={t.solutions.topics.development.cardTitle} />
                 </div>
             ),
         },
         {
-            title: "Consultoría",
+            title: t.solutions.topics.consulting.title,
             value: "consulting",
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-10 text-xl md:text-4xl font-bold text-white bg-gradient-to-br from-emerald-700 to-green-900 border border-white/20">
-                    <p>Optimización de Procesos</p>
+                    <p>{t.solutions.topics.consulting.cardTitle}</p>
                     <div className="mt-4 text-base md:text-lg font-normal text-neutral-200/80 max-w-lg">
-                        Analizamos y digitalizamos tus operaciones comerciales. Transformamos procesos lentos en sistemas ágiles y eficientes.
+                        {t.solutions.topics.consulting.description}
                     </div>
-                    <TabImage src="/assets/images/team-consulting.png" alt="Equipo de consultoría" />
+                    <TabImage src="/assets/images/team-consulting.png" alt={t.solutions.topics.consulting.cardTitle} />
                 </div>
             ),
         }

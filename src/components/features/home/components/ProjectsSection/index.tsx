@@ -9,7 +9,11 @@ interface ProjectsSectionProps {
     isDark: boolean;
 }
 
+import { useLanguage } from '@/providers/LanguageProvider';
+
 export function ProjectsSection({ isDark }: ProjectsSectionProps) {
+    const { t } = useLanguage();
+
     return (
         <section id="casos" className={cn("min-h-screen pt-24 pb-8 relative overflow-hidden transition-colors duration-300 bg-background flex flex-col")}>
 
@@ -28,7 +32,7 @@ export function ProjectsSection({ isDark }: ProjectsSectionProps) {
                         transition={{ delay: 0.1 }}
                         className={cn("text-4xl md:text-5xl font-bold tracking-tight mb-6", isDark ? "text-white" : "text-neutral-900")}
                     >
-                        Casos de <span className="gradient-text">Éxito</span>
+                        {t.projects.title} <span className="gradient-text">{t.projects.titleHighlight}</span>
                     </motion.h2>
 
                     <motion.p
@@ -38,7 +42,7 @@ export function ProjectsSection({ isDark }: ProjectsSectionProps) {
                         transition={{ delay: 0.2 }}
                         className={cn("text-lg", isDark ? "text-neutral-400" : "text-neutral-600")}
                     >
-                        Descubre cómo hemos transformado negocios con soluciones tecnológicas a medida.
+                        {t.projects.subtitle}
                     </motion.p>
                 </div>
 

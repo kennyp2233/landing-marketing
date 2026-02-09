@@ -69,14 +69,14 @@ export const MacbookScroll = ({
     return (
         <div
             ref={ref}
-            className="min-h-[200vh]  flex flex-col items-center py-0 md:py-80 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
+            className="min-h-[200vh]  flex flex-col items-center py-0 md:py-8 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
         >
             <motion.h2
                 style={{
                     translateY: textTransform,
                     opacity: textOpacity,
                 }}
-                className="dark:text-white text-neutral-800 text-3xl font-bold mb-20 text-center"
+                className="dark:text-white text-neutral-800 text-3xl font-bold mb-8 text-center"
             >
                 {title || (
                     <span>
@@ -115,7 +115,7 @@ export const MacbookScroll = ({
                     </div>
                 </div>
                 <Trackpad />
-                <div className="h-2 w-20 mx-auto bg-gradient-to-t from-[#272729] to-[#050505] rounded-b-3xl" />
+                <div className="h-4 w-full mx-auto bg-gradient-to-b from-gray-200 dark:from-[#272729] to-gray-300 dark:to-[#1a1a1b] rounded-b-2xl" />
             </motion.div>
         </div >
     );
@@ -327,26 +327,27 @@ export const Keypad = () => {
 
             {/* Row 6 */}
             <div className="flex justify-between items-center w-full h-8 mb-1">
-                <KbdBtn className="w-[3.2rem] text-[10px] text-left pl-1">fn</KbdBtn>
-                <KbdBtn className="w-[3.2rem] text-[10px] text-left pl-1">control</KbdBtn>
-                <KbdBtn className="w-[3.4rem] text-[10px] text-right pr-1">option</KbdBtn>
-                <KbdBtn className="w-[4.2rem] text-[10px] text-right pr-1">command</KbdBtn>
-                <KbdBtn className="w-[10.4rem]"></KbdBtn>
-                <KbdBtn className="w-[4.2rem] text-[10px] text-left pl-1">command</KbdBtn>
-                <KbdBtn className="w-[3.4rem] text-[10px] text-left pl-1">option</KbdBtn>
-                <div className="w-[4.9rem] mt-[2px] h-6 p-[0.5px] rounded-[4px] flex flex-col justify-end items-center">
-                    <KbdBtn className="w-6 h-3">
-                        <IconCaretUpFilled className="h-[6px] w-[6px]" />
+                <KbdBtn className="w-8 text-[8px]">fn</KbdBtn>
+                <KbdBtn className="w-8 text-[8px]">⌃</KbdBtn>
+                <KbdBtn className="w-8 text-[8px]">⌥</KbdBtn>
+                <KbdBtn className="w-10 text-[8px]">⌘</KbdBtn>
+                <KbdBtn className="w-[8rem]"></KbdBtn>
+                <KbdBtn className="w-10 text-[8px]">⌘</KbdBtn>
+                <KbdBtn className="w-8 text-[8px]">⌥</KbdBtn>
+                {/* Arrow keys cluster - T-shaped layout */}
+                <div className="flex flex-col items-center w-[4.5rem]">
+                    <KbdBtn className="w-5 h-[10px] mb-[1px]">
+                        <IconCaretUpFilled className="h-[5px] w-[5px]" />
                     </KbdBtn>
-                    <div className="flex">
-                        <KbdBtn className="w-6 h-3">
-                            <IconCaretRightFilled className="h-[6px] w-[6px] -rotate-180" />
+                    <div className="flex gap-[1px]">
+                        <KbdBtn className="w-5 h-[10px]">
+                            <IconCaretRightFilled className="h-[5px] w-[5px] rotate-180" />
                         </KbdBtn>
-                        <KbdBtn className="w-6 h-3">
-                            <IconChevronUp className="h-[6px] w-[6px] rotate-180" />
+                        <KbdBtn className="w-5 h-[10px]">
+                            <IconChevronUp className="h-[5px] w-[5px] rotate-180" />
                         </KbdBtn>
-                        <KbdBtn className="w-6 h-3">
-                            <IconCaretRightFilled className="h-[6px] w-[6px]" />
+                        <KbdBtn className="w-5 h-[10px]">
+                            <IconCaretRightFilled className="h-[5px] w-[5px]" />
                         </KbdBtn>
                     </div>
                 </div>

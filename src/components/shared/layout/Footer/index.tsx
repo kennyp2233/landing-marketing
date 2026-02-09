@@ -1,7 +1,10 @@
 // components/shared/layout/Footer/index.tsx
+'use client';
+
 import React from 'react';
 import { cn } from '../../../../lib/utils';
 import { Logo } from '../../ui';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 interface FooterProps {
     isDark: boolean;
@@ -9,6 +12,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ isDark }) => {
     const currentYear = new Date().getFullYear();
+    const { t } = useLanguage();
 
     return (
         <footer className={cn(
@@ -47,35 +51,35 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
                             </span>
                         </div>
                         <p className={cn("text-sm leading-relaxed transition-colors", isDark ? "text-neutral-500" : "text-neutral-600")}>
-                            Arquitectura digital invisible para empresas que escalan.
+                            {t.footer.tagline}
                         </p>
                     </div>
 
                     {/* Columns */}
                     <div>
-                        <h4 className={cn("font-bold mb-4 transition-colors", isDark ? "text-white" : "text-black")}>Servicios</h4>
-                        <ul className={cn("space-y-2 text-sm", isDark ? "text-neutral-500" : "text-neutral-600")}>
-                            <li><a href="#" className="hover:text-purple-400 transition-colors">Desarrollo a Medida</a></li>
-                            <li><a href="#" className="hover:text-purple-400 transition-colors">Automatización</a></li>
-                            <li><a href="#" className="hover:text-purple-400 transition-colors">Consultoría Cloud</a></li>
+                        <h4 className={cn("font-bold mb-4 transition-colors", isDark ? "text-white" : "text-black")}>{t.footer.services.title}</h4>
+                        <ul className={cn("space-y-2 text-sm", isDark ? "text-neutral-400" : "text-neutral-700")}>
+                            <li><a href="/soluciones" className="hover:text-purple-400 transition-colors">{t.footer.services.development}</a></li>
+                            <li><a href="/soluciones" className="hover:text-purple-400 transition-colors">{t.footer.services.automation}</a></li>
+                            <li><a href="/soluciones" className="hover:text-purple-400 transition-colors">{t.footer.services.consulting}</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className={cn("font-bold mb-4 transition-colors", isDark ? "text-white" : "text-black")}>Compañía</h4>
-                        <ul className={cn("space-y-2 text-sm", isDark ? "text-neutral-500" : "text-neutral-600")}>
-                            <li><a href="#" className="hover:text-purple-400 transition-colors">Sobre Nosotros</a></li>
-                            <li><a href="#" className="hover:text-purple-400 transition-colors">Carreras</a></li>
-                            <li><a href="#" className="hover:text-purple-400 transition-colors">Partners</a></li>
+                        <h4 className={cn("font-bold mb-4 transition-colors", isDark ? "text-white" : "text-black")}>{t.footer.company.title}</h4>
+                        <ul className={cn("space-y-2 text-sm", isDark ? "text-neutral-400" : "text-neutral-700")}>
+                            <li><a href="/" className="hover:text-purple-400 transition-colors">{t.footer.company.about}</a></li>
+                            <li><a href="/" className="hover:text-purple-400 transition-colors">{t.footer.company.careers}</a></li>
+                            <li><a href="/" className="hover:text-purple-400 transition-colors">{t.footer.company.partners}</a></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className={cn("font-bold mb-4 transition-colors", isDark ? "text-white" : "text-black")}>Legal</h4>
-                        <ul className={cn("space-y-2 text-sm", isDark ? "text-neutral-500" : "text-neutral-600")}>
-                            <li><a href="#" className="hover:text-purple-400 transition-colors">Términos de Servicio</a></li>
-                            <li><a href="#" className="hover:text-purple-400 transition-colors">Privacidad</a></li>
-                            <li><a href="#" className="hover:text-purple-400 transition-colors">Status</a></li>
+                        <h4 className={cn("font-bold mb-4 transition-colors", isDark ? "text-white" : "text-black")}>{t.footer.legal.title}</h4>
+                        <ul className={cn("space-y-2 text-sm", isDark ? "text-neutral-400" : "text-neutral-700")}>
+                            <li><a href="/" className="hover:text-purple-400 transition-colors">{t.footer.legal.terms}</a></li>
+                            <li><a href="/" className="hover:text-purple-400 transition-colors">{t.footer.legal.privacy}</a></li>
+                            <li><a href="/" className="hover:text-purple-400 transition-colors">{t.footer.legal.status}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -85,12 +89,12 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
                     isDark ? "border-white/5" : "border-black/5"
                 )}>
                     <p className={cn("text-sm transition-colors", isDark ? "text-neutral-600" : "text-neutral-500")}>
-                        © {currentYear} KHANNDA. Todos los derechos reservados.
+                        © {currentYear} KHANNDA. {t.footer.copyright}
                     </p>
                     <div className="flex items-center space-x-6">
                         <div className="flex items-center space-x-2">
                             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                            <span className="text-xs font-mono text-neutral-500">SYSTEM NORMAL</span>
+                            <span className="text-xs font-mono text-neutral-500">{t.footer.systemStatus}</span>
                         </div>
                     </div>
                 </div>

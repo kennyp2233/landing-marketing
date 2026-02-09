@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useTheme } from '../../providers/ThemeProvider';
+import { useLanguage } from '../../providers/LanguageProvider';
 import { Navbar, Footer } from '../../components/shared/layout';
 import { TechnologiesSection } from '../../components/features/home';
 import { cn } from '../../lib/utils';
@@ -9,6 +10,7 @@ import { WhatsAppFAB } from '../../components/shared/ui';
 
 export default function TecnologiaPage() {
     const { isDark, toggleTheme } = useTheme();
+    const { t } = useLanguage();
 
     return (
         <div className={cn(
@@ -27,7 +29,7 @@ export default function TecnologiaPage() {
 
             <WhatsAppFAB
                 phoneNumber="+593995498636"
-                message="¡Hola! Quisiera saber más sobre su stack tecnológico."
+                message={t.pageActions.technologies}
             />
         </div>
     );

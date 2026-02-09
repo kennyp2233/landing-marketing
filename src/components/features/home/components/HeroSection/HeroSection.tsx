@@ -6,8 +6,8 @@ import { Terminal, ArrowRight, Database, Server, Cpu, Activity } from 'lucide-re
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { HeroSectionProps } from './HeroSection.types';
+import { useLanguage } from '@/providers/LanguageProvider';
 
-// Genesis Component - The central Logo Element
 const KhanndaLogoReveal = ({ progress, isDark }: { progress: any, isDark: boolean }) => {
     // Rotate and scale based on scroll
     // Rotate and scale based on scroll - ZOOM EFFECT (Scale up to 15x)
@@ -80,7 +80,7 @@ const KhanndaLogoReveal = ({ progress, isDark }: { progress: any, isDark: boolea
 };
 
 // System Dashboard - The Professional Interface
-const SystemDashboard = ({ progress, isDark }: { progress: any, isDark: boolean }) => {
+const SystemDashboard = ({ progress, isDark, t }: { progress: any, isDark: boolean, t: any }) => {
     // Reveal animation
     const opacity = useTransform(progress, [0.5, 0.6], [0, 1]);
     const scale = useTransform(progress, [0.5, 0.65], [0.95, 1]);
@@ -150,9 +150,9 @@ const SystemDashboard = ({ progress, isDark }: { progress: any, isDark: boolean 
                                 "text-4xl md:text-6xl font-medium tracking-tight leading-[1.1] transition-colors",
                                 isDark ? "text-white" : "text-neutral-900"
                             )}>
-                                Software a Medida de<br />
+                                {t.hero.title}<br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86]">
-                                    Alta Ingeniería.
+                                    {t.hero.subtitle}
                                 </span>
                             </h1>
 
@@ -160,13 +160,12 @@ const SystemDashboard = ({ progress, isDark }: { progress: any, isDark: boolean 
                                 "text-lg max-w-xl font-light leading-relaxed transition-colors",
                                 isDark ? "text-neutral-400" : "text-neutral-600"
                             )}>
-                                Transformamos lógica compleja en infraestructuras digitales escalables.
-                                Desarrollo robusto para empresas que exigen precisión.
+                                {t.hero.description}
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-5 pt-4">
                                 <button className="group px-8 py-4 bg-gradient-to-r from-[#592355] to-[#8a3c86] text-white text-sm font-medium tracking-wide transition-all hover:scale-105 shadow-[0_0_20px_rgba(138,60,134,0.3)] flex items-center justify-center gap-3 rounded-sm">
-                                    CONSULTAR PROYECTO
+                                    {t.hero.cta}
                                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                                 </button>
                                 <button className={cn(
@@ -219,6 +218,7 @@ const SystemDashboard = ({ progress, isDark }: { progress: any, isDark: boolean 
 
 const HeroSection: React.FC<HeroSectionProps> = ({ isDark }) => {
     const containerRef = useRef<HTMLDivElement>(null);
+    const { t } = useLanguage();
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ['start start', 'end end']
@@ -265,7 +265,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ isDark }) => {
                 </div>
 
                 {/* The Professional Dashboard (60% - 100%) */}
-                <TerminalInterfaceWrapper progress={smoothProgress} isDark={isDark} />
+                <TerminalInterfaceWrapper progress={smoothProgress} isDark={isDark} t={t} />
 
                 {/* Scroll Indicator */}
                 <motion.div

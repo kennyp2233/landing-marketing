@@ -24,7 +24,8 @@ export default function HomePage() {
 
         {/* TrustSection eliminada para reducir redundancia */}
         {/* TrustSection eliminada para reducir redundancia */}
-        <PressSection isDark={isDark} />
+        {/* PressSection ocultada temporalmente */}
+        {/* <PressSection isDark={isDark} /> */}
 
 
 

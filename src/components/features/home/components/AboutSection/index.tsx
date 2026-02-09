@@ -9,6 +9,7 @@ import {
     ShieldCheck, Lock, CheckCircle, Terminal, Zap,
     Users, Globe, ShoppingBag, Layers, Search
 } from 'lucide-react';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 // --- SUB-COMPONENTS FOR THE MONOLITH ---
 
@@ -268,22 +269,23 @@ interface AboutSectionProps {
 
 export function AboutSection({ isDark }: AboutSectionProps) {
     const [activeCard, setActiveCard] = useState(0);
+    const { t } = useLanguage();
 
     const content = [
         {
             id: 'growth',
-            title: "Resultados Tangibles.",
-            description: "No vendemos código, vendemos ROI. Nuestras soluciones están diseñadas para impactar directamente en tu rentabilidad y crecimiento desde el día uno.",
+            title: t.about.values.growth.title,
+            description: t.about.values.growth.description,
         },
         {
             id: 'architecture',
-            title: "Arquitectura Líquida.",
-            description: "Infraestructuras que fluyen con tu negocio. Nuestros sistemas escalan orgánicamente, sin fricción, permitiendo que tu operación crezca sin límites técnicos.",
+            title: t.about.values.architecture.title,
+            description: t.about.values.architecture.description,
         },
         {
             id: 'quality',
-            title: "Código de Cristal.",
-            description: "Transparencia radical. Procesos auditables y calidad de ingeniería visible. Construimos confianza con estándares 'Enterprise-Grade' y cero deuda técnica.",
+            title: t.about.values.quality.title,
+            description: t.about.values.quality.description,
         },
     ];
 
@@ -309,7 +311,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                             isDark ? "bg-white/5 border-white/5" : "bg-neutral-100 border-neutral-200"
                         )}
                     >
-                        <span className={cn("text-xs font-mono uppercase tracking-widest", isDark ? "text-purple-300" : "text-purple-600")}>Core Values</span>
+                        <span className={cn("text-xs font-mono uppercase tracking-widest", isDark ? "text-purple-300" : "text-purple-600")}>{t.about.badge}</span>
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -317,7 +319,7 @@ export function AboutSection({ isDark }: AboutSectionProps) {
                         transition={{ delay: 0.1 }}
                         className={cn("text-4xl md:text-5xl lg:text-7xl font-medium tracking-tight mb-6", isDark ? "text-white" : "text-neutral-900")}
                     >
-                        Nuestro <span className="gradient-text font-bold">ADN</span>
+                        {t.about.title} <span className="gradient-text font-bold">{t.about.titleHighlight}</span>
                     </motion.h2>
                 </div>
 

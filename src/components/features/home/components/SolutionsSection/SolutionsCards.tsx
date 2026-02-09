@@ -6,6 +6,8 @@ import { AnimatedModal, SolutionModalContent } from "@/components/shared/ui/Anim
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { Cpu, Code2, Zap } from "lucide-react";
+import { useTheme } from "@/providers/ThemeProvider";
+import { useLanguage } from "@/providers/LanguageProvider";
 
 interface Solution {
     id: string;
@@ -20,58 +22,47 @@ interface Solution {
     accentColor: "blue" | "purple" | "emerald";
 }
 
-const solutions: Solution[] = [
-    {
-        id: "automation",
-        title: "Automatización",
-        description: "Flujos de trabajo inteligentes con n8n.",
-        image: "/assets/images/automation-abstract.png",
-        cta: "Ver detalles",
-        icon: <Cpu className="w-5 h-5" />,
-        tagline: "Conecta tus apps. Elimina lo repetitivo. Escala sin límites.",
-        highlights: [
-            "Flujos personalizados que trabajan 24/7",
-            "+400 integraciones listas para usar",
-            "Ahorro promedio de 20+ horas semanales",
-            "Cero errores manuales"
-        ],
-        accentColor: "blue"
-    },
-    {
-        id: "development",
-        title: "Desarrollo",
-        description: "Software a la medida y apps móviles.",
-        image: "/assets/images/development-abstract.png",
-        cta: "Ver detalles",
-        icon: <Code2 className="w-5 h-5" />,
-        tagline: "Código que escala. Diseño que enamora. Resultados que importan.",
-        highlights: [
-            "Web apps modernas y responsive",
-            "Apps móviles iOS y Android",
-            "Arquitecturas cloud-native",
-            "Soporte y mantenimiento continuo"
-        ],
-        accentColor: "purple"
-    },
-    {
-        id: "consulting",
-        title: "Consultoría",
-        description: "Optimización y digitalización de procesos.",
-        image: "/assets/images/consulting-abstract.png",
-        cta: "Ver detalles",
-        icon: <Zap className="w-5 h-5" />,
-        tagline: "Transformamos operaciones. Digitalizamos procesos. Multiplicamos resultados.",
-        highlights: [
-            "Análisis profundo de operaciones",
-            "Roadmap de transformación digital",
-            "KPIs claros y medibles",
-            "ROI garantizado"
-        ],
-        accentColor: "emerald"
-    }
-];
+
 
 export function SolutionsCards() {
+    const { isDark } = useTheme();
+    const { t } = useLanguage();
+
+    const solutions: Solution[] = [
+        {
+            id: "automation",
+            title: t.solutions.topics.automation.title,
+            description: t.solutions.topics.automation.description,
+            image: "/assets/images/automation-abstract.png",
+            cta: t.solutions.cta,
+            icon: <Cpu className="w-5 h-5" />,
+            tagline: t.solutions.topics.automation.tagline,
+            highlights: t.solutions.topics.automation.highlights,
+            accentColor: "blue"
+        },
+        {
+            id: "development",
+            title: t.solutions.topics.development.title,
+            description: t.solutions.topics.development.description,
+            image: "/assets/images/development-abstract.png",
+            cta: t.solutions.cta,
+            icon: <Code2 className="w-5 h-5" />,
+            tagline: t.solutions.topics.development.tagline,
+            highlights: t.solutions.topics.development.highlights,
+            accentColor: "purple"
+        },
+        {
+            id: "consulting",
+            title: t.solutions.topics.consulting.title,
+            description: t.solutions.topics.consulting.description,
+            image: "/assets/images/consulting-abstract.png",
+            cta: t.solutions.cta,
+            icon: <Zap className="w-5 h-5" />,
+            tagline: t.solutions.topics.consulting.tagline,
+            highlights: t.solutions.topics.consulting.highlights,
+            accentColor: "emerald"
+        }
+    ];
     const [selectedSolution, setSelectedSolution] = useState<Solution | null>(null);
 
     const handleOpenModal = (solution: Solution) => {
@@ -91,17 +82,17 @@ export function SolutionsCards() {
         );
     };
 
-    // Color mappings matching homepage styles
+    // Color mappings matching homepage styles - theme-aware
     const accentColorMap = {
-        blue: "text-cyan-400",
-        purple: "text-purple-400",
-        emerald: "text-emerald-400"
+        blue: isDark ? "text-cyan-400" : "text-cyan-600",
+        purple: isDark ? "text-purple-400" : "text-purple-600",
+        emerald: isDark ? "text-emerald-400" : "text-emerald-600"
     };
 
     const iconBgMap = {
-        blue: "bg-cyan-500/10",
-        purple: "bg-purple-500/10",
-        emerald: "bg-emerald-500/10"
+        blue: isDark ? "bg-cyan-500/10" : "bg-cyan-500/20",
+        purple: isDark ? "bg-purple-500/10" : "bg-purple-500/20",
+        emerald: isDark ? "bg-emerald-500/10" : "bg-emerald-500/20"
     };
 
     return (
@@ -112,9 +103,10 @@ export function SolutionsCards() {
                         <CardBody
                             className={cn(
                                 "relative group/card w-full h-auto rounded-2xl p-6",
-                                "bg-neutral-900/40 border border-white/[0.08]",
-                                "hover:border-white/[0.15] transition-all duration-300",
-                                "dark:hover:shadow-xl dark:hover:shadow-purple-500/[0.05]"
+                                "transition-all duration-300",
+                                isDark
+                                    ? "bg-neutral-900/40 border border-white/[0.08] hover:border-white/[0.15] hover:shadow-xl hover:shadow-purple-500/[0.05]"
+                                    : "bg-white/80 border border-neutral-200 hover:border-neutral-300 hover:shadow-xl hover:shadow-purple-500/[0.1]"
                             )}
                         >
                             {/* Icon + Title */}
@@ -127,14 +119,14 @@ export function SolutionsCards() {
                                         {item.icon}
                                     </span>
                                 </div>
-                                <h3 className="text-xl font-semibold text-white">
+                                <h3 className={cn("text-xl font-semibold", isDark ? "text-white" : "text-neutral-900")}>
                                     {item.title}
                                 </h3>
                             </CardItem>
 
                             {/* Description */}
                             <CardItem translateZ="60" className="mb-4">
-                                <p className="text-neutral-400 text-sm leading-relaxed">
+                                <p className={cn("text-sm leading-relaxed", isDark ? "text-neutral-400" : "text-neutral-600")}>
                                     {item.description}
                                 </p>
                             </CardItem>
@@ -150,7 +142,10 @@ export function SolutionsCards() {
                                         alt={item.title}
                                     />
                                     {/* Subtle gradient overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-transparent" />
+                                    <div className={cn(
+                                        "absolute inset-0 bg-gradient-to-t via-transparent to-transparent",
+                                        isDark ? "from-neutral-900/60" : "from-white/40"
+                                    )} />
                                 </div>
                             </CardItem>
 
@@ -161,9 +156,10 @@ export function SolutionsCards() {
                                         onClick={() => handleOpenModal(item)}
                                         className={cn(
                                             "px-4 py-2 rounded-lg text-sm font-medium",
-                                            "bg-white/[0.05] border border-white/[0.1]",
-                                            "hover:bg-white/[0.1] hover:border-white/[0.2]",
                                             "transition-all duration-200",
+                                            isDark
+                                                ? "bg-white/[0.05] border border-white/[0.1] hover:bg-white/[0.1] hover:border-white/[0.2]"
+                                                : "bg-neutral-100 border border-neutral-200 hover:bg-neutral-200 hover:border-neutral-300",
                                             accentColorMap[item.accentColor]
                                         )}
                                     >

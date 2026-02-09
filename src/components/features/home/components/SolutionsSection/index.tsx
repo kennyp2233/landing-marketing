@@ -11,7 +11,11 @@ interface SolutionsSectionProps {
 
 
 
+import { useLanguage } from '@/providers/LanguageProvider';
+
 export function SolutionsSection({ isDark }: SolutionsSectionProps) {
+    const { t } = useLanguage();
+
     return (
         <section id="servicios" className={cn("min-h-screen pt-24 pb-8 relative overflow-hidden transition-colors duration-300 bg-background flex flex-col")}>
 
@@ -32,7 +36,7 @@ export function SolutionsSection({ isDark }: SolutionsSectionProps) {
                         transition={{ delay: 0.1 }}
                         className={cn("text-4xl md:text-5xl font-bold tracking-tight mb-6", isDark ? "text-white" : "text-neutral-900")}
                     >
-                        Tecnología que <span className="gradient-text">Impulsa</span> tu Negocio
+                        {t.solutions.title} <span className="gradient-text">{t.solutions.titleHighlight}</span> {t.solutions.titleEnd}
                     </motion.h2>
 
                     <motion.p
@@ -42,7 +46,7 @@ export function SolutionsSection({ isDark }: SolutionsSectionProps) {
                         transition={{ delay: 0.2 }}
                         className={cn("text-lg", isDark ? "text-neutral-400" : "text-neutral-600")}
                     >
-                        Desde la automatización de flujos complejos hasta el desarrollo de plataformas robustas. Creamos el ecosistema digital que tu empresa necesita.
+                        {t.solutions.subtitle}
                     </motion.p>
                 </div>
 

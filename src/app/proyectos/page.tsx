@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useTheme } from '../../providers/ThemeProvider';
+import { useLanguage } from '../../providers/LanguageProvider';
 import { Navbar, Footer } from '../../components/shared/layout';
 import { ProjectsSection } from '../../components/features/home';
 import { cn } from '../../lib/utils';
@@ -9,6 +10,7 @@ import { WhatsAppFAB } from '../../components/shared/ui';
 
 export default function ProyectosPage() {
     const { isDark, toggleTheme } = useTheme();
+    const { t } = useLanguage();
 
     return (
         <div className={cn(
@@ -27,7 +29,7 @@ export default function ProyectosPage() {
 
             <WhatsAppFAB
                 phoneNumber="+593995498636"
-                message="¡Hola! Me gustaría ver más detalles de sus proyectos."
+                message={t.pageActions.projects}
             />
         </div>
     );

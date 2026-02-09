@@ -6,18 +6,9 @@ import { cn } from "@/lib/utils";
 
 export function MacbookShowcase() {
     return (
-        <div className="w-full overflow-hidden bg-background">
+        <div className="w-full overflow-hidden bg-background -mt-10">
             <MacbookScroll
-                title={
-                    <span className="text-4xl md:text-5xl font-bold text-neutral-800 dark:text-neutral-200">
-                        Arsenal <span className="gradient-text">Tecnológico</span>
-                    </span>
-                }
-                badge={
-                    <div className="h-10 w-10 transform -rotate-12 bg-green-500 rounded-full flex items-center justify-center shadow-lg">
-                        <span className="text-white font-bold text-xs">NEW</span>
-                    </div>
-                }
+                title={<span></span>}
                 showGradient={false}
             >
                 <TechStackScreen />
@@ -25,3 +16,5 @@ export function MacbookShowcase() {
         </div>
     );
 }
+
+

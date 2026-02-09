@@ -6,35 +6,43 @@ import { useTheme } from '../../../../../providers/ThemeProvider';
 import { cn } from '../../../../../lib/utils';
 import { TeamCard } from './TeamCard';
 import { TeamSectionProps, TeamMember } from './TeamSection.types';
-
-const teamMembers: TeamMember[] = [
-  {
-    id: 'matias',
-    name: 'Matías Villarreal',
-    role: 'Gestión de Relaciones',
-    description: 'El puente entre tu problema y nuestra solución. Matías se especializa en entender a fondo los dolores operativos de tu negocio para garantizar que el software que construimos sea exactamente lo que necesitas, con una empatía única en la industria.',
-    image: '/team/Mati.png',
-  },
-  {
-    id: 'jose',
-    name: 'José Terán',
-    role: 'Estrategia Tecnológica',
-    description: 'Visionario de sistemas escalables. José transforma ideas abstractas en arquitecturas de software robustas. Su enfoque asegura que tu inversión tecnológica no solo funcione hoy, sino que sea la base sólida para el crecimiento futuro de tu empresa.',
-    image: '/team/Pepe.jpeg',
-  },
-  {
-    id: 'kevin',
-    name: 'Kevin Cano',
-    role: 'Innovación y Producto',
-    description: 'Diseñador de experiencias funcionales. Yandry se asegura de que la complejidad del código se traduzca en interfaces simples e intuitivas. Su obsesión es que usar nuestro software sea más fácil que usar un cuaderno.',
-    image: '/logo-khannda.png',
-  }
-];
+import { useLanguage } from '@/providers/LanguageProvider';
 
 export function TeamSection({ isDark }: TeamSectionProps) {
-  // Use prop or context, but prop is passed from page
   const darkMode = isDark;
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
+  const { t } = useLanguage();
+
+  const teamMembers: TeamMember[] = [
+    {
+      id: 'matias',
+      name: 'Matías Villarreal',
+      role: t.team.members.matias.role,
+      description: t.team.members.matias.description,
+      image: '/team/Mati.png',
+    },
+    {
+      id: 'jose',
+      name: 'José Terán',
+      role: t.team.members.jose.role,
+      description: t.team.members.jose.description,
+      image: '/team/Pepe.jpeg',
+    },
+    {
+      id: 'kevin',
+      name: 'Kevin Cano',
+      role: t.team.members.kevin.role,
+      description: t.team.members.kevin.description,
+      image: '/logo-khannda.png',
+    },
+    {
+      id: 'kenny',
+      name: 'Kenny Pinchao',
+      role: t.team.members.kenny.role,
+      description: t.team.members.kenny.description,
+      image: '/logo-khannda.png',
+    }
+  ];
 
   return (
     <section className={cn(
@@ -61,16 +69,16 @@ export function TeamSection({ isDark }: TeamSectionProps) {
           <div className={cn("inline-block px-3 py-1 mb-4 rounded-full backdrop-blur-sm border",
             darkMode ? "bg-white/5 border-white/5" : "bg-black/5 border-black/5"
           )}>
-            <span className="text-xs font-mono text-purple-300 uppercase tracking-widest">Leadership</span>
+            <span className="text-xs font-mono text-purple-300 uppercase tracking-widest">{t.team.badge}</span>
           </div>
           <h2 className={cn(
             'text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 transition-colors',
             darkMode ? 'text-white' : 'text-black'
           )}>
-            Nuestro <span className="gradient-text font-bold">Equipo</span>
+            {t.team.title} <span className="gradient-text font-bold">{t.team.titleHighlight}</span>
           </h2>
           <p className={cn("text-lg max-w-2xl mx-auto font-light leading-relaxed transition-colors", darkMode ? "text-neutral-400" : "text-neutral-600")}>
-            Empatía, técnica y pasión por resolver problemas reales con código.
+            {t.team.subtitle}
           </p>
         </div>
 
@@ -97,9 +105,9 @@ export function TeamSection({ isDark }: TeamSectionProps) {
               : 'bg-black/5 border-black/10 text-gray-700'
           )}>
             <span className="text-sm md:text-base font-medium">
-              ¿Listo para digitalizar tu negocio?{' '}
+              {t.team.cta.question}{' '}
               <span className="bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86] bg-clip-text text-transparent font-semibold">
-                Conversemos
+                {t.team.cta.action}
               </span>
             </span>
           </div>

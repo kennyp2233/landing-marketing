@@ -12,19 +12,19 @@ import {
     MobileNavToggle,
     MobileNavMenu,
 } from "@/components/shared/ui/ResizableNavbar";
-import { NAVIGATION_ITEMS } from '../../../../lib/constants';
 import { ThemeToggle, Button } from '../../ui';
 import { NavbarProps } from './Navbar.types';
 import Image from 'next/image';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 const Navbar: React.FC<NavbarProps> = ({
     isDark,
     onThemeToggle,
-    navigationItems = NAVIGATION_ITEMS
 }) => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
+    const { language, setLanguage, t } = useLanguage();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -35,11 +35,12 @@ const Navbar: React.FC<NavbarProps> = ({
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Transform navigation items
-    const navItems = navigationItems.map(item => ({
-        name: item.label,
-        link: item.href,
-    }));
+    // Navigation items using translations
+    const navItems = [
+        { name: t.nav.solutions, link: '/soluciones' },
+        { name: t.nav.projects, link: '/proyectos' },
+        { name: t.nav.technologies, link: '/tecnologia' },
+    ];
 
     // Check if a nav item is active
     const isActiveLink = (link: string) => {
@@ -60,7 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({
                             height={40}
                             className={cn(
                                 "object-contain h-full w-auto transition-all duration-300",
-                                isDark ? "brightness-0 invert" : "brightness-0" // Invert for white (dark mode), default black for light
+                                isDark ? "brightness-0 invert" : "brightness-0"
                             )}
                             priority
                         />
@@ -80,13 +81,12 @@ const Navbar: React.FC<NavbarProps> = ({
                     "flex items-center gap-1 p-1.5 rounded-full transition-all duration-500",
                     isScrolled
                         ? cn(
-                            "backdrop-blur-xl border shadow-[0_0_20px_rgba(0,0,0,0.1)]",
+                            "backdrop-blur-xl border",
                             isDark
-                                ? "bg-neutral-900/60 border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.4)]"
-                                : "bg-white/60 border-black/10 shadow-[0_0_20px_rgba(0,0,0,0.1)]"
+                                ? "bg-neutral-900/70 border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.4)]"
+                                : "bg-white/80 border-neutral-200 shadow-[0_0_20px_rgba(0,0,0,0.08)]"
                         )
-                        : "bg-transparent border-transparent shadow-none",
-                    "hover:bg-neutral-900/80 dark:hover:bg-neutral-900/80 hover:bg-neutral-100 dark:hover:bg-neutral-900/80" // Adjust hover states
+                        : "bg-transparent border-transparent shadow-none"
                 )}>
                     {navItems.map((item, idx) => {
                         const isActive = isActiveLink(item.link);
@@ -115,9 +115,29 @@ const Navbar: React.FC<NavbarProps> = ({
 
                     {/* Language Toggle */}
                     <div className="flex items-center px-2 space-x-2 text-xs font-mono">
-                        <button className={cn("font-bold", isDark ? "text-white" : "text-black")}>ES</button>
-                        <span className="text-neutral-600">|</span>
-                        <button className={cn("transition-colors", isDark ? "text-neutral-500 hover:text-white" : "text-neutral-400 hover:text-black")}>EN</button>
+                        <button
+                            onClick={() => setLanguage('es')}
+                            className={cn(
+                                "transition-colors",
+                                language === 'es'
+                                    ? (isDark ? "font-bold text-white" : "font-bold text-neutral-900")
+                                    : (isDark ? "text-neutral-500 hover:text-white" : "text-neutral-500 hover:text-neutral-900")
+                            )}
+                        >
+                            ES
+                        </button>
+                        <span className={cn(isDark ? "text-neutral-500" : "text-neutral-400")}>|</span>
+                        <button
+                            onClick={() => setLanguage('en')}
+                            className={cn(
+                                "transition-colors",
+                                language === 'en'
+                                    ? (isDark ? "font-bold text-white" : "font-bold text-neutral-900")
+                                    : (isDark ? "text-neutral-500 hover:text-white" : "text-neutral-500 hover:text-neutral-900")
+                            )}
+                        >
+                            EN
+                        </button>
                     </div>
 
                     <div className={cn("w-px h-5 mx-2", isDark ? "bg-white/10" : "bg-black/10")} />
@@ -145,7 +165,7 @@ const Navbar: React.FC<NavbarProps> = ({
                         ? "bg-white text-black hover:bg-neutral-200"
                         : "bg-black text-white hover:bg-neutral-800"
                 )}>
-                    Start Project
+                    {t.nav.startProject}
                 </button>
             </div>
 
@@ -161,11 +181,7 @@ const Navbar: React.FC<NavbarProps> = ({
             {/* Mobile Menu Overlay */}
             <MobileNavMenu
                 isOpen={isMobileMenuOpen}
-                onClose={() => setIsMobileMenuOpen(false)} // Fix: ensure onClose is passed if component expects it, although ResizableNavbar definition showed it might not use it directly for state but for closing. Actually ResizableNavbar/MobileNavMenu doesn't seem to use onClose in the view I saw, but let's keep it if consistent.
-                // Wait, the view of ResizableNavbar/index.tsx definition:
-                // export const MobileNavMenu = ({ children, className, isOpen, isDark }: { ...; onClose?: () => void; ... }) => ( ... )
-                // It accepts it but doesn't seem to use it in the JSX shown (it just renders children).
-                // But the caller passes it. I will keep it.
+                onClose={() => setIsMobileMenuOpen(false)}
                 isDark={isDark}
             >
                 <div className="flex flex-col items-center justify-center space-y-8 mt-12">
@@ -189,11 +205,38 @@ const Navbar: React.FC<NavbarProps> = ({
                             </a>
                         );
                     })}
+
+                    {/* Language Toggle for Mobile */}
+                    <div className="flex items-center space-x-4 text-lg font-mono">
+                        <button
+                            onClick={() => setLanguage('es')}
+                            className={cn(
+                                "transition-colors px-3 py-1 rounded",
+                                language === 'es'
+                                    ? (isDark ? "font-bold text-white bg-white/10" : "font-bold text-black bg-black/10")
+                                    : (isDark ? "text-neutral-500 hover:text-white" : "text-neutral-500 hover:text-black")
+                            )}
+                        >
+                            ES
+                        </button>
+                        <button
+                            onClick={() => setLanguage('en')}
+                            className={cn(
+                                "transition-colors px-3 py-1 rounded",
+                                language === 'en'
+                                    ? (isDark ? "font-bold text-white bg-white/10" : "font-bold text-black bg-black/10")
+                                    : (isDark ? "text-neutral-500 hover:text-white" : "text-neutral-500 hover:text-black")
+                            )}
+                        >
+                            EN
+                        </button>
+                    </div>
+
                     <button className={cn(
                         "mt-8 px-8 py-3 rounded-full font-bold transition-colors",
                         isDark ? "bg-white text-black hover:bg-neutral-200" : "bg-black text-white hover:bg-neutral-800"
                     )}>
-                        Start Project
+                        {t.nav.startProject}
                     </button>
                 </div>
             </MobileNavMenu>

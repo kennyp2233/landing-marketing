@@ -1,92 +1,102 @@
 "use client";
 
 import React from "react";
-import { Code2, Database, Globe, Server, Cpu, Layers, Terminal, Cloud, Smartphone, Box, Shuffle } from 'lucide-react';
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import {
+    Globe, Code2, Terminal, Layers, Server, Database, Cloud, Cpu,
+    Sparkles
+} from 'lucide-react';
+
+interface TechItemProps {
+    name: string;
+    icon: React.ReactNode;
+    color: string;
+    delay: number;
+}
+
+const TechItem = ({ name, icon, color, delay }: TechItemProps) => (
+    <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay, duration: 0.4 }}
+        className={cn(
+            "flex flex-col items-center justify-center gap-2 p-4 rounded-xl",
+            "bg-white/5 border border-white/10 backdrop-blur-sm",
+            "hover:bg-white/10 hover:border-white/20 transition-all duration-300",
+            "cursor-default group"
+        )}
+    >
+        <div className={cn("p-3 rounded-lg", color)}>
+            {icon}
+        </div>
+        <span className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+            {name}
+        </span>
+    </motion.div>
+);
+
+import { useLanguage } from '@/providers/LanguageProvider';
 
 export const TechStackScreen = () => {
-    // Technologies with consistent colors
+    const { t } = useLanguage();
     const technologies = [
-        { name: "Framework", value: "Next.js 14", icon: Globe, color: "text-white", bg: "bg-black" },
-        { name: "Library", value: "React 19", icon: Code2, color: "text-blue-400", bg: "bg-blue-500/10" },
-        { name: "Strict Type", value: "TypeScript", icon: Terminal, color: "text-blue-500", bg: "bg-blue-600/10" },
-        { name: "Styling", value: "TailwindCSS", icon: Layers, color: "text-cyan-400", bg: "bg-cyan-500/10" },
-        { name: "Runtime", value: "Node.js", icon: Server, color: "text-green-500", bg: "bg-green-500/10" },
-        { name: "Database", value: "PostgreSQL", icon: Database, color: "text-indigo-300", bg: "bg-indigo-500/10" },
-        { name: "Cloud", value: "AWS", icon: Cloud, color: "text-yellow-500", bg: "bg-yellow-500/10" },
-        { name: "Orchestration", value: "n8n", icon: Cpu, color: "text-rose-500", bg: "bg-rose-500/10" },
+        { name: "Next.js", icon: <Globe size={24} className="text-white" />, color: "bg-black", delay: 0.1 },
+        { name: "React", icon: <Code2 size={24} className="text-cyan-400" />, color: "bg-cyan-500/20", delay: 0.15 },
+        { name: "TypeScript", icon: <Terminal size={24} className="text-blue-400" />, color: "bg-blue-500/20", delay: 0.2 },
+        { name: "Tailwind", icon: <Layers size={24} className="text-teal-400" />, color: "bg-teal-500/20", delay: 0.25 },
+        { name: "Node.js", icon: <Server size={24} className="text-green-400" />, color: "bg-green-500/20", delay: 0.3 },
+        { name: "PostgreSQL", icon: <Database size={24} className="text-indigo-400" />, color: "bg-indigo-500/20", delay: 0.35 },
+        { name: "AWS", icon: <Cloud size={24} className="text-orange-400" />, color: "bg-orange-500/20", delay: 0.4 },
+        { name: "n8n", icon: <Cpu size={24} className="text-rose-400" />, color: "bg-rose-500/20", delay: 0.45 },
     ];
 
     return (
-        <div className="w-full h-full bg-[#0d1117] relative overflow-hidden flex flex-col font-mono text-sm leading-6">
-            {/* Header Bar: VS Code style */}
-            <div className="h-8 w-full bg-[#161b22] flex items-center px-4 justify-between border-b border-[#30363d] select-none">
-                <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
-                    <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
-                    <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+        <div className="w-full h-full bg-gradient-to-br from-neutral-900 via-purple-950/50 to-neutral-900 relative overflow-hidden flex flex-col">
+            {/* Subtle gradient orbs */}
+            <div className="absolute top-0 left-1/4 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-blue-500/15 rounded-full blur-3xl" />
+
+            {/* Header */}
+            <div className="px-6 py-4 border-b border-white/10">
+                <div className="flex items-center gap-2">
+                    <Sparkles size={18} className="text-purple-400" />
+                    <span className="text-sm font-medium text-white/90">{t.technologies.stackScreen.header}</span>
                 </div>
-                <div className="flex gap-4 text-[#8b949e]">
-                    <div className="flex items-center gap-1.5 px-3 py-1 bg-[#0d1117] rounded-t-md border-t border-l border-r border-[#30363d] text-white">
-                        <Terminal size={12} className="text-blue-400" />
-                        <span className="text-xs">stack.config.ts</span>
-                    </div>
-                </div>
-                <div className="w-12" /> {/* Spacer for balance */}
             </div>
 
-            {/* Content Body */}
-            <div className="flex-1 p-6 md:p-10 relative">
-                {/* Line Numbers */}
-                <div className="absolute left-4 top-10 bottom-4 w-6 flex flex-col text-[#484f58] text-right text-xs md:text-sm select-none">
-                    {Array.from({ length: 20 }).map((_, i) => (
-                        <span key={i} className="leading-7">{i + 1}</span>
+            {/* Content */}
+            <div className="flex-1 p-6 flex flex-col justify-center">
+                <div className="grid grid-cols-4 gap-3 max-w-md mx-auto">
+                    {technologies.map((tech, idx) => (
+                        <TechItem
+                            key={idx}
+                            name={tech.name}
+                            icon={tech.icon}
+                            color={tech.color}
+                            delay={tech.delay}
+                        />
                     ))}
                 </div>
 
-                {/* Code Content */}
-                <div className="ml-8 md:ml-12 relative z-10 w-full">
-
-                    {/* Import Statements */}
-                    <div className="mb-6">
-                        <div className="text-[#ff7b72] leading-7">import <span className="text-[#c9d1d9]">{`{`}</span> <span className="text-[#79c0ff]">Power</span> <span className="text-[#c9d1d9]">{`}`}</span> from <span className="text-[#a5d6ff]">'@future/core'</span>;</div>
-                        <div className="text-[#ff7b72] leading-7">import <span className="text-[#c9d1d9]">{`{`}</span> <span className="text-[#79c0ff]">Scalability</span> <span className="text-[#c9d1d9]">{`}`}</span> from <span className="text-[#a5d6ff]">'@infra/cloud'</span>;</div>
-                    </div>
-
-                    {/* Constant Definition */}
-                    <div className="text-[#d2a8ff] leading-7">export const <span className="text-[#79c0ff]">TechnologyArsenal</span> = <span className="text-[#c9d1d9]">{`{`}</span></div>
-
-                    {/* Map through technologies to look like object properties */}
-                    <div className="pl-4 md:pl-8 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-1">
-                        {technologies.map((tech, idx) => (
-                            <div key={idx} className="flex items-center gap-2 leading-7 group hover:bg-[#161b22] px-2 -mx-2 rounded cursor-default transition-colors">
-                                <span className="text-[#7ee787] min-w-[100px]">{tech.name.toLowerCase()}:</span>
-                                <div className="flex items-center gap-2">
-                                    <span className="text-[#a5d6ff]">'{tech.value}'</span>
-                                    <tech.icon size={14} className={cn("opacity-0 group-hover:opacity-100 transition-opacity", tech.color)} />
-                                </div>
-                                <span className="text-[#8b949e]">,</span>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="text-[#c9d1d9] leading-7">{`}`};</div>
-
-                    {/* Interactive Cursor */}
-                    <div className="mt-1 w-2.5 h-5 bg-[#79c0ff] animate-pulse" />
-                </div>
+                {/* Tagline */}
+                <motion.p
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6, duration: 0.5 }}
+                    className="text-center mt-6 text-white/60 text-sm"
+                >
+                    {t.technologies.stackScreen.tagline}
+                </motion.p>
             </div>
 
-            {/* Status Bar */}
-            <div className="h-6 w-full bg-[#161b22] border-t border-[#30363d] flex items-center justify-between px-3 text-[10px] text-white">
-                <div className="flex gap-3">
-                    <div className="flex items-center gap-1 text-[#484f58]"><div className="w-2 h-2 rounded-full bg-[#484f58]" /> master*</div>
-                </div>
-                <div className="flex gap-3 text-[#8b949e]">
-                    <span>Ln 20, Col 42</span>
-                    <span>UTF-8</span>
-                    <span className="text-white">TypeScript React</span>
-                </div>
+            {/* Footer */}
+            <div className="px-6 py-3 border-t border-white/10 flex items-center justify-between text-xs text-white/40">
+                <span>{t.technologies.stackScreen.footer}</span>
+                <span className="flex items-center gap-1">
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    {t.technologies.stackScreen.updated}
+                </span>
             </div>
         </div>
     );

@@ -3,109 +3,219 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Code2, Database, Cloud, Terminal, Cpu, Layers, Link, ShieldCheck, Zap } from "lucide-react";
+import { useTheme } from "@/providers/ThemeProvider";
+import { Zap, Shield, TrendingUp, Sparkles, CheckCircle2 } from "lucide-react";
 
-const TechDetailCard = ({ title, description, children, className, delay = 0 }: { title: string, description: string, children: React.ReactNode, className?: string, delay?: number }) => (
-    <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ delay, duration: 0.5 }}
-        className={cn(
-            "group relative overflow-hidden rounded-2xl bg-[#0d1117] border border-[#30363d] p-6 hover:border-[#58a6ff] transition-colors duration-300",
-            className
-        )}
-    >
-        {/* Glow Effect */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#58a6ff]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+interface BenefitCardProps {
+    title: string;
+    description: string;
+    icon: React.ReactNode;
+    benefits: string[];
+    accentColor: "cyan" | "purple" | "emerald";
+    delay?: number;
+}
 
-        <div className="relative z-10">
-            <h3 className="text-lg font-bold text-[#c9d1d9] mb-2 flex items-center gap-2">
-                {title}
-            </h3>
-            <p className="text-[#8b949e] text-sm mb-6 leading-relaxed border-b border-[#30363d] pb-4">
-                {description}
-            </p>
-            <div className="space-y-3">
-                {children}
+const BenefitCard = ({ title, description, icon, benefits, accentColor, delay = 0 }: BenefitCardProps) => {
+    const { isDark } = useTheme();
+
+    const colorMap = {
+        cyan: {
+            icon: isDark ? "text-cyan-400" : "text-cyan-600",
+            iconBg: isDark ? "bg-cyan-500/10" : "bg-cyan-500/20",
+            check: isDark ? "text-cyan-400/70" : "text-cyan-600/70",
+            gradient: "from-cyan-500/20 to-transparent",
+        },
+        purple: {
+            icon: isDark ? "text-purple-400" : "text-purple-600",
+            iconBg: isDark ? "bg-purple-500/10" : "bg-purple-500/20",
+            check: isDark ? "text-purple-400/70" : "text-purple-600/70",
+            gradient: "from-purple-500/20 to-transparent",
+        },
+        emerald: {
+            icon: isDark ? "text-emerald-400" : "text-emerald-600",
+            iconBg: isDark ? "bg-emerald-500/10" : "bg-emerald-500/20",
+            check: isDark ? "text-emerald-400/70" : "text-emerald-600/70",
+            gradient: "from-emerald-500/20 to-transparent",
+        },
+    };
+
+    const colors = colorMap[accentColor];
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ delay, duration: 0.5 }}
+            className={cn(
+                "group relative overflow-hidden rounded-2xl p-6",
+                "transition-all duration-300",
+                isDark
+                    ? "bg-neutral-900/60 border border-white/[0.08] hover:border-white/[0.15] hover:shadow-xl"
+                    : "bg-white/80 border border-neutral-200 hover:border-neutral-300 hover:shadow-xl"
+            )}
+        >
+            {/* Subtle gradient overlay on hover */}
+            <div className={cn(
+                "absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                colors.gradient
+            )} />
+
+            <div className="relative z-10">
+                {/* Icon & Title */}
+                <div className="flex items-center gap-3 mb-4">
+                    <div className={cn("p-3 rounded-xl", colors.iconBg)}>
+                        <span className={colors.icon}>
+                            {icon}
+                        </span>
+                    </div>
+                    <h3 className={cn(
+                        "text-xl font-semibold",
+                        isDark ? "text-white" : "text-neutral-900"
+                    )}>
+                        {title}
+                    </h3>
+                </div>
+
+                {/* Description */}
+                <p className={cn(
+                    "text-sm leading-relaxed mb-6",
+                    isDark ? "text-neutral-400" : "text-neutral-600"
+                )}>
+                    {description}
+                </p>
+
+                {/* Benefits List */}
+                <ul className="space-y-3">
+                    {benefits.map((benefit, idx) => (
+                        <li key={idx} className="flex items-start gap-2">
+                            <CheckCircle2 size={16} className={cn("mt-0.5 flex-shrink-0", colors.check)} />
+                            <span className={cn(
+                                "text-sm",
+                                isDark ? "text-neutral-300" : "text-neutral-700"
+                            )}>
+                                {benefit}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
             </div>
-        </div>
-    </motion.div>
-);
+        </motion.div>
+    );
+};
 
-const TechItem = ({ label, value, icon: Icon }: { label: string, value: string, icon?: any }) => (
-    <div className="flex items-center justify-between group/item">
-        <span className="text-xs font-mono text-[#8b949e] group-hover/item:text-[#58a6ff] transition-colors">{label}</span>
-        <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-[#c9d1d9]">{value}</span>
-            {Icon && <Icon size={14} className="text-[#58a6ff] opacity-50 group-hover/item:opacity-100 transition-opacity" />}
-        </div>
-    </div>
-);
+import { useLanguage } from "@/providers/LanguageProvider";
+
+// ... (BenefitCard component stays the same)
 
 export const TechDetailSection = () => {
+    const { isDark } = useTheme();
+    const { t } = useLanguage();
+
+    const benefitCards = [
+        {
+            title: t.technologies.details.benefits.performance.title,
+            description: t.technologies.details.benefits.performance.description,
+            icon: <Zap className="w-6 h-6" />,
+            benefits: t.technologies.details.benefits.performance.items,
+            accentColor: "cyan" as const,
+        },
+        {
+            title: t.technologies.details.benefits.security.title,
+            description: t.technologies.details.benefits.security.description,
+            icon: <Shield className="w-6 h-6" />,
+            benefits: t.technologies.details.benefits.security.items,
+            accentColor: "purple" as const,
+        },
+        {
+            title: t.technologies.details.benefits.scalability.title,
+            description: t.technologies.details.benefits.scalability.description,
+            icon: <TrendingUp className="w-6 h-6" />,
+            benefits: t.technologies.details.benefits.scalability.items,
+            accentColor: "emerald" as const,
+        },
+    ];
+
     return (
-        <div className="w-full bg-background min-h-screen relative z-20 pt-20 pb-32 px-6">
+        <div className={cn("w-full min-h-screen relative z-20 pt-20 pb-32 px-6", isDark ? "bg-background" : "bg-background")}>
             <div className="max-w-7xl mx-auto">
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    className="text-center mb-24"
+                    viewport={{ once: true }}
+                    className="text-center mb-16"
                 >
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#161b22] border border-[#30363d] text-[#7ee787] text-xs font-mono mb-6">
-                        <ShieldCheck size={12} />
-                        <span>ENTERPRISE GRADE ARCHITECTURE</span>
+                    <div className={cn(
+                        "inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium mb-6",
+                        isDark
+                            ? "bg-purple-500/10 border border-purple-500/20 text-purple-400"
+                            : "bg-purple-100 border border-purple-200 text-purple-700"
+                    )}>
+                        <Sparkles size={14} />
+                        <span>{t.technologies.details.badge}</span>
                     </div>
 
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
-                        Construido para <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#58a6ff] to-[#a5d6ff]">Escalar</span>
+                    <h2 className={cn(
+                        "text-4xl md:text-5xl font-bold mb-6 tracking-tight",
+                        isDark ? "text-white" : "text-neutral-900"
+                    )}>
+                        {t.technologies.details.title}{" "}
+                        <span className="gradient-text">{t.technologies.details.titleHighlight}</span>
                     </h2>
-                    <p className="text-[#8b949e] max-w-2xl mx-auto text-lg leading-relaxed">
-                        Nuestro stack tecnológico no es solo código; es una infraestructura diseñada para velocidad, seguridad y crecimiento continuo.
+
+                    <p className={cn(
+                        "max-w-2xl mx-auto text-lg leading-relaxed",
+                        isDark ? "text-neutral-400" : "text-neutral-600"
+                    )}>
+                        {t.technologies.details.description}
                     </p>
                 </motion.div>
 
+                {/* Benefit Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {/* Frontend */}
-                    <TechDetailCard
-                        title="Experiencia de Usuario (Frontend)"
-                        description="Interfaces ultra-rápidas y reactivas utilizando el moderno ecosistema de React."
-                        delay={0}
-                    >
-                        <TechItem label="Framework" value="Next.js 14" icon={Code2} />
-                        <TechItem label="Core" value="React 19" icon={Atom} />
-                        <TechItem label="Estilos" value="Tailwind CSS" icon={Layers} />
-                        <TechItem label="Motion" value="Framer Motion" icon={Zap} />
-                    </TechDetailCard>
-
-                    {/* Backend */}
-                    <TechDetailCard
-                        title="Motor de Procesamiento (Backend)"
-                        description="Lógica de negocio robusta y APIs de alto rendimiento."
-                        delay={0.1}
-                    >
-                        <TechItem label="Runtime" value="Node.js" icon={Terminal} />
-                        <TechItem label="Database" value="PostgreSQL" icon={Database} />
-                        <TechItem label="Caching" value="Redis" icon={Zap} />
-                        <TechItem label="ORM" value="Prisma" icon={Link} />
-                    </TechDetailCard>
-
-                    {/* Infra */}
-                    <TechDetailCard
-                        title="Infraestructura & Cloud"
-                        description="Despliegue global, seguro y automatizado."
-                        delay={0.2}
-                    >
-                        <TechItem label="Cloud" value="AWS / Vercel" icon={Cloud} />
-                        <TechItem label="Container" value="Docker" icon={Layers} />
-                        <TechItem label="CI/CD" value="GitHub Actions" icon={Code2} />
-                        <TechItem label="Security" value="WAF / SSL" icon={ShieldCheck} />
-                    </TechDetailCard>
+                    {benefitCards.map((card, idx) => (
+                        <BenefitCard
+                            key={idx}
+                            title={card.title}
+                            description={card.description}
+                            icon={card.icon}
+                            benefits={card.benefits}
+                            accentColor={card.accentColor}
+                            delay={idx * 0.1}
+                        />
+                    ))}
                 </div>
+
+                {/* Bottom CTA */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.4 }}
+                    className="text-center mt-16"
+                >
+                    <p className={cn(
+                        "text-sm mb-4",
+                        isDark ? "text-neutral-500" : "text-neutral-500"
+                    )}>
+                        {t.technologies.details.cta.text}
+                    </p>
+                    <a
+                        href="https://wa.me/593995498636?text=Hola!%20Me%20interesa%20conocer%20más%20sobre%20la%20tecnología%20que%20usan."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={cn(
+                            "inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-medium transition-all duration-200",
+                            isDark
+                                ? "bg-white/5 border border-white/10 hover:bg-white/10 hover:border-white/20 text-white"
+                                : "bg-neutral-100 border border-neutral-200 hover:bg-neutral-200 hover:border-neutral-300 text-neutral-900"
+                        )}
+                    >
+                        {t.technologies.details.cta.button} →
+                    </a>
+                </motion.div>
             </div>
         </div>
     );
 };
-
-// Simple Icon wrapper for Atom since it's not in standard Lucide (using Cpu as proxy or simple svg if needed, stick to lucide imports)
-const Atom = Cpu; 
