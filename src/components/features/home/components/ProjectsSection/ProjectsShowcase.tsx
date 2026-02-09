@@ -29,7 +29,7 @@ export function ProjectsShowcase() {
             ),
         },
         {
-            title: "KSZ Fútbol Club",
+            title: "KSZ Fútbol Club USA",
             value: "retail",
             content: (
                 <div className="w-full overflow-hidden relative h-full rounded-2xl p-6 text-xl md:text-3xl font-bold text-white bg-neutral-900/60 backdrop-blur-md border border-white/10 shadow-2xl">
