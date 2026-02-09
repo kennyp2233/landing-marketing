@@ -123,8 +123,8 @@ export const en: Translations = {
         },
         members: {
             matias: {
-                role: "Client Relations",
-                description: "The bridge between your problem and our solution. Matías specializes in deeply understanding your business's operational pain points to ensure the software we build is exactly what you need, with a unique empathy in the industry.",
+                role: "Data Analyst & AI Master",
+                description: "Expert in extracting value from data and implementing artificial intelligence solutions. Matías transforms complex information into strategic decisions and builds AI systems that optimize your business operations.",
             },
             jose: {
                 role: "Technology Strategy",

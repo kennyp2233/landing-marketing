@@ -122,8 +122,8 @@ export const es = {
         },
         members: {
             matias: {
-                role: "Gestión de Relaciones",
-                description: "El puente entre tu problema y nuestra solución. Matías se especializa en entender a fondo los dolores operativos de tu negocio para garantizar que el software que construimos sea exactamente lo que necesitas, con una empatía única en la industria.",
+                role: "Data Analyst & AI Master",
+                description: "Experto en extraer valor de los datos e implementar soluciones de inteligencia artificial. Matías transforma información compleja en decisiones estratégicas y construye sistemas de IA que optimizan tus operaciones comerciales.",
             },
             jose: {
                 role: "Estrategia Tecnológica",

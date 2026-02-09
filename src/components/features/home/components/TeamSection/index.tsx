@@ -83,7 +83,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
         </div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {teamMembers.map((member, index) => (
             <TeamCard
               key={member.id}
