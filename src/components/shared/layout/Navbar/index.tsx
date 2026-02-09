@@ -26,6 +26,13 @@ const Navbar: React.FC<NavbarProps> = ({
     const pathname = usePathname();
     const { language, setLanguage, t } = useLanguage();
 
+    const WHATSAPP_NUMBER = "593995498636";
+
+    const handleStartProject = () => {
+        const message = encodeURIComponent(t.whatsapp?.home || "¡Hola! Me interesa conocer más sobre sus servicios.");
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+    };
+
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 50);
@@ -159,12 +166,15 @@ const Navbar: React.FC<NavbarProps> = ({
 
             {/* 3. CTA Button - Top Right - Fixed */}
             <div className="fixed top-6 right-6 z-40 hidden md:block">
-                <button className={cn(
-                    "px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-colors shadow-lg",
-                    isDark
-                        ? "bg-white text-black hover:bg-neutral-200"
-                        : "bg-black text-white hover:bg-neutral-800"
-                )}>
+                <button
+                    onClick={handleStartProject}
+                    className={cn(
+                        "px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-colors shadow-lg cursor-pointer",
+                        isDark
+                            ? "bg-white text-black hover:bg-neutral-200"
+                            : "bg-black text-white hover:bg-neutral-800"
+                    )}
+                >
                     {t.nav.startProject}
                 </button>
             </div>
@@ -239,10 +249,16 @@ const Navbar: React.FC<NavbarProps> = ({
                         </button>
                     </div>
 
-                    <button className={cn(
-                        "mt-8 px-8 py-3 rounded-full font-bold transition-colors",
-                        isDark ? "bg-white text-black hover:bg-neutral-200" : "bg-black text-white hover:bg-neutral-800"
-                    )}>
+                    <button
+                        onClick={() => {
+                            handleStartProject();
+                            setIsMobileMenuOpen(false);
+                        }}
+                        className={cn(
+                            "mt-8 px-8 py-3 rounded-full font-bold transition-colors cursor-pointer",
+                            isDark ? "bg-white text-black hover:bg-neutral-200" : "bg-black text-white hover:bg-neutral-800"
+                        )}
+                    >
                         {t.nav.startProject}
                     </button>
                 </div>

@@ -79,7 +79,7 @@ export const es = {
         metrics: {
             efficiency: { value: "+40%", label: "Eficiencia Operativa", desc: "Reducción promedio de carga manual." },
             timeToMarket: { value: "4 WKS", label: "Time-to-Market", desc: "Ciclos de desarrollo ágiles y rápidos." },
-            ownership: { value: "100%", label: "Propiedad del Código", desc: "Entregamos repositorios completos." },
+            ownership: { value: "2x", label: "Más Rápido", desc: "Desarrollo ágil y entregas frecuentes." },
         },
     },
 
@@ -272,6 +272,22 @@ export const es = {
         solutions: "¡Hola! Me interesa conocer más sobre sus soluciones.",
         projects: "¡Hola! Me gustaría ver más detalles de sus proyectos.",
         technologies: "¡Hola! Quisiera saber más sobre su stack tecnológico.",
+    },
+
+    // Calendar Booking
+    calendar: {
+        badge: "Consultoría",
+        title: "Agenda tu Consultoría",
+        subtitle: "Selecciona el horario que mejor se adapte a ti y comienza tu transformación digital.",
+        loading: "Cargando calendario...",
+        alternative: "¿Prefieres escribirnos directamente?",
+        whatsapp: "Escríbenos por WhatsApp",
+        benefit1Title: "Consultoría personalizada",
+        benefit1Desc: "Analizamos tu caso específico y tus objetivos de negocio.",
+        benefit2Title: "Propuesta a medida",
+        benefit2Desc: "Recibe un plan de acción adaptado a tus necesidades.",
+        benefit3Title: "Sin compromisos",
+        benefit3Desc: "Reunión gratuita por Google Meet de 30 minutos.",
     },
 };
 

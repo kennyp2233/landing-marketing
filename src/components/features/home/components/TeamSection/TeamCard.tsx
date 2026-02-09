@@ -31,7 +31,7 @@ export function TeamCard({
           alt={member.name}
           fill
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
         />
       </div>
 
@@ -51,34 +51,57 @@ export function TeamCard({
       )} />
 
       {/* Content Container */}
-      <div className="absolute inset-0 flex flex-col justify-end p-6">
-        {/* Name and Role - Always Visible */}
+      <div className="absolute inset-0 flex flex-col justify-end p-5">
+        {/* Name and Role - Fixed height container for consistency */}
         <div className={cn(
           "transform transition-all duration-500 ease-out",
-          isHovered ? "translate-y-0" : "translate-y-0"
+          isHovered ? "-translate-y-2" : "translate-y-0"
         )}>
-          <h3 className="text-white text-xl md:text-2xl font-bold mb-2 drop-shadow-lg">
+          {/* Name - Fixed height */}
+          <h3 className="text-white text-lg md:text-xl font-bold mb-1 drop-shadow-lg line-clamp-1 h-7">
             {member.name}
           </h3>
-          <p className="text-white/90 text-sm md:text-base font-medium mb-4 drop-shadow-md">
+          {/* Role - Fixed height */}
+          <p className="text-white/90 text-xs md:text-sm font-medium mb-3 drop-shadow-md line-clamp-1 h-5">
             {member.role}
           </p>
         </div>
 
-        {/* Description - Appears on Hover */}
+        {/* Description - Enhanced Liquid Glass Effect */}
         <div className={cn(
           "transform transition-all duration-700 ease-out",
           isHovered
             ? "translate-y-0 opacity-100"
-            : "translate-y-6 opacity-0"
+            : "translate-y-8 opacity-0 pointer-events-none"
         )}>
           <div className={cn(
-            "rounded-lg p-4 border transition-all duration-700 ease-out",
+            "relative rounded-xl p-4 transition-all duration-700 ease-out overflow-hidden",
             isHovered
-              ? "bg-white/10 backdrop-blur-sm border-white/10"
-              : "bg-transparent backdrop-blur-none border-transparent"
+              ? "bg-white/[0.08] backdrop-blur-xl"
+              : "bg-transparent backdrop-blur-none"
           )}>
-            <p className="text-white/90 text-sm leading-relaxed">
+            {/* Glass shine effect */}
+            <div className={cn(
+              "absolute inset-0 rounded-xl transition-opacity duration-700",
+              "bg-gradient-to-br from-white/20 via-white/5 to-transparent",
+              isHovered ? "opacity-100" : "opacity-0"
+            )} />
+
+            {/* Glass border */}
+            <div className={cn(
+              "absolute inset-0 rounded-xl transition-opacity duration-700",
+              "border border-white/20",
+              isHovered ? "opacity-100" : "opacity-0"
+            )} />
+
+            {/* Inner glow */}
+            <div className={cn(
+              "absolute inset-0 rounded-xl transition-opacity duration-700",
+              "shadow-[inset_0_1px_1px_rgba(255,255,255,0.15)]",
+              isHovered ? "opacity-100" : "opacity-0"
+            )} />
+
+            <p className="relative z-10 text-white/95 text-xs leading-relaxed line-clamp-4">
               {member.description}
             </p>
           </div>
@@ -87,9 +110,11 @@ export function TeamCard({
 
       {/* Decorative border that appears on hover */}
       <div className={cn(
-        "absolute inset-0 rounded-2xl transition-all duration-500 ease-out",
-        "border-2 border-[#592355] dark:border-[#592355] md:border-transparent md:hover:border-[#592355] md:dark:hover:border-[#8a3c86]",
-        isHovered ? "border-opacity-60" : "border-opacity-0"
+        "absolute inset-0 rounded-2xl transition-all duration-500 ease-out pointer-events-none",
+        "border-2",
+        isHovered
+          ? "border-[#8a3c86]/60"
+          : "border-transparent"
       )} />
     </div>
   );

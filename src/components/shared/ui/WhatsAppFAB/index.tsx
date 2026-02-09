@@ -11,7 +11,7 @@ interface WhatsAppFABProps {
 }
 
 export const WhatsAppFAB: React.FC<WhatsAppFABProps> = ({
-    phoneNumber = "1234567890", // Número por defecto, cambiar por el real
+    phoneNumber = "593995498636",
     message = "¡Hola! Me interesa saber más sobre sus servicios de marketing digital.",
     className
 }) => {

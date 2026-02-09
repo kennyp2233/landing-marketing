@@ -19,7 +19,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
       name: 'Matías Villarreal',
       role: t.team.members.matias.role,
       description: t.team.members.matias.description,
-      image: '/team/Mati.png',
+      image: '/team/Mati.jpg',
     },
     {
       id: 'jose',

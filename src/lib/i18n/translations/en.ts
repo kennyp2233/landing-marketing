@@ -80,7 +80,7 @@ export const en: Translations = {
         metrics: {
             efficiency: { value: "+40%", label: "Operational Efficiency", desc: "Average reduction in manual workload." },
             timeToMarket: { value: "4 WKS", label: "Time-to-Market", desc: "Agile and fast development cycles." },
-            ownership: { value: "100%", label: "Code Ownership", desc: "We deliver complete repositories." },
+            ownership: { value: "2x", label: "Faster", desc: "Agile development and frequent deliveries." },
         },
     },
 
@@ -273,5 +273,21 @@ export const en: Translations = {
         solutions: "Hello! I'm interested in learning more about your solutions.",
         projects: "Hello! I'd like to see more details about your projects.",
         technologies: "Hello! I'd like to know more about your tech stack.",
+    },
+
+    // Calendar Booking
+    calendar: {
+        badge: "Consultation",
+        title: "Book Your Consultation",
+        subtitle: "Select a time that works best for you and start your digital transformation.",
+        loading: "Loading calendar...",
+        alternative: "Prefer to message us directly?",
+        whatsapp: "Message us on WhatsApp",
+        benefit1Title: "Personalized consultation",
+        benefit1Desc: "We analyze your specific case and business goals.",
+        benefit2Title: "Custom proposal",
+        benefit2Desc: "Receive an action plan tailored to your needs.",
+        benefit3Title: "No strings attached",
+        benefit3Desc: "Free 30-minute Google Meet session.",
     },
 };
