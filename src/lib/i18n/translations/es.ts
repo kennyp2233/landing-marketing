@@ -35,8 +35,8 @@ export const es = {
                 description: "Sistemas que se moldean a tu modelo de negocio y escalan contigo sin fricciones.",
             },
             quality: {
-                title: "Código de Cristal",
-                description: "Transparencia total. Te damos el código, la documentación y el control absoluto.",
+                title: "Entregas Incrementales",
+                description: "Avances visibles cada semana. Validación continua de cada funcionalidad.",
             },
         },
         // Dashboard labels

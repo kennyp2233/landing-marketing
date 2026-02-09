@@ -37,8 +37,8 @@ export const en: Translations = {
                 description: "Systems that mold to your business model and scale with you without friction.",
             },
             quality: {
-                title: "Crystal Code",
-                description: "Total transparency. We give you the code, documentation, and absolute control.",
+                title: "Incremental Deliveries",
+                description: "Visible progress every week. Continuous validation of each feature.",
             },
         },
         dashboard: {
