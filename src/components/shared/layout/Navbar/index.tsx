@@ -170,7 +170,14 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Mobile Nav Toggle */}
-            <div className="fixed top-6 right-6 z-50 md:hidden">
+            <div className={cn(
+                "fixed top-6 right-6 z-50 md:hidden transition-all duration-300",
+                isScrolled && (
+                    isDark
+                        ? "bg-black/30 backdrop-blur-md border border-white/10 rounded-lg shadow-lg"
+                        : "bg-white/60 backdrop-blur-md border border-black/5 rounded-lg shadow-lg"
+                )
+            )}>
                 <MobileNavToggle
                     isOpen={isMobileMenuOpen}
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
