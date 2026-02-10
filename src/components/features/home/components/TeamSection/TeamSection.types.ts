@@ -9,11 +9,3 @@ export interface TeamMember {
 export interface TeamSectionProps {
   isDark?: boolean;
 }
-
-export interface TeamCardProps {
-  member: TeamMember;
-  isDark?: boolean;
-  index: number;
-  hoveredIndex: number | null;
-  setHoveredIndex: React.Dispatch<React.SetStateAction<number | null>>;
-}

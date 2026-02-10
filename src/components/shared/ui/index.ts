@@ -13,3 +13,5 @@ export type { ButtonProps } from './Button/Button.types';
 export type { LogoProps } from './Logo/Logo.types';
 export type { ThemeToggleProps } from './ThemeToggle/ThemeToggle.types';
 export type { ScrollRevealProps } from './ScrollReveal';
+export { Card as AppleCard, Carousel as AppleCarousel } from './AppleCardsCarousel';
+export type { CarouselCardData } from './AppleCardsCarousel';

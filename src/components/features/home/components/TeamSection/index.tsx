@@ -2,15 +2,37 @@
 "use client";
 
 import React from 'react';
-import { useTheme } from '../../../../../providers/ThemeProvider';
 import { cn } from '../../../../../lib/utils';
-import { TeamCard } from './TeamCard';
 import { TeamSectionProps, TeamMember } from './TeamSection.types';
 import { useLanguage } from '@/providers/LanguageProvider';
+import { Carousel, Card } from '@/components/shared/ui/AppleCardsCarousel';
+
+function TeamMemberContent({ member }: { member: TeamMember; isDark?: boolean }) {
+  return (
+    <div className="bg-[#F5F5F7] dark:bg-neutral-800 p-8 md:p-14 rounded-3xl mb-4">
+      <div className="max-w-3xl mx-auto flex flex-col md:flex-row gap-8 items-start">
+        {/* Member Photo */}
+        <div className="w-24 h-24 md:w-32 md:h-32 rounded-2xl overflow-hidden flex-shrink-0 ring-2 ring-[#712F6D]/30">
+          <img
+            src={member.image}
+            alt={member.name}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Info */}
+        <div className="flex-1">
+          <p className="text-neutral-600 dark:text-neutral-400 text-base md:text-xl font-sans leading-relaxed">
+            {member.description}
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export function TeamSection({ isDark }: TeamSectionProps) {
   const darkMode = isDark;
-  const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null);
   const { t } = useLanguage();
 
   const teamMembers: TeamMember[] = [
@@ -44,6 +66,19 @@ export function TeamSection({ isDark }: TeamSectionProps) {
     }
   ];
 
+  const cards = teamMembers.map((member, index) => (
+    <Card
+      key={member.id}
+      card={{
+        category: member.role,
+        title: member.name,
+        src: member.image,
+        content: <TeamMemberContent member={member} isDark={darkMode} />,
+      }}
+      index={index}
+    />
+  ));
+
   return (
     <section className={cn(
       "py-16 px-6 relative overflow-hidden transition-colors duration-300",
@@ -63,10 +98,9 @@ export function TeamSection({ isDark }: TeamSectionProps) {
         <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-purple-900/10 rounded-full blur-3xl opacity-50" />
       </div>
 
-      <div className="max-w-7xl mx-auto relative relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-16">
-
+        <div className="text-center mb-4">
           <h2 className={cn(
             'text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 transition-colors',
             darkMode ? 'text-white' : 'text-black'
@@ -78,22 +112,11 @@ export function TeamSection({ isDark }: TeamSectionProps) {
           </p>
         </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {teamMembers.map((member, index) => (
-            <TeamCard
-              key={member.id}
-              member={member}
-              isDark={darkMode}
-              index={index}
-              hoveredIndex={hoveredIndex}
-              setHoveredIndex={setHoveredIndex}
-            />
-          ))}
-        </div>
+        {/* Team Carousel */}
+        <Carousel items={cards} />
 
         {/* Bottom Call to Action */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-8">
           <div className={cn(
             'inline-flex items-center px-6 py-3 rounded-full backdrop-blur-sm border transition-colors',
             darkMode
