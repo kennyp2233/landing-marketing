@@ -177,7 +177,9 @@ const SystemDashboard = ({ progress, isDark, t }: { progress: any, isDark: boole
                                         <CalendarBooking isDark={isDark} />
                                     </ExpandableScreenContent>
                                 </ExpandableScreen>
-                                <button className={cn(
+                                <button
+                                    onClick={() => window.location.href = '/proyectos'}
+                                    className={cn(
                                     "px-8 py-4 border text-sm font-medium tracking-wide transition-colors flex items-center justify-center gap-3 rounded-sm",
                                     isDark
                                         ? "border-white/10 text-neutral-300 hover:bg-white/5"

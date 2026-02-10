@@ -2,7 +2,6 @@
 
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
 import { X } from "lucide-react";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 import { CardProps } from "./AppleCardsCarousel.types";
@@ -118,7 +117,6 @@ export function Card({ card, index, layout = false }: CardProps) {
 function BlurImage({
   src,
   alt,
-  fill,
   className,
 }: {
   src: string;
@@ -129,11 +127,10 @@ function BlurImage({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <Image
+    <img
       src={src}
       alt={alt}
-      fill={fill}
-      className={`${className} transition duration-300 ${
+      className={`${className} w-full h-full transition duration-300 ${
         loaded ? "blur-none" : "blur-md"
       }`}
       onLoad={() => setLoaded(true)}

@@ -16,7 +16,7 @@ export function ProjectsSection({ isDark }: ProjectsSectionProps) {
     const { t } = useLanguage();
 
     return (
-        <section id="casos" className={cn("min-h-screen pt-24 pb-8 relative overflow-hidden transition-colors duration-300 bg-background flex flex-col")}>
+        <section id="casos" className={cn("min-h-screen pt-24 pb-24 relative overflow-visible transition-colors duration-300 bg-background flex flex-col")}>
 
             {/* Background Decorations */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">

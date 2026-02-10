@@ -1,11 +1,18 @@
 'use client';
 
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { useTheme } from '../providers/ThemeProvider';
 import { Navbar, Footer } from '../components/shared/layout';
-import { HeroSection, PressSection, AboutSection, ServicesSection, TeamSection, PricingSection } from '../components/features/home';
+import { HeroSection } from '../components/features/home';
 import { WhatsAppFAB } from '../components/shared/ui';
 import { cn } from '../lib/utils';
+
+// Lazy load below-the-fold sections
+const AboutSection = dynamic(() => import('../components/features/home/components/AboutSection').then(m => ({ default: m.default })), { ssr: false });
+const ServicesSection = dynamic(() => import('../components/features/home/components/ServicesSection').then(m => ({ default: m.default })), { ssr: false });
+const PricingSection = dynamic(() => import('../components/features/home/components/PricingSection').then(m => ({ default: m.default })), { ssr: false });
+const TeamSection = dynamic(() => import('../components/features/home/components/TeamSection').then(m => ({ default: m.default })), { ssr: false });
 
 export default function HomePage() {
   const { isDark, toggleTheme } = useTheme();
@@ -19,15 +26,8 @@ export default function HomePage() {
         onThemeToggle={toggleTheme}
       />
 
-      <div className="">
+      <main>
         <HeroSection isDark={isDark} />
-
-        {/* TrustSection eliminada para reducir redundancia */}
-        {/* TrustSection eliminada para reducir redundancia */}
-        {/* PressSection ocultada temporalmente */}
-        {/* <PressSection isDark={isDark} /> */}
-
-
 
         <AboutSection isDark={isDark} />
 
@@ -36,12 +36,10 @@ export default function HomePage() {
         <PricingSection isDark={isDark} />
 
         <TeamSection isDark={isDark} />
+      </main>
 
-        {/* Footer */}
-        <Footer isDark={isDark} />
-      </div>
+      <Footer isDark={isDark} />
 
-      {/* WhatsApp FAB */}
       <WhatsAppFAB
         phoneNumber="+593995498636"
         message="¡Hola! Me interesa conocer más sobre sus servicios."

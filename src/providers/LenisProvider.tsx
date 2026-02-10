@@ -14,12 +14,12 @@ export function LenisProvider({ children }: LenisProviderProps) {
     useEffect(() => {
         // Initialize Lenis with premium "heavy" feel
         const lenis = new Lenis({
-            duration: 1.2,           // Slower, more luxurious scroll
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Smooth easeOutExpo
+            duration: 1.0,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             orientation: 'vertical',
             gestureOrientation: 'vertical',
             smoothWheel: true,
-            wheelMultiplier: 0.8,    // Slower wheel for "heavy" feel
+            wheelMultiplier: 1,
             touchMultiplier: 1.5,
             infinite: false,
         });

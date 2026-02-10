@@ -45,20 +45,36 @@ export function ProjectsShowcase() {
     ];
 
     return (
-        <div className="h-[22rem] md:h-[34rem] [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-start">
+        <div className="h-[26rem] md:h-[38rem] [perspective:1000px] relative flex flex-col max-w-5xl mx-auto w-full items-start justify-start">
             <Tabs tabs={tabs} />
         </div>
     );
 }
 
 const VideoContent = () => {
+    const [isActive, setIsActive] = React.useState(false);
+
     return (
         <div className="absolute top-20 bottom-4 inset-x-0 w-[94%] rounded-xl mx-auto overflow-hidden border border-white/10 shadow-inner bg-black/40 z-20">
+            {/* Overlay prevents iframe from capturing scroll events until user clicks */}
+            {!isActive && (
+                <div
+                    className="absolute inset-0 z-30 cursor-pointer flex items-center justify-center bg-black/20 hover:bg-black/10 transition-colors"
+                    onClick={() => setIsActive(true)}
+                >
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 hover:scale-110 transition-transform">
+                        <svg className="w-6 h-6 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M8 5v14l11-7z" />
+                        </svg>
+                    </div>
+                </div>
+            )}
             <iframe
                 src="https://www.youtube.com/embed/v5Tq4UY8-08"
                 title="Project Demo"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                loading="lazy"
                 className="w-full h-full"
             />
         </div>

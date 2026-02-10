@@ -66,8 +66,8 @@ export const Tabs = ({
                                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                                 className={cn(
                                     "absolute inset-0 rounded-full shadow-md",
-                                    "bg-neutral-800 dark:bg-zinc-800",
-                                    "border border-neutral-700 dark:border-zinc-700",
+                                    "bg-neutral-200 dark:bg-zinc-800",
+                                    "border border-neutral-300 dark:border-zinc-700",
                                     activeTabClassName
                                 )}
                             />
@@ -76,8 +76,8 @@ export const Tabs = ({
                         <span className={cn(
                             "relative block font-medium transition-colors",
                             active.value === tab.value
-                                ? "text-white"
-                                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
+                                ? "text-neutral-900 dark:text-white"
+                                : "text-neutral-500 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
                         )}>
                             {tab.title}
                         </span>
@@ -89,7 +89,7 @@ export const Tabs = ({
                 active={active}
                 key={active.value}
                 hovering={hovering}
-                className={cn("mt-12 sm:mt-20", contentClassName)}
+                className={cn("mt-12 sm:mt-16", contentClassName)}
             />
         </>
     );
@@ -117,8 +117,8 @@ export const FadeInDiv = ({
                     layoutId={tab.value}
                     style={{
                         scale: 1 - idx * 0.1,
-                        top: hovering ? idx * -50 : 0,
-                        zIndex: -idx,
+                        top: hovering ? idx * -40 : 0,
+                        zIndex: tabs.length - idx,
                         opacity: idx < 3 ? 1 - idx * 0.1 : 0,
                     }}
                     animate={{
