@@ -300,19 +300,10 @@ export function AboutSection({ isDark }: AboutSectionProps) {
             )} />
 
             {/* Main Content */}
-            <div className="max-w-7xl mx-auto px-6 pt-32 pb-0 relative">
+            <div className="max-w-7xl mx-auto px-6 pt-16 pb-0 relative">
 
                 <div className="text-center mb-12 relative z-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        className={cn(
-                            "inline-block px-3 py-1 mb-4 rounded-full backdrop-blur-sm border",
-                            isDark ? "bg-white/5 border-white/5" : "bg-neutral-100 border-neutral-200"
-                        )}
-                    >
-                        <span className={cn("text-xs font-mono uppercase tracking-widest", isDark ? "text-purple-300" : "text-purple-600")}>{t.about.badge}</span>
-                    </motion.div>
+
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

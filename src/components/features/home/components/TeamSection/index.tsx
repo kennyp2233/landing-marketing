@@ -46,7 +46,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
 
   return (
     <section className={cn(
-      "py-24 px-6 relative overflow-hidden transition-colors duration-300",
+      "py-16 px-6 relative overflow-hidden transition-colors duration-300",
       darkMode ? "bg-neutral-950" : "bg-neutral-50"
     )}>
       {/* Background Grid */}
@@ -66,11 +66,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
       <div className="max-w-7xl mx-auto relative relative z-10">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className={cn("inline-block px-3 py-1 mb-4 rounded-full backdrop-blur-sm border",
-            darkMode ? "bg-white/5 border-white/5" : "bg-black/5 border-black/5"
-          )}>
-            <span className="text-xs font-mono text-purple-300 uppercase tracking-widest">{t.team.badge}</span>
-          </div>
+
           <h2 className={cn(
             'text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight mb-6 transition-colors',
             darkMode ? 'text-white' : 'text-black'

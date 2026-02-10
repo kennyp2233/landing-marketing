@@ -12,7 +12,14 @@ import {
     MobileNavToggle,
     MobileNavMenu,
 } from "@/components/shared/ui/ResizableNavbar";
-import { ThemeToggle, Button } from '../../ui';
+import {
+    ThemeToggle,
+    Button,
+    ExpandableScreen,
+    ExpandableScreenTrigger,
+    ExpandableScreenContent,
+    CalendarBooking
+} from '../../ui';
 import { NavbarProps } from './Navbar.types';
 import Image from 'next/image';
 import { useLanguage } from '@/providers/LanguageProvider';
@@ -166,17 +173,23 @@ const Navbar: React.FC<NavbarProps> = ({
 
             {/* 3. CTA Button - Top Right - Fixed */}
             <div className="fixed top-6 right-6 z-40 hidden md:block">
-                <button
-                    onClick={handleStartProject}
-                    className={cn(
-                        "px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-colors shadow-lg cursor-pointer",
-                        isDark
-                            ? "bg-white text-black hover:bg-neutral-200"
-                            : "bg-black text-white hover:bg-neutral-800"
-                    )}
-                >
-                    {t.nav.startProject}
-                </button>
+                <ExpandableScreen isDark={isDark} layoutId="navbar-cta-desktop">
+                    <ExpandableScreenTrigger>
+                        <div
+                            className={cn(
+                                "px-6 py-2.5 rounded-full text-sm font-bold tracking-wide transition-colors shadow-lg cursor-pointer",
+                                isDark
+                                    ? "bg-white text-black hover:bg-neutral-200"
+                                    : "bg-black text-white hover:bg-neutral-800"
+                            )}
+                        >
+                            {t.nav.startProject}
+                        </div>
+                    </ExpandableScreenTrigger>
+                    <ExpandableScreenContent>
+                        <CalendarBooking isDark={isDark} />
+                    </ExpandableScreenContent>
+                </ExpandableScreen>
             </div>
 
             {/* Mobile Nav Toggle */}
@@ -249,18 +262,21 @@ const Navbar: React.FC<NavbarProps> = ({
                         </button>
                     </div>
 
-                    <button
-                        onClick={() => {
-                            handleStartProject();
-                            setIsMobileMenuOpen(false);
-                        }}
-                        className={cn(
-                            "mt-8 px-8 py-3 rounded-full font-bold transition-colors cursor-pointer",
-                            isDark ? "bg-white text-black hover:bg-neutral-200" : "bg-black text-white hover:bg-neutral-800"
-                        )}
-                    >
-                        {t.nav.startProject}
-                    </button>
+                    <ExpandableScreen isDark={isDark} layoutId="navbar-cta-mobile">
+                        <ExpandableScreenTrigger>
+                            <div
+                                className={cn(
+                                    "mt-8 px-8 py-3 rounded-full font-bold transition-colors cursor-pointer",
+                                    isDark ? "bg-white text-black hover:bg-neutral-200" : "bg-black text-white hover:bg-neutral-800"
+                                )}
+                            >
+                                {t.nav.startProject}
+                            </div>
+                        </ExpandableScreenTrigger>
+                        <ExpandableScreenContent>
+                            <CalendarBooking isDark={isDark} />
+                        </ExpandableScreenContent>
+                    </ExpandableScreen>
                 </div>
             </MobileNavMenu>
 

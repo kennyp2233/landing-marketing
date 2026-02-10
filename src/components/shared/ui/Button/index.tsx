@@ -30,17 +30,23 @@ const Button: React.FC<ButtonProps> = ({
         lg: 'px-8 py-4 text-lg',
     };
 
+    const Component = props.as || 'button';
+
+    // Si no es un botón real, no pasamos la prop disabled al DOM, pero sí aplicamos los estilos
+    const { as, ...domProps } = props;
+    const isDisabled = disabled || isLoading;
+
     return (
-        <button
+        <Component
             className={cn(
                 baseClasses,
                 variants[variant],
                 sizes[size],
-                (disabled || isLoading) && 'opacity-50 cursor-not-allowed',
+                isDisabled && 'opacity-50 cursor-not-allowed pointer-events-none', // Pointer events none para evitar clics si está deshabilitado visualmente
                 className
             )}
-            disabled={disabled || isLoading}
-            {...props}
+            disabled={Component === 'button' ? isDisabled : undefined}
+            {...domProps}
         >
             {isLoading ? (
                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
@@ -49,7 +55,7 @@ const Button: React.FC<ButtonProps> = ({
             ) : null}
             {children}
             {rightIcon && !isLoading && <span className="ml-2">{rightIcon}</span>}
-        </button>
+        </Component>
     );
 };
 

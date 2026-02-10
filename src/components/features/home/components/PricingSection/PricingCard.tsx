@@ -75,7 +75,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
                     </ul>
 
                     <div className="mt-8">
-                        <ExpandableScreen isDark={isDark}>
+                        <ExpandableScreen isDark={isDark} layoutId={`pricing-${plan.name.replace(/\s+/g, '-').toLowerCase()}`}>
                             <ExpandableScreenTrigger className="w-full">
                                 <Button
                                     variant="primary"

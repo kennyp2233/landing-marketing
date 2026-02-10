@@ -24,7 +24,7 @@ export function TechnologiesSection({ isDark }: TechnologiesSectionProps) {
             </div>
 
             {/* Header Section - matching Solutions/Projects format */}
-            <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-24">
+            <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-16">
                 <div className="text-center max-w-3xl mx-auto mb-8">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
