@@ -1,8 +1,8 @@
 // lib/constants/typography.ts
 export const TYPOGRAPHY = {
     fontFamily: {
-        primary: 'var(--font-geist-sans), -apple-system, BlinkMacSystemFont, sans-serif',
-        mono: 'var(--font-geist-mono), Monaco, monospace',
+        primary: 'var(--font-sans)',
+        mono: 'var(--font-mono)',
     },
     sizes: {
         xs: '0.75rem',     // 12px

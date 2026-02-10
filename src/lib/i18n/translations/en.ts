@@ -145,6 +145,7 @@ export const en: Translations = {
     solutions: {
         title: "Technology that",
         titleHighlight: "Drives",
+        flipWords: ["Drives", "Transforms", "Powers", "Accelerates"],
         titleEnd: "your Business",
         subtitle: "From making complex workflows automatic to building robust platforms. We create the digital ecosystem your company needs.",
         cta: "View details",
@@ -177,6 +178,7 @@ export const en: Translations = {
     projects: {
         title: "Success",
         titleHighlight: "Stories",
+        flipWords: ["Stories", "Cases", "Results", "Wins"],
         subtitle: "Discover how we have transformed businesses with custom technological solutions.",
         showcase: {
             finance: {
@@ -198,6 +200,7 @@ export const en: Translations = {
     technologies: {
         title: "Our",
         titleHighlight: "Tech",
+        flipWords: ["Tech", "Digital", "Cloud", "Dev"],
         titleEnd: "Stack",
         subtitle: "We use the most modern and robust technologies on the market to build solutions that scale with your business.",
         details: {

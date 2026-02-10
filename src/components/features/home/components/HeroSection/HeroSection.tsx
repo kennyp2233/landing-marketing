@@ -7,6 +7,8 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { HeroSectionProps } from './HeroSection.types';
 import { useLanguage } from '@/providers/LanguageProvider';
+import { ExpandableScreen, ExpandableScreenTrigger, ExpandableScreenContent } from '@/components/shared/ui/ExpandableScreen';
+import { CalendarBooking } from '@/components/shared/ui/CalendarBooking';
 
 const KhanndaLogoReveal = ({ progress, isDark }: { progress: any, isDark: boolean }) => {
     // Rotate and scale based on scroll
@@ -164,10 +166,17 @@ const SystemDashboard = ({ progress, isDark, t }: { progress: any, isDark: boole
                             </p>
 
                             <div className="flex flex-col sm:flex-row gap-5 pt-4">
-                                <button className="group px-8 py-4 bg-gradient-to-r from-[#592355] to-[#8a3c86] text-white text-sm font-medium tracking-wide transition-all hover:scale-105 shadow-[0_0_20px_rgba(138,60,134,0.3)] flex items-center justify-center gap-3 rounded-sm">
-                                    {t.hero.cta}
-                                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                                </button>
+                                <ExpandableScreen isDark={isDark} layoutId="hero-cta-button">
+                                    <ExpandableScreenTrigger>
+                                        <button className="group px-8 py-4 bg-gradient-to-r from-[#592355] to-[#8a3c86] text-white text-sm font-medium tracking-wide transition-all hover:scale-105 shadow-[0_0_20px_rgba(138,60,134,0.3)] flex items-center justify-center gap-3 rounded-sm">
+                                            {t.hero.cta}
+                                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                        </button>
+                                    </ExpandableScreenTrigger>
+                                    <ExpandableScreenContent>
+                                        <CalendarBooking isDark={isDark} />
+                                    </ExpandableScreenContent>
+                                </ExpandableScreen>
                                 <button className={cn(
                                     "px-8 py-4 border text-sm font-medium tracking-wide transition-colors flex items-center justify-center gap-3 rounded-sm",
                                     isDark

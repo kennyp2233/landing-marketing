@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { ProjectsShowcase } from './ProjectsShowcase';
+import { LayoutTextFlip } from '@/components/shared/ui/layout-text-flip';
 
 interface ProjectsSectionProps {
     isDark: boolean;
@@ -25,15 +26,18 @@ export function ProjectsSection({ isDark }: ProjectsSectionProps) {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
                 <div className="text-center max-w-3xl mx-auto mb-8">
-                    <motion.h2
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className={cn("text-4xl md:text-5xl font-bold tracking-tight mb-6", isDark ? "text-white" : "text-neutral-900")}
+                        className={cn("flex flex-nowrap items-center justify-center gap-3 text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-6 whitespace-nowrap", isDark ? "text-white" : "text-neutral-900")}
                     >
-                        {t.projects.title} <span className="gradient-text">{t.projects.titleHighlight}</span>
-                    </motion.h2>
+                        <LayoutTextFlip
+                            text={t.projects.title}
+                            words={t.projects.flipWords}
+                        />
+                    </motion.div>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}

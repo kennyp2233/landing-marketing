@@ -131,7 +131,7 @@ export const es = {
             },
             kevin: {
                 role: "Innovación y Producto",
-                description: "Diseñador de experiencias funcionales. Yandry se asegura de que la complejidad del código se traduzca en interfaces simples e intuitivas. Su obsesión es que usar nuestro software sea más fácil que usar un cuaderno.",
+                description: "Diseñador de experiencias funcionales. Kevin se asegura de que la complejidad del código se traduzca en interfaces simples e intuitivas. Su obsesión es que usar nuestro software sea más fácil que usar un cuaderno.",
             },
             kenny: {
                 role: "Full Stack Developer",
@@ -144,6 +144,7 @@ export const es = {
     solutions: {
         title: "Tecnología que",
         titleHighlight: "Impulsa",
+        flipWords: ["Impulsa", "Transforma", "Potencia", "Acelera"],
         titleEnd: "tu Negocio",
         subtitle: "Desde la automatización de flujos complejos hasta el desarrollo de plataformas robustas. Creamos el ecosistema digital que tu empresa necesita.",
         cta: "Ver detalles",
@@ -176,6 +177,7 @@ export const es = {
     projects: {
         title: "Casos de",
         titleHighlight: "Éxito",
+        flipWords: ["Éxito", "Impacto", "Valor", "Resultados"],
         subtitle: "Descubre cómo hemos transformado negocios con soluciones tecnológicas a medida.",
         showcase: {
             finance: {
@@ -197,6 +199,7 @@ export const es = {
     technologies: {
         title: "Nuestro",
         titleHighlight: "Stack",
+        flipWords: ["Stack", "Arsenal", "Motor", "Core"],
         titleEnd: "Tecnológico",
         subtitle: "Utilizamos las tecnologías más modernas y robustas del mercado para construir soluciones que escalan con tu negocio.",
         details: {

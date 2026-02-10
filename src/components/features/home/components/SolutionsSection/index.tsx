@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { SolutionsCards } from './SolutionsCards';
+import { LayoutTextFlip } from '@/components/shared/ui/layout-text-flip';
 
 interface SolutionsSectionProps {
     isDark: boolean;
@@ -29,15 +30,19 @@ export function SolutionsSection({ isDark }: SolutionsSectionProps) {
                 <div className="text-center max-w-3xl mx-auto mb-8">
 
 
-                    <motion.h2
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className={cn("text-4xl md:text-5xl font-bold tracking-tight mb-6", isDark ? "text-white" : "text-neutral-900")}
+                        className={cn("flex flex-nowrap items-center justify-center gap-3 text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-6 whitespace-nowrap", isDark ? "text-white" : "text-neutral-900")}
                     >
-                        {t.solutions.title} <span className="gradient-text">{t.solutions.titleHighlight}</span> {t.solutions.titleEnd}
-                    </motion.h2>
+                        <LayoutTextFlip
+                            text={t.solutions.title}
+                            words={t.solutions.flipWords}
+                        />
+                        <span>{t.solutions.titleEnd}</span>
+                    </motion.div>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}

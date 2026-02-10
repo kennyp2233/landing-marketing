@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { MacbookShowcase } from './MacbookShowcase';
 import { TechDetailSection } from './TechDetailSection';
+import { LayoutTextFlip } from '@/components/shared/ui/layout-text-flip';
 
 interface TechnologiesSectionProps {
     isDark: boolean;
@@ -16,7 +17,7 @@ export function TechnologiesSection({ isDark }: TechnologiesSectionProps) {
     const { t } = useLanguage();
 
     return (
-        <section id="tecnologia" className={cn("relative overflow-hidden transition-colors duration-300 bg-background")}>
+        <section id="tecnologia" className={cn("relative overflow-hidden transition-colors duration-300 bg-background pt-24 pb-8")}>
             {/* Background Decorations - matching other pages */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className={cn("absolute -top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full blur-[100px] opacity-20", isDark ? "bg-purple-900" : "bg-purple-200")} />
@@ -24,17 +25,21 @@ export function TechnologiesSection({ isDark }: TechnologiesSectionProps) {
             </div>
 
             {/* Header Section - matching Solutions/Projects format */}
-            <div className="max-w-7xl mx-auto px-6 relative z-10 w-full pt-16">
+            <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
                 <div className="text-center max-w-3xl mx-auto mb-8">
-                    <motion.h2
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className={cn("text-4xl md:text-5xl font-bold tracking-tight mb-6", isDark ? "text-white" : "text-neutral-900")}
+                        className={cn("flex flex-nowrap items-center justify-center gap-3 text-2xl sm:text-3xl md:text-5xl font-bold tracking-tight mb-6 whitespace-nowrap", isDark ? "text-white" : "text-neutral-900")}
                     >
-                        {t.technologies.title} <span className="gradient-text">{t.technologies.titleHighlight}</span> {t.technologies.titleEnd}
-                    </motion.h2>
+                        <LayoutTextFlip
+                            text={t.technologies.title}
+                            words={t.technologies.flipWords}
+                        />
+                        <span>{t.technologies.titleEnd}</span>
+                    </motion.div>
 
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}

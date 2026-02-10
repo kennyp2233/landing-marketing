@@ -5,6 +5,7 @@ import React from 'react';
 import { cn } from '../../../../lib/utils';
 import { Logo } from '../../ui';
 import { useLanguage } from '@/providers/LanguageProvider';
+import { TextHoverEffect } from '../../ui/text-hover-effect';
 
 interface FooterProps {
     isDark: boolean;
@@ -82,6 +83,10 @@ const Footer: React.FC<FooterProps> = ({ isDark }) => {
                             <li><a href="/" className="hover:text-purple-400 transition-colors">{t.footer.legal.status}</a></li>
                         </ul>
                     </div>
+                </div>
+
+                <div className="h-[20rem] flex items-center justify-center">
+                    <TextHoverEffect text="KHANNDA" />
                 </div>
 
                 <div className={cn(

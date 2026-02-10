@@ -101,7 +101,7 @@ export function TeamCard({
               isHovered ? "opacity-100" : "opacity-0"
             )} />
 
-            <p className="relative z-10 text-white/95 text-xs leading-relaxed line-clamp-4">
+            <p className="relative z-10 text-white/95 text-xs leading-relaxed">
               {member.description}
             </p>
           </div>
