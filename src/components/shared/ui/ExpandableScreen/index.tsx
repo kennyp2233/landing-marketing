@@ -7,6 +7,7 @@ import {
     useState,
     type ReactNode,
 } from "react"
+import { createPortal } from "react-dom"
 import { X } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import { cn } from "@/lib/utils"
@@ -179,11 +180,21 @@ export function ExpandableScreenContent({
     const { isExpanded, collapse, layoutId, contentRadius, animationDuration, isDark } =
         useExpandableScreen()
 
-    return (
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+        return () => setMounted(false)
+    }, [])
+
+    if (!mounted) return null
+
+    // Create portal container if it doesn't exist (though we use document.body)
+    const portalContent = (
         <AnimatePresence initial={false}>
             {isExpanded && (
                 <motion.div
-                    className="fixed inset-0 z-50"
+                    className="fixed inset-0 z-[9999]"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
@@ -240,7 +251,7 @@ export function ExpandableScreenContent({
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: animationDuration * 0.3, duration: animationDuration * 0.7 }}
-                            className="relative z-20 flex flex-col h-full w-full overflow-y-auto"
+                            className="relative z-20 flex flex-col h-full w-full overflow-y-auto overscroll-y-contain"
                         >
                             {children}
                         </motion.div>
@@ -267,6 +278,9 @@ export function ExpandableScreenContent({
             )}
         </AnimatePresence>
     )
+
+    // @ts-ignore - createPortal types can be tricky with specific React versions
+    return createPortal(portalContent, document.body)
 }
 
 export { useExpandableScreen }

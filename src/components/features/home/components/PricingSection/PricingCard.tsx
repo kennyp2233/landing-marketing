@@ -3,6 +3,8 @@ import { cn } from '@/lib/utils';
 import { useTheme } from '@/providers/ThemeProvider';
 import { Check } from 'lucide-react';
 import Button from '@/components/shared/ui/Button';
+import { ExpandableScreen, ExpandableScreenTrigger, ExpandableScreenContent } from '@/components/shared/ui/ExpandableScreen';
+import { CalendarBooking } from '@/components/shared/ui/CalendarBooking';
 import { PricingPlan } from './PricingSection.types';
 
 interface PricingCardProps {
@@ -15,30 +17,29 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
     return (
         <div
             className={cn(
-                "rounded-2xl h-full w-full p-4 overflow-hidden border relative z-20 flex flex-col transition-all duration-300",
+                "rounded-2xl h-full w-full p-8 border relative z-20 flex flex-col transition-colors duration-300",
                 isDark
-                    ? "bg-gray-900/80 border-white/[0.05] group-hover:border-slate-600"
-                    : "bg-white border-purple-100/80 hover:border-purple-200 hover:shadow-xl shadow-md",
-                plan.highlight && (isDark ? "ring-2 ring-purple-500/50" : "ring-1 ring-purple-400/30")
+                    ? "bg-neutral-950 border-white/20 hover:border-white/40"
+                    : "bg-white border-black/10 hover:border-black/20",
+                plan.highlight && (isDark ? "border-white" : "border-black")
             )}
         >
+            {/* Minimalist header for highlighted plan */}
             {plan.highlight && (
                 <div className={cn(
-                    "absolute -top-3 left-1/2 transform -translate-x-1/2 text-white px-4 py-2 rounded-full text-xs font-semibold shadow-lg",
-                    "bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86]"
+                    "absolute top-0 right-0 px-3 py-1 text-[10px] uppercase tracking-widest font-medium border-l border-b",
+                    isDark ? "bg-white text-black border-white" : "bg-black text-white border-black"
                 )}>
-                    Más Popular
+                    Popular
                 </div>
             )}
             <div className="relative z-50 flex-1 flex flex-col">
-                <div className="p-4 flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col">
                     {/* Tier - Always at the top */}
                     <div>
                         <span className={cn(
-                            "text-sm font-semibold mb-3 inline-block",
-                            plan.highlight
-                                ? cn("px-3 py-1 rounded-full text-white", "bg-gradient-to-r from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86]")
-                                : cn("uppercase tracking-wider py-1 font-bold bg-clip-text text-transparent bg-gradient-to-r", "from-[#592355] via-[#712F6D] to-[#8a3c86] dark:from-[#592355] dark:via-[#712F6D] dark:to-[#8a3c86]")
+                            "text-xs font-mono uppercase tracking-widest mb-2 inline-block",
+                            isDark ? "text-neutral-400" : "text-neutral-500"
                         )}>
                             {plan.tier}
                         </span>
@@ -66,7 +67,7 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
                             )}>
                                 <Check className={cn(
                                     "w-4 h-4 mr-3 flex-shrink-0 mt-0.5",
-                                    isDark ? "text-[#8a3c86]" : "text-[#592355]"
+                                    isDark ? "text-white" : "text-black"
                                 )} />
                                 {feature}
                             </li>
@@ -74,9 +75,25 @@ export const PricingCard: React.FC<PricingCardProps> = ({ plan }) => {
                     </ul>
 
                     <div className="mt-8">
-                        <Button variant="primary" size="md" className="w-full">
-                            Comenzar Ahora
-                        </Button>
+                        <ExpandableScreen isDark={isDark}>
+                            <ExpandableScreenTrigger className="w-full">
+                                <Button
+                                    variant="primary"
+                                    size="md"
+                                    className={cn(
+                                        "w-full border transition-colors",
+                                        isDark
+                                            ? "bg-none bg-white text-black hover:bg-neutral-200 border-white"
+                                            : "bg-none bg-black text-white hover:bg-neutral-800 border-black"
+                                    )}
+                                >
+                                    Comenzar Ahora
+                                </Button>
+                            </ExpandableScreenTrigger>
+                            <ExpandableScreenContent>
+                                <CalendarBooking isDark={isDark} />
+                            </ExpandableScreenContent>
+                        </ExpandableScreen>
                     </div>
                 </div>
             </div>
