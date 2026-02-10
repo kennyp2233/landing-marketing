@@ -5,6 +5,7 @@ import { ThemeProvider } from '../providers';
 import { LenisProvider } from '../providers/LenisProvider';
 import { LanguageProvider } from '../providers/LanguageProvider';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.khannda.com'),
@@ -122,6 +123,7 @@ export default function RootLayout({
           </LanguageProvider>
         </ThemeProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
