@@ -21,15 +21,24 @@ export function Card({ card, index, layout = false }: CardProps) {
       }
     }
 
+    // Hide/show navbar elements to prevent z-index overlap
+    const navbarElements = document.querySelectorAll<HTMLElement>('[data-navbar]');
+
     if (open) {
       document.body.style.overflow = "hidden";
+      (window as any).__lenis?.stop();
+      navbarElements.forEach(el => el.style.display = 'none');
       window.addEventListener("keydown", onKeyDown);
     } else {
       document.body.style.overflow = "auto";
+      (window as any).__lenis?.start();
+      navbarElements.forEach(el => el.style.display = '');
     }
 
     return () => {
       window.removeEventListener("keydown", onKeyDown);
+      // Restore navbar on cleanup
+      navbarElements.forEach(el => el.style.display = '');
     };
   }, [open, handleClose]);
 
@@ -39,13 +48,13 @@ export function Card({ card, index, layout = false }: CardProps) {
     <>
       <AnimatePresence>
         {open && (
-          <div className="fixed inset-0 h-screen z-50 overflow-auto">
+          <div className="fixed inset-0 z-[100] overflow-auto py-10 px-4">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="bg-black/80 backdrop-blur-lg h-full w-full fixed inset-0"
+              className="bg-black/80 backdrop-blur-lg fixed inset-0 z-[100]"
             />
 
             {/* Expanded Card Container */}
@@ -55,7 +64,7 @@ export function Card({ card, index, layout = false }: CardProps) {
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 z-[60] my-10 p-4 md:p-10 rounded-3xl font-sans relative"
+              className="max-w-5xl mx-auto bg-white dark:bg-neutral-900 z-[101] p-4 md:p-10 rounded-3xl font-sans relative"
             >
               {/* Close Button */}
               <button

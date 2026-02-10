@@ -72,7 +72,7 @@ const Navbar: React.FC<NavbarProps> = ({
     return (
         <React.Fragment>
             {/* 1. Floating Logo - Top Left - Always Visible & Fixed */}
-            <div className={cn("fixed top-6 left-6 z-50", isDark ? "mix-blend-difference" : "")}>
+            <div data-navbar className={cn("fixed top-6 left-6 z-50", isDark ? "mix-blend-difference" : "")}>
                 <a href="/" className="flex items-center space-x-3 group">
                     <div className="h-10 w-auto relative transition-transform group-hover:scale-110 duration-300">
                         <Image
@@ -97,7 +97,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* 2. Floating Navbar Pill - Top Center - Fixed */}
-            <div className="fixed top-6 left-1/2 -translate-x-1/2 z-40 hidden md:block">
+            <div data-navbar className="fixed top-6 left-1/2 -translate-x-1/2 z-40 hidden md:block">
                 <nav className={cn(
                     "flex items-center gap-1 p-1.5 rounded-full transition-all duration-500",
                     isScrolled
@@ -179,7 +179,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* 3. CTA Button - Top Right - Fixed */}
-            <div className="fixed top-6 right-6 z-40 hidden md:block">
+            <div data-navbar className="fixed top-6 right-6 z-40 hidden md:block">
                 <ExpandableScreen isDark={isDark} layoutId="navbar-cta-desktop">
                     <ExpandableScreenTrigger>
                         <div
@@ -200,7 +200,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
 
             {/* Mobile Nav Toggle */}
-            <div className={cn(
+            <div data-navbar className={cn(
                 "fixed top-6 right-6 z-50 md:hidden transition-all duration-300",
                 isScrolled && (
                     isDark

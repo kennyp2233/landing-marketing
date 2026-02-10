@@ -17,7 +17,7 @@ export function TechnologiesSection({ isDark }: TechnologiesSectionProps) {
     const { t } = useLanguage();
 
     return (
-        <section id="tecnologia" className={cn("relative overflow-hidden transition-colors duration-300 bg-background pt-24 pb-8")}>
+        <section id="tecnologia" className={cn("relative overflow-hidden transition-colors duration-300 bg-background pt-36 pb-8")}>
             {/* Background Decorations - matching other pages */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className={cn("absolute -top-[20%] -right-[10%] w-[600px] h-[600px] rounded-full blur-[100px] opacity-20", isDark ? "bg-purple-900" : "bg-purple-200")} />
@@ -26,7 +26,7 @@ export function TechnologiesSection({ isDark }: TechnologiesSectionProps) {
 
             {/* Header Section - matching Solutions/Projects format */}
             <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-                <div className="text-center max-w-3xl mx-auto mb-8">
+                <div className="text-center max-w-3xl mx-auto mb-5">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

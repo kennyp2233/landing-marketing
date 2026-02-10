@@ -18,7 +18,7 @@ export function SolutionsSection({ isDark }: SolutionsSectionProps) {
     const { t } = useLanguage();
 
     return (
-        <section id="servicios" className={cn("min-h-screen pt-24 pb-8 relative overflow-hidden transition-colors duration-300 bg-background flex flex-col")}>
+        <section id="servicios" className={cn("min-h-screen pt-36 pb-8 relative overflow-hidden transition-colors duration-300 bg-background flex flex-col")}>
 
             {/* Background Decorations */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -27,7 +27,7 @@ export function SolutionsSection({ isDark }: SolutionsSectionProps) {
             </div>
 
             <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-                <div className="text-center max-w-3xl mx-auto mb-8">
+                <div className="text-center max-w-3xl mx-auto mb-5">
 
 
                     <motion.div
