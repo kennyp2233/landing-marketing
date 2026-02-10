@@ -4,6 +4,7 @@ import './globals.css';
 import { ThemeProvider } from '../providers';
 import { LenisProvider } from '../providers/LenisProvider';
 import { LanguageProvider } from '../providers/LanguageProvider';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 export const metadata: Metadata = {
   title: 'Khannda - Desarrollo de Software y Estrategia Digital',
@@ -42,6 +43,7 @@ export default function RootLayout({
             </LenisProvider>
           </LanguageProvider>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
