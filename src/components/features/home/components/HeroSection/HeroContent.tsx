@@ -52,7 +52,7 @@ const HeroContent: React.FC<HeroContentProps> = ({ isDark }) => {
                 Ver Portafolio
             </Button>
         </div>
-        </div >
+
     );
 };
 

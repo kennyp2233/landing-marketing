@@ -30,7 +30,7 @@ const Button: React.FC<ButtonProps> = ({
         lg: 'px-8 py-4 text-lg',
     };
 
-    const Component = props.as || 'button';
+    const Component = (props.as || 'button') as any;
 
     // Si no es un botón real, no pasamos la prop disabled al DOM, pero sí aplicamos los estilos
     const { as, ...domProps } = props;

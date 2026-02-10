@@ -19,8 +19,8 @@ interface Solution {
     title: string;
     description: string;
     cta: string;
-    icon: React.ReactNode;
-    satelliteIcons: React.ReactNode[];
+    icon: React.ReactElement;
+    satelliteIcons: React.ReactElement[];
     tagline: string;
     highlights: string[];
     accentColor: "blue" | "purple" | "emerald";
@@ -52,8 +52,8 @@ function AnimatedIconDisplay({
     accentColor,
     isDark,
 }: {
-    mainIcon: React.ReactNode;
-    satelliteIcons: React.ReactNode[];
+    mainIcon: React.ReactElement;
+    satelliteIcons: React.ReactElement[];
     accentColor: "blue" | "purple" | "emerald";
     isDark: boolean;
 }) {
@@ -109,7 +109,7 @@ function AnimatedIconDisplay({
                 className={cn("relative z-10", iconColorMap[accentColor])}
                 animate={floatAnimation(0)}
             >
-                {React.cloneElement(mainIcon as React.ReactElement, {
+                {React.cloneElement(mainIcon as React.ReactElement<any>, {
                     className: "w-12 h-12",
                     strokeWidth: 1.5,
                 })}
@@ -124,7 +124,7 @@ function AnimatedIconDisplay({
                     animate={floatAnimation(0.5 + i * 0.6)}
                 >
                     <div className={cn("p-2 rounded-lg backdrop-blur-sm", dotBgMap[accentColor])}>
-                        {React.cloneElement(sat as React.ReactElement, {
+                        {React.cloneElement(sat as React.ReactElement<any>, {
                             className: "w-4 h-4",
                             strokeWidth: 1.5,
                         })}
