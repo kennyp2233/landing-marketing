@@ -17,6 +17,9 @@ function TeamMemberContent({ member }: { member: TeamMember; isDark?: boolean })
             src={member.image}
             alt={member.name}
             className="w-full h-full object-cover"
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = '/logo-khannda.png';
+            }}
           />
         </div>
 
@@ -62,7 +65,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
       name: 'Kenny Pinchao',
       role: t.team.members.kenny.role,
       description: t.team.members.kenny.description,
-      image: '/logo-khannda.png',
+      image: '/team/Kenny.jpg',
     }
   ];
 

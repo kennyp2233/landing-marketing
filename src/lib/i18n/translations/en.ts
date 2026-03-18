@@ -183,14 +183,14 @@ export const en: Translations = {
         showcase: {
             finance: {
                 title: "Cooperativa César Terán",
-                type: "Cooperativa Terán",
+                type: "Fintech",
             },
             fitness: {
                 title: "Gym CT Tulcán",
-                type: "Gym Tulcán",
+                type: "Administration System",
             },
             retail: {
-                title: "KSZ Fútbol Club USA",
+                title: "GZS Academy USA",
                 type: "E-Commerce",
             },
         },

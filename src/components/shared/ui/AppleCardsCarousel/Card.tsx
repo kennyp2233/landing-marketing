@@ -134,15 +134,20 @@ function BlurImage({
   className?: string;
 }) {
   const [loaded, setLoaded] = useState(false);
+  const [error, setError] = useState(false);
 
   return (
     <img
-      src={src}
+      src={error ? '/logo-khannda.png' : src}
       alt={alt}
-      className={`${className} w-full h-full transition duration-300 ${
+      className={`${className} w-full h-full object-cover transition duration-300 ${
         loaded ? "blur-none" : "blur-md"
       }`}
       onLoad={() => setLoaded(true)}
+      onError={() => {
+        setError(true);
+        setLoaded(true);
+      }}
     />
   );
 }

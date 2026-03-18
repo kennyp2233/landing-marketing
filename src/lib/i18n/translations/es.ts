@@ -189,7 +189,7 @@ export const es = {
                 type: "Gym Tulcán",
             },
             retail: {
-                title: "KSZ Fútbol Club USA",
+                title: "GSZ Academy USA",
                 type: "E-Commerce",
             },
         },
