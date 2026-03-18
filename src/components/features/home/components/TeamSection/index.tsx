@@ -65,7 +65,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
       name: 'Kenny Pinchao',
       role: t.team.members.kenny.role,
       description: t.team.members.kenny.description,
-      image: '/team/Kenny.JPG',
+      image: '/team/Kenny.jpg',
     }
   ];
 
