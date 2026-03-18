@@ -9,3 +9,11 @@ export interface TeamMember {
 export interface TeamSectionProps {
   isDark?: boolean;
 }
+
+export interface TeamCardProps {
+  member: TeamMember;
+  isDark?: boolean;
+  index: number;
+  hoveredIndex: number | null;
+  setHoveredIndex: (index: number | null) => void;
+}
