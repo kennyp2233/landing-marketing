@@ -44,7 +44,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
       name: 'Matías Villarreal',
       role: t.team.members.matias.role,
       description: t.team.members.matias.description,
-      image: '/team/Mati.jpg',
+      image: '/team/Mati.JPG',
     },
     {
       id: 'jose',
@@ -65,7 +65,7 @@ export function TeamSection({ isDark }: TeamSectionProps) {
       name: 'Kenny Pinchao',
       role: t.team.members.kenny.role,
       description: t.team.members.kenny.description,
-      image: '/team/Kenny.jpg',
+      image: '/team/Kenny.JPG',
     }
   ];
 
